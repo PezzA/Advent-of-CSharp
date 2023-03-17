@@ -1,4 +1,5 @@
 using AdventOfBlazor.BlazorClient;
+using AdventOfBlazor.Puzzles;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
