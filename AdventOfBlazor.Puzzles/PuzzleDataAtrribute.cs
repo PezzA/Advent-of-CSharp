@@ -6,7 +6,8 @@
         public int Year { get; set; }
         public int Day { get; set; }
         public string Title { get; set; } = string.Empty;
-        public PuzzleStatus Status { get; set; } = PuzzleStatus.NotYetImplemented;
+        public int Stars { get; set; }
+        public bool ImplementedElsewhere { get; set; }
         public bool TakesAges { get; set; }
     }
 }
