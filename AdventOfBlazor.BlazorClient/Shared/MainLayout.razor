@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@using AdventOfBlazor.Puzzles;
+@inherits LayoutComponentBase
 
 <MudThemeProvider />
 <MudDialogProvider />
@@ -7,21 +8,107 @@
 <MudLayout>
     <MudAppBar Elevation="1">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        <MudText Typo="Typo.h5" Class="ml-3">Application</MudText>
-        <MudSpacer />
-        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
+        <MudText Typo="Typo.h5" Class="ml-3">Advent of Blazor</MudText>
     </MudAppBar>
-    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
+    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2" Width="400px">
+        <MudPaper Width="400px" Elevation="0">
+            <MudTreeView Items="TreeItems" @bind-ActivatedValue="ActivatedValue" Dense="true" Hover="true">
+                <ItemTemplate>
+                    <MudTreeViewItem @bind-Expanded="@context.IsExpanded" Items="@context.TreeItems" Value="@context">
+                        <Content>
+                        <MudTreeViewItemToggleButton @bind-Expanded="@context.IsExpanded" Visible="@context.HasChild" />
+
+                            @if (context.IsPuzzle)
+                            {
+                                if (context.Stars == 0)
+                                {
+                                    <MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part One" />
+                                    <MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part Two" />
+                                }
+
+                                if (context.Stars == 1)
+                                {
+                                    <MudIcon Icon="@Icons.Material.Rounded.Star" Title="Part One" Color="Color.Warning"/>
+                                    <MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part Two" />
+                                }
+
+                                if (context.Stars == 2)
+                                {
+                                    <MudIcon Icon="@Icons.Material.Rounded.Star" Title="Part One" Color="Color.Warning" />
+                                    <MudIcon Icon="@Icons.Material.Rounded.Star" Title="Part Two" Color="Color.Warning"  />
+                                }
+
+                                
+                            }
+                            
+                        <MudText>@context.Title</MudText> 
+                        </Content>
+                     </MudTreeViewItem>
+                </ItemTemplate>
+            </MudTreeView>
+        </MudPaper>
     </MudDrawer>
     <MudMainContent>
         @Body
     </MudMainContent>
 </MudLayout>
 @code {
+    private TreeItemData? ActivatedValue { get; set; }
+
     bool _drawerOpen = true;
 
     void DrawerToggle()
     {
         _drawerOpen = !_drawerOpen;
+    }
+
+    public class TreeItemData
+    {
+        public string Title { get; set; } = string.Empty;
+
+        public int Stars { get; set; }
+
+        public bool IsExpanded { get; set; }
+
+        public bool IsPuzzle { get; set; }
+
+        public HashSet<TreeItemData>? TreeItems { get; set; }
+        public bool HasChild => TreeItems != null && TreeItems.Count > 0;
+        public TreeItemData(string title, int stars, bool isExpanded, bool isPuzzle)
+        {
+            Title = title;
+            Stars = stars;
+            IsExpanded = isExpanded;
+            IsPuzzle = isPuzzle;
+        }
+    }
+
+    private HashSet<TreeItemData> TreeItems { get; set; } = new HashSet<TreeItemData>();
+
+    protected override void OnInitialized()
+    {
+        var puzzles = PuzzleManager.GetAllBasicPuzzles();
+
+        TreeItems.Add(new TreeItemData("Puzzles", 0, true, false)
+            {
+                TreeItems = new HashSet<TreeItemData>()
+            {
+                new TreeItemData("2015", 0, false, false),
+                new TreeItemData("2016", 0, false, false),
+                new TreeItemData("2017", 0, false, false),
+                new TreeItemData("2018", 0, false, false),
+                new TreeItemData("2019", 0, false, false),
+                new TreeItemData("2020", 0, false, false),
+                new TreeItemData("2021", 0, false, false),
+                new TreeItemData("2022", 0, false, false)
+                {
+                    TreeItems = puzzles
+                        .Where(p => p.Year == 2022)
+                        .OrderBy(p => p.Day)
+                        .Select(p => new TreeItemData($"Day {p.Day}: {p.Title}", p.Stars, false, true))
+                        .ToHashSet()
+                },
+            }
+        });
     }
 }
