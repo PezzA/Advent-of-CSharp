@@ -1,12 +1,33 @@
 ﻿@page "/"
 @using System.Diagnostics;
 @using AdventOfBlazor.Puzzles.Twenty22;
+@using AdventOfBlazor.Puzzles;
 
 <MudText Typo="Typo.h6">Day 1, Part 1: @Text</MudText>
 
 <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="ButtonOnClick">Run</MudButton>
 
+<MudTable Items="@Puzzles" Hover="true" Breakpoint="Breakpoint.Sm">
+    <HeaderContent>
+        <MudTh>Year</MudTh>
+        <MudTh>Day</MudTh>
+        <MudTh>Title</MudTh>
+        <MudTh>Status</MudTh>
+        <MudTh>TakesAges</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Nr">@context.Year</MudTd>
+        <MudTd DataLabel="Sign">@context.Day</MudTd>
+        <MudTd DataLabel="Name">@context.Title</MudTd>
+        <MudTd DataLabel="Position">@context.Status</MudTd>
+        <MudTd DataLabel="Molar mass">@context.TakesAges</MudTd>
+    </RowTemplate>
+</MudTable>
+
 @code {
+
+    private IEnumerable<Puzzles.PuzzleDataAttribute> Puzzles = PuzzleManager.GetAllBasicPuzzles();
+
     public string Text { get; set; } = "????";
 
     void ButtonOnClick()

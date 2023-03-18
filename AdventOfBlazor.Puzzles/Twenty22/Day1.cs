@@ -1,6 +1,7 @@
 ﻿
 namespace AdventOfBlazor.Puzzles.Twenty22
 {
+    [PuzzleData(Year = 2022, Day = 1, Title = "Calorie Counting", Status = PuzzleStatus.HalfComplete)]
     public partial class Day1 : IBasicPuzzle
     {
         public string[] PartTwo(string input)
