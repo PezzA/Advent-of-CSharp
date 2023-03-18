@@ -1,9 +1,23 @@
 ﻿@page "/"
+@using System.Diagnostics;
+@using AdventOfBlazor.Puzzles.Twenty22;
 
-<PageTitle>Index</PageTitle>
+<MudText Typo="Typo.h6">Day 1, Part 1: @Text</MudText>
 
-<h1>Hello, world!</h1>
+<MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="ButtonOnClick">Run</MudButton>
 
-Welcome to your new app.
+@code {
+    public string Text { get; set; } = "????";
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    void ButtonOnClick()
+    {
+        var puzzle = new Day1();
+        var sw = new Stopwatch();
+
+        sw.Start();
+        var result = puzzle.PartOne(Day1.PUZZLE_INPUT);
+        sw.Stop();
+
+        Text = $"{result[0]} ({sw.ElapsedMilliseconds})";
+    }
+}
