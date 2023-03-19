@@ -1,0 +1,11 @@
+﻿@page "/puzzle/{Year:int}/{Day:int}"
+
+<h3>Puzzle: @Year, @Day</h3>
+
+@code {
+    [Parameter]
+    public int Year { get; set; }
+
+    [Parameter]
+    public int Day { get; set; }
+}
