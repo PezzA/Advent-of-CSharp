@@ -50,7 +50,7 @@
         </MudPaper>
     </MudDrawer>
     <MudMainContent>
-        <MudContainer Class="mt-16" MaxWidth="MaxWidth.ExtraLarge">
+        <MudContainer Class="mt-2" MaxWidth="MaxWidth.ExtraLarge">
             @Body
         </MudContainer>
     </MudMainContent>
@@ -71,6 +71,7 @@
         if (ActivatedValue == null || ActivatedValue.Year == 0)
         {
             NavigationManager.NavigateTo("/", false);
+            return;
         };
 
         var path = $"/puzzle/{ActivatedValue.Year}";

@@ -1,27 +1,4 @@
 ﻿@page "/"
-@using System.Diagnostics;
-@using AdventOfBlazor.Puzzles.Twenty22;
-@using AdventOfBlazor.Puzzles;
 
-<MudText Typo="Typo.h6">Day 1, Part 1: @Text</MudText>
-
-<MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="ButtonOnClick">Run</MudButton>
-
-@code {
-
-  
-
-    public string Text { get; set; } = "????";
-
-    void ButtonOnClick()
-    {
-        var puzzle = new Day1();
-        var sw = new Stopwatch();
-
-        sw.Start();
-        var result = puzzle.PartOne(Day1.PUZZLE_INPUT);
-        sw.Stop();
-
-        Text = $"{result[0]} ({sw.ElapsedTicks})";
-    }
-}
+<h2>Welcome to Advent of Blazor!</h2>
+<p>Solutions to the excellent advent of code delivered using Blazor Client.</p>
