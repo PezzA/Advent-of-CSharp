@@ -25,14 +25,14 @@
                             {
                                 if (context.Stars == 0)
                                 {
-                                    <MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part One" />
-                                    <MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part Two" />
+                                    <MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part One" Color="Color.Default" />
+                                    <MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part Two" Color="Color.Default" />
                                 }
 
                                 if (context.Stars == 1)
                                 {
                                     <MudIcon Icon="@Icons.Material.Rounded.Star" Title="Part One" Color="Color.Warning"/>
-                                    <MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part Two" />
+                                    <MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part Two" Color="Color.Default" />
                                 }
 
                                 if (context.Stars == 2)
@@ -42,7 +42,7 @@
                                 }
                             }
                             
-                        <MudText>@context.Title</MudText> 
+                        <MudText Typo="Typo.body1">@context.Title</MudText> 
                         </Content>
                      </MudTreeViewItem>
                 </ItemTemplate>
