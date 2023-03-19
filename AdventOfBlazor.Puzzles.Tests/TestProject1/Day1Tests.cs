@@ -7,7 +7,9 @@ namespace AdventOfBlazor.Puzzles.Tests
         [Fact]
         public void Test1()
         {
-            var result = new Day1().PartOne(Day1.PUZZLE_INPUT);
+            IBasicPuzzle puzz = new Day1();
+
+            var result = puzz.PartOne(puzz.PuzzleInput());
 
             Assert.Equal("72017", result[0]);
         }

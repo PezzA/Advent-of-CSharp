@@ -2,7 +2,9 @@
 {
     public partial class Day1
     {
-        public const string PUZZLE_INPUT = """
+        public string PuzzleInput()
+        {
+            return """
             5229
             1021
             2051
@@ -2242,5 +2244,6 @@
             9680
             10283
             """;
+        }
     }
 }
