@@ -70,11 +70,11 @@
     {
         if (ActivatedValue == null || ActivatedValue.Year == 0)
         {
-            NavigationManager.NavigateTo("/", false);
+            NavigationManager.NavigateTo($"{Settings.WEB_PATH_PREFIX}", false);
             return;
         };
 
-        var path = $"/puzzle/{ActivatedValue.Year}";
+        var path = $"{Settings.WEB_PATH_PREFIX}puzzle/{ActivatedValue.Year}";
 
         if (ActivatedValue.Day != 0)
         {
