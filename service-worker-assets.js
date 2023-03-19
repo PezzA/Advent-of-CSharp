@@ -49,15 +49,15 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-qlepCwFaJ9spvtfHSauqVGTgeYbTBH8KuhfmirOJQVQ=",
+      "hash": "sha256-URcYrqkJHKsOQ\/nGbAxUOTY3QeV9OeNhTvwKN2RodCo=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-7utS+kryjInwT30a3ik8TXu2pvZOzBI64+THSgkKsWg=",
+      "hash": "sha256-\/TPQdUoIvRwA8uDsnjAujMXhvFz9fo8hq7sJjVEL4ZU=",
       "url": "_framework\/AdventOfBlazor.BlazorClient.dll"
     },
     {
-      "hash": "sha256-k1P6Z4FF+hDOCCfBt4b22fEHjZe1BL6iyk7TeDu0k0s=",
+      "hash": "sha256-SR3CtS86mqCpCND94AN2SOhADxvvb5Y27vID8tlJAdk=",
       "url": "_framework\/AdventOfBlazor.Puzzles.dll"
     },
     {
@@ -121,7 +121,7 @@
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
-      "hash": "sha256-ix25oRM9s2l2gvLIp7zRHV0\/SpCfoLpGj3W5LmpUcMI=",
+      "hash": "sha256-RjTE049BfjqcGRBlmw\/P87tGqxdNecFKvbrgcZFzImI=",
       "url": "_framework\/MudBlazor.dll"
     },
     {
@@ -229,5 +229,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "XNakaqVm"
+  "version": "saFKWSRg"
 };
