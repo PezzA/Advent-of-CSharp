@@ -7,26 +7,9 @@
 
 <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="ButtonOnClick">Run</MudButton>
 
-<MudTable Items="@Puzzles" Hover="true" Breakpoint="Breakpoint.Sm">
-    <HeaderContent>
-        <MudTh>Year</MudTh>
-        <MudTh>Day</MudTh>
-        <MudTh>Title</MudTh>
-        <MudTh>Status</MudTh>
-        <MudTh>TakesAges</MudTh>
-    </HeaderContent>
-    <RowTemplate>
-        <MudTd DataLabel="Year">@context.Year</MudTd>
-        <MudTd DataLabel="Day">@context.Day</MudTd>
-        <MudTd DataLabel="Title">@context.Title</MudTd>
-        <MudTd DataLabel="Stars">@context.Stars</MudTd>
-        <MudTd DataLabel="This Repo">@context.TakesAges</MudTd>
-    </RowTemplate>
-</MudTable>
-
 @code {
 
-    private IEnumerable<Puzzles.PuzzleDataAttribute> Puzzles = PuzzleManager.GetAllBasicPuzzles();
+  
 
     public string Text { get; set; } = "????";
 
