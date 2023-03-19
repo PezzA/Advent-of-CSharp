@@ -1,6 +1,8 @@
 ﻿@using AdventOfBlazor.Puzzles;
 @inherits LayoutComponentBase
+
 @inject NavigationManager NavigationManager
+
 
 <MudThemeProvider />
 <MudDialogProvider />
@@ -85,6 +87,7 @@
     {
         public int Year { get; set; }
         public int Day { get; set; }
+
         public string Title { get; set; } = string.Empty;
 
         public int Stars { get; set; }
@@ -97,6 +100,7 @@
         public bool HasChild => TreeItems != null && TreeItems.Count > 0;
 
         public TreeItemData(string title, int stars, bool isExpanded, bool isPuzzle, int year = 0, int day = 0)
+
         {
             Title = title;
             Stars = stars;
@@ -104,15 +108,11 @@
             IsPuzzle = isPuzzle;
             Year = year;
             Day = day;
+
         }
     }
 
     private HashSet<TreeItemData> TreeItems { get; set; } = new HashSet<TreeItemData>();
-
-    void NavigateToPuzzle()
-    {
-
-    }
 
     protected override void OnInitialized()
     {
