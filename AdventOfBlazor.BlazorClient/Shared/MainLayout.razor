@@ -10,16 +10,16 @@
 
 <MudLayout>
     <MudAppBar Elevation="1">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())"  />
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
         <MudText Typo="Typo.h5" Class="ml-3">Advent of Blazor</MudText>
     </MudAppBar>
-    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2" Width="400px" >
+    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2" Width="400px">
         <MudPaper Width="400px" Elevation="0">
             <MudTreeView Items="TreeItems" @bind-ActivatedValue="ActivatedValue" Dense="true" Hover="true">
                 <ItemTemplate>
                     <MudTreeViewItem @bind-Expanded="@context.IsExpanded" Items="@context.TreeItems" Value="@context" OnClick="OnSelectedValuesChanged">
                         <Content>
-                        <MudTreeViewItemToggleButton @bind-Expanded="@context.IsExpanded" Visible="@context.HasChild" />
+                            <MudTreeViewItemToggleButton @bind-Expanded="@context.IsExpanded" Visible="@context.HasChild" />
 
                             @if (context.IsPuzzle)
                             {
@@ -31,20 +31,20 @@
 
                                 if (context.Stars == 1)
                                 {
-                                    <MudIcon Icon="@Icons.Material.Rounded.Star" Title="Part One" Color="Color.Warning"/>
+                                    <MudIcon Icon="@Icons.Material.Rounded.Star" Title="Part One" Color="Color.Warning" />
                                     <MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part Two" Color="Color.Default" />
                                 }
 
                                 if (context.Stars == 2)
                                 {
                                     <MudIcon Icon="@Icons.Material.Rounded.Star" Title="Part One" Color="Color.Warning" />
-                                    <MudIcon Icon="@Icons.Material.Rounded.Star" Title="Part Two" Color="Color.Warning"  />
+                                    <MudIcon Icon="@Icons.Material.Rounded.Star" Title="Part Two" Color="Color.Warning" />
                                 }
                             }
-                            
-                        <MudText Typo="Typo.body1">@context.Title</MudText> 
+
+                            <MudText Typo="Typo.body1">@context.Title</MudText>
                         </Content>
-                     </MudTreeViewItem>
+                    </MudTreeViewItem>
                 </ItemTemplate>
             </MudTreeView>
         </MudPaper>
@@ -127,10 +127,10 @@
             var item = new TreeItemData(i.ToString(), 0, false, false, i)
                 {
                     TreeItems = puzzles
-                                .Where(p => p.Year == i)
-                                .OrderBy(p => p.Day)
-                                .Select(p => new TreeItemData($"Day {p.Day}: {p.Title}", p.Stars, false, true, p.Year, p.Day))
-                                .ToHashSet()
+                                    .Where(p => p.Year == i)
+                                    .OrderBy(p => p.Day)
+                                    .Select(p => new TreeItemData($"Day {p.Day}: {p.Title}", p.Stars, false, true, p.Year, p.Day))
+                                    .ToHashSet()
                 };
 
             rootItem.TreeItems.Add(item);

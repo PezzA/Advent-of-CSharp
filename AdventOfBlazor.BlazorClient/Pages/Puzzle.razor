@@ -6,12 +6,13 @@
 @if (puzzleMetaData == null || puzzle == null)
 {
     <h2>Puzzle Not Found</h2>
-    <hr/>
+    <hr />
     <p>Apologies! Either the implementation or metadata for the puzzle could not be found.</p>
-} else
+}
+else
 {
     <h2>@puzzleMetaData.Title</h2>
-    <hr/>
+    <hr />
     <p>@puzzleMetaData.Year, Day @puzzleMetaData.Day</p>
 
     <MudGrid Class="mt-4">
@@ -75,13 +76,18 @@
 
     void ButtonOneClick()
     {
-        IBasicPuzzle puzzle = new Day1();
         var sw = new Stopwatch();
-
         var result = string.Empty;
+
         sw.Start();
+
         try
         {
+            if (puzzle == null)
+            {
+                PartOneText = "Null Puzzle";
+                return;
+            }
             result = puzzle.PartOne(puzzle.PuzzleInput())[0];
         }
         catch (Exception err)
@@ -96,13 +102,20 @@
 
     void ButtonTwoClick()
     {
-        IBasicPuzzle puzzle = new Day1();
-        var sw = new Stopwatch();
 
+        var sw = new Stopwatch();
         var result = string.Empty;
+
         sw.Start();
+
         try
         {
+            if (puzzle == null)
+            {
+                PartTwoText = "Null Puzzle";
+                return;
+            }
+
             result = puzzle.PartTwo(puzzle.PuzzleInput())[0];
         }
         catch (Exception err)
