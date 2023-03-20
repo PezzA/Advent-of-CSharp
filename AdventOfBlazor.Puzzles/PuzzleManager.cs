@@ -20,7 +20,7 @@ namespace AdventOfBlazor.Puzzles
             return puzzleDataList;
         }
 
-        public static PuzzleDataAttribute? GetPuzzleMetaData(int year, int day) 
+        public static PuzzleDataAttribute? GetPuzzleMetaData(int year, int day)
         {
             var puzzleDataList = new List<PuzzleDataAttribute>();
 
@@ -39,7 +39,8 @@ namespace AdventOfBlazor.Puzzles
             return null;
         }
 
-        public static IBasicPuzzle? GetPuzzle(int year, int day) {
+        public static IBasicPuzzle? GetPuzzle(int year, int day)
+        {
             var puzzleDataList = new List<PuzzleDataAttribute>();
 
             foreach (Type mytype in Assembly.GetExecutingAssembly().GetTypes()
@@ -47,7 +48,7 @@ namespace AdventOfBlazor.Puzzles
             {
                 if (Attribute.GetCustomAttribute(mytype, typeof(PuzzleDataAttribute)) is PuzzleDataAttribute dataAttribute)
                 {
-                    if (dataAttribute.Year == year && dataAttribute.Day == day) 
+                    if (dataAttribute.Year == year && dataAttribute.Day == day)
                     {
                         return Activator.CreateInstance(mytype) as IBasicPuzzle;
                     }
