@@ -7,7 +7,7 @@ namespace AdventOfBlazor.Puzzles.Twenty22
 
         public string[] PartOne(string input)
         {
-            var items = input.Split('\n');
+            var items = input.Split(Environment.NewLine);
             var count = 0;
             var maxCount = 0;
 

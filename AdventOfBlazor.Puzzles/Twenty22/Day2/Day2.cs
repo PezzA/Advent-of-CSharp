@@ -34,7 +34,6 @@ namespace AdventOfBlazor.Puzzles.Twenty22
         {
             public string OpponentPlay { get; set; } = string.Empty;
             public string MyPlay { get; set; } = string.Empty;
-
             public string ToShortString()
             {
                 return OpponentPlay + MyPlay;
