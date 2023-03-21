@@ -49,15 +49,15 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-IAhbh0GCvKcrDOnaHTSq6zTvNyjCEFIETxEnE8Ajg5o=",
+      "hash": "sha256-o7985\/MfT5s9wK2X7lw8qx9UBzIgBeWVREsQbAdxMfM=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-XaJtq8zLpjlpPKmHLrnP2yNISiwZ9N6lsvm+Nuvu2wA=",
+      "hash": "sha256-sPl+ALgb+5hIjbJZUEFZ0Q6iORBNpnySqlumCCBH+Zw=",
       "url": "_framework\/AdventOfBlazor.BlazorClient.dll"
     },
     {
-      "hash": "sha256-Qad2f3J1+M\/NsIDCCoS6PJHHicDeMDQwAO6LcyeeDu0=",
+      "hash": "sha256-5QuEAzEHUYlKl1oVH8rIkHhlmmgb9jlAcD4TWt7jmq0=",
       "url": "_framework\/AdventOfBlazor.Puzzles.dll"
     },
     {
@@ -189,7 +189,7 @@
       "url": "_framework\/System.Private.Uri.dll"
     },
     {
-      "hash": "sha256-ElJe+wnmE\/GRkNY6svlH1G0xfeVBkIduAXJS+bFA1y0=",
+      "hash": "sha256-TtcWtO06kW2jjX4NfYXNzTyodRPfqyGb4anRYEJ+e+Q=",
       "url": "_framework\/System.Runtime.dll"
     },
     {
@@ -229,5 +229,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "waMj+2xy"
+  "version": "rH5wyb7j"
 };
