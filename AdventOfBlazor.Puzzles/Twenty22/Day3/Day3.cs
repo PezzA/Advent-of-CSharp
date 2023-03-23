@@ -1,7 +1,7 @@
 ﻿
 namespace AdventOfBlazor.Puzzles.Twenty22
 {
-    [PuzzleData(Year = 2022, Day = 3, Title = "Rucksack Reorganization", Stars = 1, ImplementedElsewhere = false)]
+    [PuzzleData(Year = 2022, Day = 3, Title = "Rucksack Reorganization", Stars = 2, ImplementedElsewhere = false)]
     public partial class Day3 : IBasicPuzzle
     {
         public (string, string) SplitCompartments(string input)
@@ -49,12 +49,12 @@ namespace AdventOfBlazor.Puzzles.Twenty22
         {
             if (char.IsAsciiLetterLower(input))
             {
-                return ((int)input) - 96;
+                return input - 96;
             }
 
             if (char.IsAsciiLetterUpper(input))
             {
-                return ((int)input) - 38;
+                return input - 38;
             }
 
             return 0;
