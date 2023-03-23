@@ -3,7 +3,7 @@ using System.IO.Pipes;
 
 namespace AdventOfBlazor.Puzzles.Twenty22
 {
-    [PuzzleData(Year = 2022, Day = 4, Title = "Camp Cleanup", Stars = 1, ImplementedElsewhere = false)]
+    [PuzzleData(Year = 2022, Day = 4, Title = "Camp Cleanup", Stars = 2, ImplementedElsewhere = false)]
     public partial class Day4 : IBasicPuzzle
     {
         public class Range
