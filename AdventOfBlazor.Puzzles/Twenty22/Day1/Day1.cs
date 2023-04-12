@@ -1,7 +1,7 @@
 ﻿
 namespace AdventOfBlazor.Puzzles.Twenty22
 {
-    [PuzzleData(Year = 2022, Day = 1, Title = "Calorie Counting", Stars = 2, ImplementedElsewhere = false)]
+    [PuzzleData(Year = 2022, Day = 1, Title = "Calorie Counting", Stars = 2, ImplementedElsewhere = false, PuzzleRoute = "calorie-counting")]
     public partial class Day1 : IBasicPuzzle
     {
 
