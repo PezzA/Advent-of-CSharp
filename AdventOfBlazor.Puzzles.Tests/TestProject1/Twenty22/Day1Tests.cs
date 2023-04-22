@@ -1,9 +1,12 @@
 using AdventOfBlazor.Puzzles.Twenty22;
 
-namespace AdventOfBlazor.Puzzles.Tests
+namespace AdventOfBlazor.Puzzles.Tests.Twenty22
 {
     public class Day1Tests
     {
+
+
+
         [Fact]
         public void TestPartOne()
         {

@@ -1,6 +1,6 @@
 using AdventOfBlazor.Puzzles.Twenty22;
 
-namespace AdventOfBlazor.Puzzles.Tests
+namespace AdventOfBlazor.Puzzles.Tests.Twenty22
 {
     public class Day2Tests
     {
