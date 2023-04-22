@@ -2,6 +2,8 @@
 @using AdventOfBlazor.Puzzles;
 @using System.Diagnostics;
 @using AdventOfBlazor.Puzzles.Twenty22;
+@using System.Timers;
+@inject NavigationManager NavigationManager
 
 @if (puzzleMetaData == null || puzzle == null)
 {
@@ -51,6 +53,24 @@ else
             </MudCard>
         </MudItem>
     </MudGrid>
+
+    <MudTimeline>
+        @for (var i = 0; i < 5; i++)
+        {
+            <MudTimelineItem Color="Color.Dark" Elevation="25">
+                <ItemOpposite>
+                    <MudText Color="Color.Dark" Typo="Typo.h6">@i</MudText>
+                </ItemOpposite>
+                <ItemContent>
+                    <MudPaper Elevation="0" Class="mt-n1">
+                        <MudText Color="Color.Dark" Typo="Typo.h6" GutterBottom="true">MudBlazor Emerges</MudText>
+                        <MudText Typo="Typo.body2">A repository pops up on Github named MudBlazor.</MudText>
+                        <MudText Typo="Typo.body2">The development has already started and the most common components can be found already.</MudText>
+                    </MudPaper>
+                </ItemContent>
+            </MudTimelineItem>
+        }
+    </MudTimeline>
 }
 
 
@@ -61,6 +81,9 @@ else
     [Parameter]
     public int Day { get; set; }
 
+
+
+
     private IBasicPuzzle? puzzle;
 
     private PuzzleDataAttribute? puzzleMetaData;
@@ -69,8 +92,10 @@ else
     {
         puzzle = PuzzleManager.GetPuzzle(Year, Day);
         puzzleMetaData = PuzzleManager.GetPuzzleMetaData(Year, Day);
+
     }
 
+    
     public string PartOneText { get; set; } = "... waiting for run  ...";
     public string PartTwoText { get; set; } = "... waiting for run  ...";
 

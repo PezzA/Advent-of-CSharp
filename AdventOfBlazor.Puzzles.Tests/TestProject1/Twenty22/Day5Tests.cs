@@ -1,6 +1,6 @@
 using AdventOfBlazor.Puzzles.Twenty22;
 
-namespace AdventOfBlazor.Puzzles.Tests
+namespace AdventOfBlazor.Puzzles.Tests.Twenty22
 {
     public class Day5Tests
     {
@@ -15,7 +15,7 @@ namespace AdventOfBlazor.Puzzles.Tests
         public void Test_LoadData()
         {
             var (stacks, instructions) = puzzle.LoadData(puzzle.PuzzleInput());
-           
+
             Assert.NotNull(stacks);
             Assert.Equal(9, stacks.Keys.Count);
 

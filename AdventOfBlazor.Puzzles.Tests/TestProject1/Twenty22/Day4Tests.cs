@@ -1,6 +1,6 @@
 using AdventOfBlazor.Puzzles.Twenty22;
 
-namespace AdventOfBlazor.Puzzles.Tests
+namespace AdventOfBlazor.Puzzles.Tests.Twenty22
 {
     public class Day4Tests
     {
@@ -12,7 +12,8 @@ namespace AdventOfBlazor.Puzzles.Tests
         }
 
         [Fact]
-        public void Test_LoadData() {
+        public void Test_LoadData()
+        {
             var data = puzzle.LoadData(puzzle.PuzzleInput());
 
             Assert.Equivalent(new Day4.Range { Lower = 54, Upper = 59 }, data[0].First);

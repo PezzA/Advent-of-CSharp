@@ -47,7 +47,7 @@ namespace AdventOfBlazor.Puzzles.Twenty22
 
             foreach (var line in lines)
             {
-                var bits = line.Split(" ");
+                var bits = line.Split(' ');
                 if (bits.Length > 0)
                 {
                     instructions.Add(new Instruction { OpponentPlay = bits[0].Trim(), MyPlay = bits[1].Trim() });
