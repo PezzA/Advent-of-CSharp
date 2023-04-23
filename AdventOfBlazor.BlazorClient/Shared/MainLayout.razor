@@ -15,9 +15,10 @@
     </MudAppBar>
     <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2" Width="400px">
         <MudPaper Width="400px" Elevation="0">
-            <MudTreeView Items="TreeItems" @bind-ActivatedValue="ActivatedValue" Dense="true" Hover="true">
+
+            <MudTreeView Items="TreeItems" T="TreeItemData" SelectedValueChanged="SelectedValueChanged" Dense="true" Hover="true" >
                 <ItemTemplate>
-                    <MudTreeViewItem @bind-Expanded="@context.IsExpanded" Items="@context.TreeItems" Value="@context" OnClick="OnSelectedValuesChanged">
+                    <MudTreeViewItem @bind-Expanded="@context.IsExpanded" Items="@context.TreeItems" Value="@context" >
                         <Content>
                             <MudTreeViewItemToggleButton @bind-Expanded="@context.IsExpanded" Visible="@context.HasChild" />
 
@@ -57,7 +58,6 @@
 </MudLayout>
 
 @code {
-    private TreeItemData? ActivatedValue { get; set; }
 
     bool _drawerOpen = true;
 
@@ -66,19 +66,19 @@
         _drawerOpen = !_drawerOpen;
     }
 
-    private void OnSelectedValuesChanged()
+    void SelectedValueChanged(TreeItemData data)
     {
-        if (ActivatedValue == null || ActivatedValue.Year == 0)
+        if (data == null || data.Year == 0)
         {
             NavigationManager.NavigateTo($"{Settings.WEB_PATH_PREFIX}", false);
             return;
         };
 
-        var path = $"{Settings.WEB_PATH_PREFIX}puzzle/{ActivatedValue.Year}";
+        var path = $"{Settings.WEB_PATH_PREFIX}puzzle/{data.Year}";
 
-        if (ActivatedValue.Day != 0)
+        if (data.Day != 0)
         {
-            path += $"/{ActivatedValue.Day}";
+            path += $"/{data.Day}";
         }
 
         NavigationManager.NavigateTo(path, false);
