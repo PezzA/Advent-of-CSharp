@@ -49,11 +49,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-jQKfQFABcRI+atEHl41RIwH1Jj7z6yxCCXVcbjWuCNY=",
+      "hash": "sha256-gXSZX5WPYPtc0OKY5UW6qd0e2kbLgo5HuXN+Ka4hDwY=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-iqtcLTBqZaXRlKkUF3LQBD37\/SEpQoL0elMIWfrWHC4=",
+      "hash": "sha256-FH\/1iiMAh5b1FPoekccOm+ySxIvlvYDki7G1YlsPXJA=",
       "url": "_framework\/AdventOfBlazor.BlazorClient.dll"
     },
     {
@@ -129,7 +129,7 @@
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
-      "hash": "sha256-YqPoRsfPfYnbaFgVsECEkvYieyAF7lNtQVy4hgUw9o8=",
+      "hash": "sha256-DSAYF2\/LD6E7YGbS1jwLahpmf0KWIJ+\/QdUMKSx3dcA=",
       "url": "_framework\/MudBlazor.dll"
     },
     {
@@ -157,7 +157,7 @@
       "url": "_framework\/System.ComponentModel.Primitives.dll"
     },
     {
-      "hash": "sha256-4J3aPGGL5tkuYl6jRJS3poyPFB\/NaF4HjxrJqyryVvA=",
+      "hash": "sha256-TnKKW2vk8mQn0lYG1KAF5lsDZ2ZoVoNRTr4TJBIOkLA=",
       "url": "_framework\/System.ComponentModel.TypeConverter.dll"
     },
     {
@@ -193,7 +193,7 @@
       "url": "_framework\/System.ObjectModel.dll"
     },
     {
-      "hash": "sha256-lJJJty7+kgWHOVGFICvmiI6\/twewLsIUeMXpS7XwQgM=",
+      "hash": "sha256-miEanK6GX7S00siEtz1+gtzIBIzegQ36hoIqKJ8eIGY=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
@@ -201,7 +201,7 @@
       "url": "_framework\/System.Private.Uri.dll"
     },
     {
-      "hash": "sha256-aEJVlM8dVMQj\/RxIr1QCdBASa2FJkImiz+0JsZ8VffQ=",
+      "hash": "sha256-o+fhYKzMPopELVvWSMAeOKzbKP6GpgN9GNwzVdzJX\/w=",
       "url": "_framework\/System.Runtime.dll"
     },
     {
@@ -225,7 +225,7 @@
       "url": "_framework\/dotnet.7.0.5.8xkwurfq18.js"
     },
     {
-      "hash": "sha256-0a+LklRabNy7x523q9mO+4BJv3vZAHThv4wF2ZhNfZA=",
+      "hash": "sha256-PV9h0bLWPIQ5bkFECQZHsdPK162S2WIWXAhM\/KvAY2s=",
       "url": "_framework\/dotnet.wasm"
     },
     {
@@ -245,5 +245,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "7SoLZtwE"
+  "version": "zv+XAqvf"
 };
