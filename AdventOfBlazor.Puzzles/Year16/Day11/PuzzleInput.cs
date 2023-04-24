@@ -1,4 +1,4 @@
-﻿namespace AdventOfBlazor.Puzzles.Twenty16.Day11;
+﻿namespace AdventOfBlazor.Puzzles.Year16.Day11;
 
 public partial class Puzzle
 {

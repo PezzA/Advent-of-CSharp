@@ -1,11 +1,11 @@
-﻿namespace AdventOfBlazor.Puzzles.Twenty16.Day11;
+﻿namespace AdventOfBlazor.Puzzles.Year16.Day11;
 
 [PuzzleData(Year = 2016, Day = 11, Title = "Radioisotope Thermoelectric Generators", Stars = 0, ImplementedElsewhere = false)]
 public partial class Puzzle : IBasicPuzzle
 {
     public static Facility LoadData(string input)
     {
-        var lines = input.Split("\r\n");
+        var lines = input.Split(Environment.NewLine);
         var floors = new List<Floor>();
 
         foreach (var line in lines)
@@ -18,6 +18,7 @@ public partial class Puzzle : IBasicPuzzle
                 var word = words[i]
                     .Replace(".", "")
                     .Replace(",", "")
+                    .Replace("\r", "")
                     .ToLower();
 
                 var device = word switch
