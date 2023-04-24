@@ -17,44 +17,13 @@ else
 
     <MudGrid Class="mt-4">
         <MudItem xs="6">
-            <MudCard>
-                <MudCardHeader>
-                    <CardHeaderContent>
-                        <MudText Typo="Typo.h6">Part One</MudText>
-                    </CardHeaderContent>
-                    <CardHeaderActions>
-                    </CardHeaderActions>
-                </MudCardHeader>
-                <MudCardContent>
-                    <MudText>@PartOneText</MudText>
-                </MudCardContent>
-                <MudCardActions>
-                    <MudButton Color="Color.Primary" OnClick="ButtonOneClick">Run</MudButton>
-                </MudCardActions>
-            </MudCard>
+           <PuzzlePart Title="Part One" Action="()=> puzzle.PartOne(puzzle.PuzzleInput())"/>
         </MudItem>
         <MudItem xs="6">
-            <MudCard>
-                <MudCardHeader>
-                    <CardHeaderContent>
-                        <MudText Typo="Typo.h6">Part Two</MudText>
-                    </CardHeaderContent>
-                    <CardHeaderActions>
-                    </CardHeaderActions>
-                </MudCardHeader>
-                <MudCardContent>
-                    <MudText>@PartTwoText</MudText>
-                </MudCardContent>
-                <MudCardActions>
-                    <MudButton Color="Color.Primary" OnClick="ButtonTwoClick">Run</MudButton>
-                </MudCardActions>
-            </MudCard>
+            <PuzzlePart Title="Part Two" Action="()=> puzzle.PartTwo(puzzle.PuzzleInput())" />
         </MudItem>
     </MudGrid>
-
-
 }
-
 
 @code {
     [Parameter]
@@ -69,72 +38,17 @@ else
 
     protected override void OnInitialized()
     {
-        puzzle = PuzzleManager.GetPuzzle(Year, Day);
-        puzzleMetaData = PuzzleManager.GetPuzzleMetaData(Year, Day);
-
+        ResetState();
     }
 
     protected override void OnParametersSet()
     {
+        ResetState();
+    }
+
+    void ResetState()
+    {
         puzzle = PuzzleManager.GetPuzzle(Year, Day);
         puzzleMetaData = PuzzleManager.GetPuzzleMetaData(Year, Day);
     }
-
-    public string PartOneText { get; set; } = "... waiting for run  ...";
-    public string PartTwoText { get; set; } = "... waiting for run  ...";
-
-    void ButtonOneClick()
-    {
-        var sw = new Stopwatch();
-        var result = string.Empty;
-
-        sw.Start();
-
-        try
-        {
-            if (puzzle == null)
-            {
-                PartOneText = "Null Puzzle";
-                return;
-            }
-            result = puzzle.PartOne(puzzle.PuzzleInput())[0];
-        }
-        catch (Exception err)
-        {
-            result = err.Message;
-        }
-
-        sw.Stop();
-
-        PartOneText = $"{result} ({sw.Elapsed.ToString()})";
-    }
-
-    void ButtonTwoClick()
-    {
-
-        var sw = new Stopwatch();
-        var result = string.Empty;
-
-        sw.Start();
-
-        try
-        {
-            if (puzzle == null)
-            {
-                PartTwoText = "Null Puzzle";
-                return;
-            }
-
-            result = puzzle.PartTwo(puzzle.PuzzleInput())[0];
-        }
-        catch (Exception err)
-        {
-            result = err.Message;
-        }
-
-        sw.Stop();
-
-        PartTwoText = $"{result} ({sw.Elapsed.ToString()})";
-    }
-
 }

@@ -1,0 +1,49 @@
+﻿@using System.Diagnostics;
+<MudCard>
+    <MudCardHeader>
+        <CardHeaderContent>
+            <MudText Typo="Typo.h6">@Title</MudText>
+        </CardHeaderContent>
+        <CardHeaderActions>
+        </CardHeaderActions>
+    </MudCardHeader>
+    <MudCardContent>
+        <MudText>@StatusText</MudText>
+    </MudCardContent>
+    <MudCardActions>
+        <MudButton Color="Color.Primary" OnClick="RunPuzzle">Run</MudButton>
+    </MudCardActions>
+</MudCard>
+
+@code {
+    [Parameter]
+    public string Title { get; set; } = "Not Set";
+
+    [Parameter]
+    public Func<string[]> Action { get; set; } = () => new string[] { "No action specified" };
+
+    private const string NOT_YET_RUN = "... waiting for run  ...";
+
+    private string StatusText { get; set; } = NOT_YET_RUN;
+
+    void RunPuzzle()
+    {
+        var sw = new Stopwatch();
+        var result = string.Empty;
+
+        sw.Start();
+
+        try
+        {
+            result = Action.Invoke()[0];
+        }
+        catch (Exception err)
+        {
+            result = err.Message;
+        }
+
+        sw.Stop();
+
+        StatusText = $"{result} ({sw.Elapsed.ToString()})";
+    }
+}
