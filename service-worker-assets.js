@@ -49,15 +49,15 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-JNcIDaCWxSqZJW1nEdCuZ82j77Nt8FjNM+Anq2OSh\/s=",
+      "hash": "sha256-HvAyQwdryXJeBTO88O+i2QWN770i2nfvocx2UOs7rmo=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-a3Qb4oE2PDKUOhipisGW2XtrORDbbBotFMjl0GXGEJs=",
+      "hash": "sha256-wjwzPe++CYdYTvxekO1kyZzZas7+Ghq4Ly1T3zHszHQ=",
       "url": "_framework\/AdventOfBlazor.BlazorClient.dll"
     },
     {
-      "hash": "sha256-MImZ6Z1sgcT6dRCAt6KFUmFx0aqNaj3brnLNve9AMAU=",
+      "hash": "sha256-maZx+EmdQ9cSrb8QcNURV5IVm\/9jSp2ejcaj1lk2a64=",
       "url": "_framework\/AdventOfBlazor.Puzzles.dll"
     },
     {
@@ -169,7 +169,7 @@
       "url": "_framework\/System.dll"
     },
     {
-      "hash": "sha256-+uSbvusjz5XcKUz+yaCkdTAwkWlYlfx2VzO0VUZy97g=",
+      "hash": "sha256-hNKava8OHEdAMQTUSalV93e0bxfw\/bKY2tzsCqefG\/w=",
       "url": "_framework\/System.Linq.dll"
     },
     {
@@ -193,7 +193,7 @@
       "url": "_framework\/System.ObjectModel.dll"
     },
     {
-      "hash": "sha256-miEanK6GX7S00siEtz1+gtzIBIzegQ36hoIqKJ8eIGY=",
+      "hash": "sha256-B+0Hy\/Q4vxbGhD7guIfeZVG5WrmpJ3TTdMlMOX0xtLY=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
@@ -201,7 +201,7 @@
       "url": "_framework\/System.Private.Uri.dll"
     },
     {
-      "hash": "sha256-v\/8xKImC5fXUW6c8Ud+lks7tWNjl+ZW3Gp03mWPrJk0=",
+      "hash": "sha256-KQ+JQnAWkjTLj0Gc+zyYD6Bo5nXcSt05tf2miez8e5c=",
       "url": "_framework\/System.Runtime.dll"
     },
     {
@@ -225,7 +225,7 @@
       "url": "_framework\/dotnet.7.0.5.8xkwurfq18.js"
     },
     {
-      "hash": "sha256-PV9h0bLWPIQ5bkFECQZHsdPK162S2WIWXAhM\/KvAY2s=",
+      "hash": "sha256-u2aq3QuYkrygLFXCN8wmtTS+Xzs7mHqha3Z9x6D7xhQ=",
       "url": "_framework\/dotnet.wasm"
     },
     {
@@ -245,5 +245,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "Lbd\/O5aa"
+  "version": "yFKeuXD3"
 };
