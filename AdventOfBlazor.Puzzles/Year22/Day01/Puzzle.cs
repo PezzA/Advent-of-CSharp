@@ -1,6 +1,6 @@
 ﻿namespace AdventOfBlazor.Puzzles.Year22.Day01;
 
-[PuzzleData(Year = 2022, Day = 1, Title = "Calorie Counting", Stars = 2, ImplementedElsewhere = false, PuzzleRoute = "calorie-counting")]
+[PuzzleData(Year = 2022, Day = 1, Title = "Calorie Counting", Stars = 2, ImplementedElsewhere = false)]
 public partial class Puzzle : IBasicPuzzle
 {
     public string[] PartOne(string input)
