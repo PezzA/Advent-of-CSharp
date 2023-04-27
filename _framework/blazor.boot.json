@@ -7,8 +7,8 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "AdventOfBlazor.BlazorClient.dll": "sha256-wjwzPe++CYdYTvxekO1kyZzZas7+Ghq4Ly1T3zHszHQ=",
-      "AdventOfBlazor.Puzzles.dll": "sha256-maZx+EmdQ9cSrb8QcNURV5IVm\/9jSp2ejcaj1lk2a64=",
+      "AdventOfBlazor.BlazorClient.dll": "sha256-k62hBCQrRsk+lwagVP0L0ahVRqRGHlnn8zCSW1umvRA=",
+      "AdventOfBlazor.Puzzles.dll": "sha256-b8\/K5VeJpRD15u1qQ+QawHv6Br1xeuLXH7FW2C680+o=",
       "Blazor.Extensions.Canvas.dll": "sha256-W20pWMXQg2yTv0w4VJhrjCJKNRYe3PiUU9S76XipNe8=",
       "Blazor.Extensions.Canvas.JS.dll": "sha256-TrW1uaSNUS+J8xVJErxIf1NQuNC7kn50KzMYYF\/4JtM=",
       "Microsoft.AspNetCore.Components.dll": "sha256-ZgjlpJRck35A1dOs731Uoc0m7c9mRyi6ohG9r8VHvMY=",
