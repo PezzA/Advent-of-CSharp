@@ -1,6 +1,6 @@
 ﻿namespace AdventOfBlazor.Puzzles.Year22.Day07;
 
-[PuzzleData(Year = 22, Day = 7, Title = "No Space Left On Device")]
+[PuzzleData(Year = 2022, Day = 7, Title = "No Space Left On Device", Stars = 2)]
 public partial class Puzzle : IBasicPuzzle
 {
     public static Directory LoadData(string input)
