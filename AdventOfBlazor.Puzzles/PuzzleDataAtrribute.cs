@@ -9,6 +9,6 @@
         public int Stars { get; set; }
         public bool ImplementedElsewhere { get; set; }
         public bool TakesAges { get; set; }
-        public string PuzzleRoute { get; set; } = string.Empty;
+        public bool HasVisualisation { get; set; }
     }
 }
