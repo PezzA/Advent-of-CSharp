@@ -25,6 +25,66 @@
       "url": "manifest.json"
     },
     {
+      "hash": "sha256-8ewBFAM1zZonx1n4TEi0WPstGZbeS\/Y4jG43VcPg00s=",
+      "url": "visualisations\/2015-01\/Build\/advent-of-unity.data.gz"
+    },
+    {
+      "hash": "sha256-USUkZ7WIH\/PlPqYfCx\/0mArPoYudkws+b5ztQpPNk88=",
+      "url": "visualisations\/2015-01\/Build\/advent-of-unity.framework.js.gz"
+    },
+    {
+      "hash": "sha256-qd8CWX9LbRVLFhQMmVo4NtTIWEIzvRHtyX12jDPUAaU=",
+      "url": "visualisations\/2015-01\/Build\/advent-of-unity.loader.js"
+    },
+    {
+      "hash": "sha256-B2VIG+sgDHC4J7X32LoTBMhuHWsHpp4k0cW8w+sOHFY=",
+      "url": "visualisations\/2015-01\/Build\/advent-of-unity.wasm.gz"
+    },
+    {
+      "hash": "sha256-qHNgzCHCJo8rJAk0T8HOMhjHx0e+gWjZMtOkH7Ah7xY=",
+      "url": "visualisations\/2015-01\/index.html"
+    },
+    {
+      "hash": "sha256-nBO+uQ7o9wWA1Soh1SM5cNHInnHko0pGLCJhCUHDx38=",
+      "url": "visualisations\/2015-01\/TemplateData\/favicon.ico"
+    },
+    {
+      "hash": "sha256-ISIVgWc6VLgTnUCNSj+NK4eehoJ9S2\/FO5lf96me4+k=",
+      "url": "visualisations\/2015-01\/TemplateData\/fullscreen-button.png"
+    },
+    {
+      "hash": "sha256-u+5xMa\/oozZZBiQNiRhNyGI0wRlGfzkLxLxoAjKP200=",
+      "url": "visualisations\/2015-01\/TemplateData\/progress-bar-empty-dark.png"
+    },
+    {
+      "hash": "sha256-FDaWwGCtQ9bDDxn\/X0kACSehOaKh5Mn0X6+qK5DX0r4=",
+      "url": "visualisations\/2015-01\/TemplateData\/progress-bar-empty-light.png"
+    },
+    {
+      "hash": "sha256-MwamJE3LOSb8o4oo487Vid+P8b7tlV6xfAu\/AckYvGI=",
+      "url": "visualisations\/2015-01\/TemplateData\/progress-bar-full-dark.png"
+    },
+    {
+      "hash": "sha256-Ejlep4VIDFzfEvrebmy\/SWZtW7HO9yQMET28umvcXIc=",
+      "url": "visualisations\/2015-01\/TemplateData\/progress-bar-full-light.png"
+    },
+    {
+      "hash": "sha256-9dYuEM1qUriIwtSQtPIUCe5VhovYdjzS\/LNdRCe+ho8=",
+      "url": "visualisations\/2015-01\/TemplateData\/style.css"
+    },
+    {
+      "hash": "sha256-wbctJsCWSH2ryUi1S8ID+NrH7U4\/VzORh5joWKy0sVk=",
+      "url": "visualisations\/2015-01\/TemplateData\/unity-logo-dark.png"
+    },
+    {
+      "hash": "sha256-ACmQrqDZRoM8rcFRnVt+UKRXC9U3oFF915pZ0+7ITac=",
+      "url": "visualisations\/2015-01\/TemplateData\/unity-logo-light.png"
+    },
+    {
+      "hash": "sha256-sww68qRTjG7fXyQRlTdgZB36JX8qTMW4jWcaokOx8S8=",
+      "url": "visualisations\/2015-01\/TemplateData\/webgl-logo.png"
+    },
+    {
       "hash": "sha256-lOCs45frNf+D7me6lKLgUhRCdt4VwHCp9H6Ct+YWzfs=",
       "url": "_framework\/blazor.webassembly.js"
     },
@@ -49,11 +109,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-9cBEVjShkhOGwMuJ+JgPQAw\/fMEMaH0nsoxKNVLhAuQ=",
+      "hash": "sha256-V+Ctb\/LMaWDBbze4mwLZI2KX8gVQxL1A8fGEzcyWJb0=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-7wWWpOH9eR2NpwrYpxwdN9yg0jzyA7zOYMmuABv7FgU=",
+      "hash": "sha256-DuswjvwtJvQTnmiZFoqUS5j1QpcGEU3tvjCXcWsiXLk=",
       "url": "_framework\/AdventOfBlazor.BlazorClient.dll"
     },
     {
@@ -245,5 +305,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "hWUjP9FX"
+  "version": "asmnoxsS"
 };
