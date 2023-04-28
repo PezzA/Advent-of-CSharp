@@ -1,5 +1,5 @@
 using AdventOfBlazor.Puzzles.Year16.Day11;
-namespace AdventOfBlazor.Puzzles.Tests.Twenty16.Day11;
+namespace AdventOfBlazor.Puzzles.Tests.Year16.Day11;
 
 public class Tests
 {
