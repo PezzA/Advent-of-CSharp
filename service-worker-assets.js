@@ -41,10 +41,6 @@
       "url": "visualisations\/2015-01\/Build\/advent-of-unity.wasm.gz"
     },
     {
-      "hash": "sha256-qHNgzCHCJo8rJAk0T8HOMhjHx0e+gWjZMtOkH7Ah7xY=",
-      "url": "visualisations\/2015-01\/index.html"
-    },
-    {
       "hash": "sha256-nBO+uQ7o9wWA1Soh1SM5cNHInnHko0pGLCJhCUHDx38=",
       "url": "visualisations\/2015-01\/TemplateData\/favicon.ico"
     },
@@ -85,6 +81,10 @@
       "url": "visualisations\/2015-01\/TemplateData\/webgl-logo.png"
     },
     {
+      "hash": "sha256-qHNgzCHCJo8rJAk0T8HOMhjHx0e+gWjZMtOkH7Ah7xY=",
+      "url": "visualisations\/2015-01\/visualisation.html"
+    },
+    {
       "hash": "sha256-lOCs45frNf+D7me6lKLgUhRCdt4VwHCp9H6Ct+YWzfs=",
       "url": "_framework\/blazor.webassembly.js"
     },
@@ -109,11 +109,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-tLLfLnkAjpkG4o+jz5yCPSDcooSv3bWuEFQ8XAduDQU=",
+      "hash": "sha256-fy03DE7JCXHIPjzHSYREcro\/JTsaH198\/Dpq4x2gw98=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-jzpFMwSp8y6Fmpsj8oythUCrPjrbxgRzYQX4ZT9UwqQ=",
+      "hash": "sha256-Jp1rkqG32kZO6IEsVeXbWCvgzfgqvFonMJYY\/GpTetY=",
       "url": "_framework\/AdventOfBlazor.BlazorClient.dll"
     },
     {
@@ -305,5 +305,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "kDbuvb7O"
+  "version": "I1+UCD6c"
 };
