@@ -25,7 +25,7 @@ else
     </MudGrid>
 }
 
-<iframe src="/visualisations/2015-01/index.html"></iframe>
+<iframe src="@VisUrl" style="width:95%;height:1000px;"></iframe>
 @code {
     [Parameter]
     public int Year { get; set; }
@@ -34,6 +34,8 @@ else
     public int Day { get; set; }
 
     private IBasicPuzzle? puzzle;
+
+    private string VisUrl = $"{Settings.WEB_PATH_PREFIX}visualisations/2015-01/index.html";
 
     private PuzzleDataAttribute? puzzleMetaData;
 
