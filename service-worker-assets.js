@@ -1,84 +1,84 @@
 ﻿self.assetsManifest = {
   "assets": [
     {
+      "hash": "sha256-aM9yIGU\/3x\/cdk\/mMjUUfh7Xq18a6hd6UkDLsdFIGIk=",
+      "url": "_content\/unity\/advent-of-unity.data"
+    },
+    {
+      "hash": "sha256-SuWN5g+Z7TtmNUzIYV3tZmyLnFyoy46eRsyims0ftjg=",
+      "url": "_content\/unity\/advent-of-unity.framework.js"
+    },
+    {
+      "hash": "sha256-4MhSbRBc9hG+6YDZycttsJbX+y64\/MOarzSk9tqS5oc=",
+      "url": "_content\/unity\/advent-of-unity.loader.js"
+    },
+    {
+      "hash": "sha256-0PjeFgtPhBSbqIqoiB04PCrwWWZicut9xyDWsr4NHGs=",
+      "url": "_content\/unity\/advent-of-unity.wasm"
+    },
+    {
       "hash": "sha256-47DEQpj8HBSa+\/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
       "url": "css\/app.css"
     },
     {
+      "hash": "sha256-2nv78Ux224FOzjQkOosBjpvNRmsMf2FYablI+W1WiOc=",
+      "url": "css\/unity.css"
+    },
+    {
       "hash": "sha256-4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg=",
-      "url": "favicon.png"
-    },
-    {
-      "hash": "sha256-DbpQaq68ZSb5IoPosBErM1QWBfsbTxpJqhU0REi6wP4=",
-      "url": "icon-192.png"
-    },
-    {
-      "hash": "sha256-oEo6d+KqX5fjxTiZk\/w9NB3Mi0+ycS5yLwCKwr4IkbA=",
-      "url": "icon-512.png"
-    },
-    {
-      "hash": "sha256-ZMHUZ8K9/dygBlTgZCxZ6+jz3BO6DExlZhh7SBCGCqg=",
-      "url": "index.html"
-    },
-    {
-      "hash": "sha256-4yhp1KQM0rXcSsWAQxdEhONGdH+HHthF8XYrfOZUThQ=",
-      "url": "manifest.json"
-    },
-    {
-      "hash": "sha256-8ewBFAM1zZonx1n4TEi0WPstGZbeS\/Y4jG43VcPg00s=",
-      "url": "visualisations\/2015-01\/Build\/advent-of-unity.data.gz"
-    },
-    {
-      "hash": "sha256-USUkZ7WIH\/PlPqYfCx\/0mArPoYudkws+b5ztQpPNk88=",
-      "url": "visualisations\/2015-01\/Build\/advent-of-unity.framework.js.gz"
-    },
-    {
-      "hash": "sha256-qd8CWX9LbRVLFhQMmVo4NtTIWEIzvRHtyX12jDPUAaU=",
-      "url": "visualisations\/2015-01\/Build\/advent-of-unity.loader.js"
-    },
-    {
-      "hash": "sha256-B2VIG+sgDHC4J7X32LoTBMhuHWsHpp4k0cW8w+sOHFY=",
-      "url": "visualisations\/2015-01\/Build\/advent-of-unity.wasm.gz"
-    },
-    {
-      "hash": "sha256-nBO+uQ7o9wWA1Soh1SM5cNHInnHko0pGLCJhCUHDx38=",
-      "url": "visualisations\/2015-01\/TemplateData\/favicon.ico"
+      "url": "images\/favicon.png"
     },
     {
       "hash": "sha256-ISIVgWc6VLgTnUCNSj+NK4eehoJ9S2\/FO5lf96me4+k=",
-      "url": "visualisations\/2015-01\/TemplateData\/fullscreen-button.png"
+      "url": "images\/fullscreen-button.png"
+    },
+    {
+      "hash": "sha256-DbpQaq68ZSb5IoPosBErM1QWBfsbTxpJqhU0REi6wP4=",
+      "url": "images\/icon-192.png"
+    },
+    {
+      "hash": "sha256-oEo6d+KqX5fjxTiZk\/w9NB3Mi0+ycS5yLwCKwr4IkbA=",
+      "url": "images\/icon-512.png"
     },
     {
       "hash": "sha256-u+5xMa\/oozZZBiQNiRhNyGI0wRlGfzkLxLxoAjKP200=",
-      "url": "visualisations\/2015-01\/TemplateData\/progress-bar-empty-dark.png"
+      "url": "images\/progress-bar-empty-dark.png"
     },
     {
       "hash": "sha256-FDaWwGCtQ9bDDxn\/X0kACSehOaKh5Mn0X6+qK5DX0r4=",
-      "url": "visualisations\/2015-01\/TemplateData\/progress-bar-empty-light.png"
+      "url": "images\/progress-bar-empty-light.png"
     },
     {
       "hash": "sha256-MwamJE3LOSb8o4oo487Vid+P8b7tlV6xfAu\/AckYvGI=",
-      "url": "visualisations\/2015-01\/TemplateData\/progress-bar-full-dark.png"
+      "url": "images\/progress-bar-full-dark.png"
     },
     {
       "hash": "sha256-Ejlep4VIDFzfEvrebmy\/SWZtW7HO9yQMET28umvcXIc=",
-      "url": "visualisations\/2015-01\/TemplateData\/progress-bar-full-light.png"
-    },
-    {
-      "hash": "sha256-9dYuEM1qUriIwtSQtPIUCe5VhovYdjzS\/LNdRCe+ho8=",
-      "url": "visualisations\/2015-01\/TemplateData\/style.css"
+      "url": "images\/progress-bar-full-light.png"
     },
     {
       "hash": "sha256-wbctJsCWSH2ryUi1S8ID+NrH7U4\/VzORh5joWKy0sVk=",
-      "url": "visualisations\/2015-01\/TemplateData\/unity-logo-dark.png"
+      "url": "images\/unity-logo-dark.png"
     },
     {
       "hash": "sha256-ACmQrqDZRoM8rcFRnVt+UKRXC9U3oFF915pZ0+7ITac=",
-      "url": "visualisations\/2015-01\/TemplateData\/unity-logo-light.png"
+      "url": "images\/unity-logo-light.png"
     },
     {
       "hash": "sha256-sww68qRTjG7fXyQRlTdgZB36JX8qTMW4jWcaokOx8S8=",
-      "url": "visualisations\/2015-01\/TemplateData\/webgl-logo.png"
+      "url": "images\/webgl-logo.png"
+    },
+    {
+      "hash": "sha256-OY3qvlzMTzRkA2QuwAlQWYkw+svHXUxcZA0c+4Gm1Sw=",
+      "url": "index.html"
+    },
+    {
+      "hash": "sha256-gBR5FN7X8YXSLeZy0Dmb+sEM9dd1yxj1IF3GEp148Ec=",
+      "url": "js\/unity-loader.js"
+    },
+    {
+      "hash": "sha256-kkM3QVVhO5r9GwCpQKcS7Xwsx87Gm6BIpgFxM27ThEM=",
+      "url": "manifest.json"
     },
     {
       "hash": "sha256-qHNgzCHCJo8rJAk0T8HOMhjHx0e+gWjZMtOkH7Ah7xY=",
@@ -109,11 +109,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-fy03DE7JCXHIPjzHSYREcro\/JTsaH198\/Dpq4x2gw98=",
+      "hash": "sha256-qEyBgUtFFXLvHBDYxgDX1pBZPCHyy\/zCbhuxyRq86vs=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-Jp1rkqG32kZO6IEsVeXbWCvgzfgqvFonMJYY\/GpTetY=",
+      "hash": "sha256-FpuhLOvQyzX17\/HK6cOYgonYImftGDTtX8JMQTXCGTY=",
       "url": "_framework\/AdventOfBlazor.BlazorClient.dll"
     },
     {
@@ -261,7 +261,7 @@
       "url": "_framework\/System.Private.Uri.dll"
     },
     {
-      "hash": "sha256-TIkPRqISXHujunEdmf8HnidKxJ2EbpNZDtux+nGdxdo=",
+      "hash": "sha256-2BWD8fP9C6DjUqS1Zo4vBKrrdgbQjHe9hzHNCopDd5I=",
       "url": "_framework\/System.Runtime.dll"
     },
     {
@@ -305,5 +305,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "I1+UCD6c"
+  "version": "r07Y8gM5"
 };
