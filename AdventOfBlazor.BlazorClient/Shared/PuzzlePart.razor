@@ -26,6 +26,11 @@
 
     private string StatusText { get; set; } = NOT_YET_RUN;
 
+    public void RefreshMe()
+    {
+        StatusText = NOT_YET_RUN;
+    }
+
     void RunPuzzle()
     {
         var sw = new Stopwatch();

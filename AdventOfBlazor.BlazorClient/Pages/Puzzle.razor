@@ -17,21 +17,24 @@ else
 
     <MudGrid Class="mt-4">
         <MudItem xs="6">
-           <PuzzlePart Title="Part One" Action="()=> puzzle.PartOne(puzzle.PuzzleInput())"/>
+           <PuzzlePart @ref="partOne" Title="Part One" Action="()=> puzzle.PartOne(puzzle.PuzzleInput())"/>
         </MudItem>
         <MudItem xs="6">
-            <PuzzlePart Title="Part Two" Action="()=> puzzle.PartTwo(puzzle.PuzzleInput())" />
+            <PuzzlePart @ref="partTwo" Title="Part Two" Action="()=> puzzle.PartTwo(puzzle.PuzzleInput())" />
         </MudItem>
     </MudGrid>
-}
 
-<iframe src="@VisUrl" style="width:95%;height:1000px;"></iframe>
+    <UnityApp/>
+}
 @code {
     [Parameter]
     public int Year { get; set; }
 
     [Parameter]
     public int Day { get; set; }
+
+    private PuzzlePart? partOne;
+    private PuzzlePart? partTwo;
 
     private IBasicPuzzle? puzzle;
 
@@ -47,6 +50,8 @@ else
     protected override void OnParametersSet()
     {
         ResetState();
+        partOne?.RefreshMe();
+        StateHasChanged();
     }
 
     void ResetState()
