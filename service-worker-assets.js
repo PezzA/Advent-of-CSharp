@@ -17,72 +17,64 @@
       "url": "_content\/unity\/advent-of-unity.wasm"
     },
     {
-      "hash": "sha256-47DEQpj8HBSa+\/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "css\/app.css"
-    },
-    {
-      "hash": "sha256-2nv78Ux224FOzjQkOosBjpvNRmsMf2FYablI+W1WiOc=",
-      "url": "css\/unity.css"
-    },
-    {
-      "hash": "sha256-4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg=",
-      "url": "images\/favicon.png"
-    },
-    {
       "hash": "sha256-ISIVgWc6VLgTnUCNSj+NK4eehoJ9S2\/FO5lf96me4+k=",
-      "url": "images\/fullscreen-button.png"
-    },
-    {
-      "hash": "sha256-DbpQaq68ZSb5IoPosBErM1QWBfsbTxpJqhU0REi6wP4=",
-      "url": "images\/icon-192.png"
-    },
-    {
-      "hash": "sha256-oEo6d+KqX5fjxTiZk\/w9NB3Mi0+ycS5yLwCKwr4IkbA=",
-      "url": "images\/icon-512.png"
+      "url": "_content\/unity\/fullscreen-button.png"
     },
     {
       "hash": "sha256-u+5xMa\/oozZZBiQNiRhNyGI0wRlGfzkLxLxoAjKP200=",
-      "url": "images\/progress-bar-empty-dark.png"
+      "url": "_content\/unity\/progress-bar-empty-dark.png"
     },
     {
       "hash": "sha256-FDaWwGCtQ9bDDxn\/X0kACSehOaKh5Mn0X6+qK5DX0r4=",
-      "url": "images\/progress-bar-empty-light.png"
+      "url": "_content\/unity\/progress-bar-empty-light.png"
     },
     {
       "hash": "sha256-MwamJE3LOSb8o4oo487Vid+P8b7tlV6xfAu\/AckYvGI=",
-      "url": "images\/progress-bar-full-dark.png"
+      "url": "_content\/unity\/progress-bar-full-dark.png"
     },
     {
       "hash": "sha256-Ejlep4VIDFzfEvrebmy\/SWZtW7HO9yQMET28umvcXIc=",
-      "url": "images\/progress-bar-full-light.png"
-    },
-    {
-      "hash": "sha256-wbctJsCWSH2ryUi1S8ID+NrH7U4\/VzORh5joWKy0sVk=",
-      "url": "images\/unity-logo-dark.png"
-    },
-    {
-      "hash": "sha256-ACmQrqDZRoM8rcFRnVt+UKRXC9U3oFF915pZ0+7ITac=",
-      "url": "images\/unity-logo-light.png"
-    },
-    {
-      "hash": "sha256-sww68qRTjG7fXyQRlTdgZB36JX8qTMW4jWcaokOx8S8=",
-      "url": "images\/webgl-logo.png"
-    },
-    {
-      "hash": "sha256-OY3qvlzMTzRkA2QuwAlQWYkw+svHXUxcZA0c+4Gm1Sw=",
-      "url": "index.html"
+      "url": "_content\/unity\/progress-bar-full-light.png"
     },
     {
       "hash": "sha256-gBR5FN7X8YXSLeZy0Dmb+sEM9dd1yxj1IF3GEp148Ec=",
-      "url": "js\/unity-loader.js"
+      "url": "_content\/unity\/unity-loader.js"
     },
     {
-      "hash": "sha256-kkM3QVVhO5r9GwCpQKcS7Xwsx87Gm6BIpgFxM27ThEM=",
+      "hash": "sha256-wbctJsCWSH2ryUi1S8ID+NrH7U4\/VzORh5joWKy0sVk=",
+      "url": "_content\/unity\/unity-logo-dark.png"
+    },
+    {
+      "hash": "sha256-ACmQrqDZRoM8rcFRnVt+UKRXC9U3oFF915pZ0+7ITac=",
+      "url": "_content\/unity\/unity-logo-light.png"
+    },
+    {
+      "hash": "sha256-wtBOOvZCFXRW6UF5fixC9xmhuSxZTL43GvdAZiaN1Qg=",
+      "url": "_content\/unity\/unity.css"
+    },
+    {
+      "hash": "sha256-sww68qRTjG7fXyQRlTdgZB36JX8qTMW4jWcaokOx8S8=",
+      "url": "_content\/unity\/webgl-logo.png"
+    },
+    {
+      "hash": "sha256-4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg=",
+      "url": "favicon.png"
+    },
+    {
+      "hash": "sha256-DbpQaq68ZSb5IoPosBErM1QWBfsbTxpJqhU0REi6wP4=",
+      "url": "icon-192.png"
+    },
+    {
+      "hash": "sha256-oEo6d+KqX5fjxTiZk\/w9NB3Mi0+ycS5yLwCKwr4IkbA=",
+      "url": "icon-512.png"
+    },
+    {
+      "hash": "sha256-I0ndWF9lBSlDdEqYq79wqiD77klVdjNHuwy/sIKvlzQ=",
+      "url": "index.html"
+    },
+    {
+      "hash": "sha256-4yhp1KQM0rXcSsWAQxdEhONGdH+HHthF8XYrfOZUThQ=",
       "url": "manifest.json"
-    },
-    {
-      "hash": "sha256-qHNgzCHCJo8rJAk0T8HOMhjHx0e+gWjZMtOkH7Ah7xY=",
-      "url": "visualisations\/2015-01\/visualisation.html"
     },
     {
       "hash": "sha256-lOCs45frNf+D7me6lKLgUhRCdt4VwHCp9H6Ct+YWzfs=",
@@ -109,24 +101,16 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-qEyBgUtFFXLvHBDYxgDX1pBZPCHyy\/zCbhuxyRq86vs=",
+      "hash": "sha256-Z6PM7xk7z836p6i0eClbIMyUO5Ikvn+GlNmt\/812wp0=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-FpuhLOvQyzX17\/HK6cOYgonYImftGDTtX8JMQTXCGTY=",
+      "hash": "sha256-7EwCYx5qV4TLOhT19WLJ5wIPl65bK5syRcK0W18fhZM=",
       "url": "_framework\/AdventOfBlazor.BlazorClient.dll"
     },
     {
       "hash": "sha256-UdGT\/lLG22hpzhp2p9OTuDGK9zJHVL3oKn6SY6R9t5M=",
       "url": "_framework\/AdventOfBlazor.Puzzles.dll"
-    },
-    {
-      "hash": "sha256-W20pWMXQg2yTv0w4VJhrjCJKNRYe3PiUU9S76XipNe8=",
-      "url": "_framework\/Blazor.Extensions.Canvas.dll"
-    },
-    {
-      "hash": "sha256-TrW1uaSNUS+J8xVJErxIf1NQuNC7kn50KzMYYF\/4JtM=",
-      "url": "_framework\/Blazor.Extensions.Canvas.JS.dll"
     },
     {
       "hash": "sha256-ZgjlpJRck35A1dOs731Uoc0m7c9mRyi6ohG9r8VHvMY=",
@@ -193,10 +177,6 @@
       "url": "_framework\/MudBlazor.dll"
     },
     {
-      "hash": "sha256-gEaUPGIKGP\/KMIG0GAW4MqtaaakaJ7FKrGzrbyL9HkA=",
-      "url": "_framework\/netstandard.dll"
-    },
-    {
       "hash": "sha256-vBYeIGB0cD5uQsd+o3IJEk1b2onf9RWt5gN7vKqTchk=",
       "url": "_framework\/System.Collections.Concurrent.dll"
     },
@@ -253,7 +233,7 @@
       "url": "_framework\/System.ObjectModel.dll"
     },
     {
-      "hash": "sha256-Kkb5giCcOiEGHhy1l+Fm0KiIBBmzIZn58TOzYgRjHp0=",
+      "hash": "sha256-0zO0zQX2zk+98DiQAA8R4E9VQTglGKaPvarGw2ymhrk=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
@@ -285,16 +265,12 @@
       "url": "_framework\/dotnet.7.0.5.8xkwurfq18.js"
     },
     {
-      "hash": "sha256-ZVKaRB0GpzFs+aRxntXG898chMhmT5z8\/LmmyMyVfMI=",
+      "hash": "sha256-Jj5LIAu5SW1Bny5bQUdtMnS+W2l8HXv+zSaPZpkyicE=",
       "url": "_framework\/dotnet.wasm"
     },
     {
       "hash": "sha256-XFtoczM5U33dUO5R85v61+Mj27CaOIFNB4hvF6e83z8=",
       "url": "AdventOfBlazor.BlazorClient.styles.css"
-    },
-    {
-      "hash": "sha256-9Z\/+MBCfTH\/eE5e5aYMGZ+WzaJLk8tl2MwD\/AGVvifc=",
-      "url": "_content\/Blazor.Extensions.Canvas\/blazor.extensions.canvas.js"
     },
     {
       "hash": "sha256-rqchcPyv1qTX6jCJrNMR5kp+uhuYiKqQZgYlNqBTzro=",
@@ -305,5 +281,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "r07Y8gM5"
+  "version": "L8Vw\/FDW"
 };
