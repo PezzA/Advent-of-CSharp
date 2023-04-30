@@ -1,0 +1,21 @@
+﻿@if (StarCount == 0)
+{                               {
+<MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part One" Color="Color.Default" />
+<MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part Two" Color="Color.Default" />
+}                     }
+
+@if (StarCount == 1)
+{
+    <MudIcon Icon="@Icons.Material.Rounded.Star" Title="Part One" Color="Color.Warning" />
+    <MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part Two" Color="Color.Default" />
+}
+
+@if (StarCount == 2)
+{
+    <MudIcon Icon="@Icons.Material.Rounded.Star" Title="Part One" Color="Color.Warning" />
+    <MudIcon Icon="@Icons.Material.Rounded.Star" Title="Part Two" Color="Color.Warning" />
+}
+@code {
+    [Parameter]
+    public int StarCount { get; set; }
+}

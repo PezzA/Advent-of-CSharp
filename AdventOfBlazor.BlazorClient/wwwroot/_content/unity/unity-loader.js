@@ -1,4 +1,6 @@
-﻿function loadUnity() {
+﻿var runningUnityInstance = null;
+
+function loadUnity() {
     var container = document.querySelector("#unity-container");
     var canvas = document.querySelector("#unity-canvas");
     var loadingBar = document.querySelector("#unity-loading-bar");
@@ -68,8 +70,8 @@
     } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
-        //canvas.style.width = "960px";
-        //canvas.style.height = "600px";
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
     }
 
     loadingBar.style.display = "block";
@@ -80,6 +82,7 @@
         createUnityInstance(canvas, config, (progress) => {
             progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
+            runningUnityInstance = unityInstance
             loadingBar.style.display = "none";
             fullscreenButton.onclick = () => {
                 unityInstance.SetFullscreen(1);
@@ -89,4 +92,12 @@
         });
     };
     document.body.appendChild(script);
+}
+
+function unloadUnity() {
+    console.log("QUITTING!!!!");
+    runningUnityInstance.Quit().then(function () {
+        console.log('i want to handle some things here');
+    });
+    runningUnityInstance = null;
 }
