@@ -13,15 +13,90 @@
     <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
     <link href='//fonts.googleapis.com/css?family=Source+Code+Pro:300&subset=latin,latin-ext' rel="stylesheet" />
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+    <style>
+        /* Center content */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background-color: #0f0f23;
+            font-family: Source Code Pro
+        }
+
+        /* Loading animation */
+        .loader {
+            border-top-color: #009900;
+            -webkit-animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #0d1117;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 50%;
+        }
+
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Loading text */
+        .loading-text {
+            color: #009900;
+            font-size: 24px;
+            margin-left: 10px;
+            text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
+        }
+
+        .loading-text-caption {
+            color: #EEEEEE;
+            font-size: 12px;
+            font-style:italic;
+            margin-left: 10px;
+        }
+
+        .loading-dialog {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: grid;
+            place-items: center;
+        }
+    </style>
 </head>
 
 <body>
     <div id="app">
-        <svg class="loading-progress">
-            <circle r="40%" cx="50%" cy="50%" />
-            <circle r="40%" cx="50%" cy="50%" />
-        </svg>
-        <div class="loading-progress-text">The Application is loading, please be patient</div>
+        <div class="loading-dialog">
+            <div class="loader">
+            </div>
+            <div class="loading-text">Loading...</div>
+            <div class="loading-text-caption">(This loading screen is mostly the work of <a href="https://openai.com/blog/chatgpt" target="_blank">ChatGPT</a>)</div>
+            <div class="snow"></div>
+        </div>
     </div>
 
     <div id="blazor-error-ui">
