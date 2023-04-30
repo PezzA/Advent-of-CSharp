@@ -1,0 +1,41 @@
+﻿@inject NavigationManager NavigationManager
+
+<MudTable Hover="true" Breakpoint="Breakpoint.None"
+          Items="@PuzzleData"
+          Dense="true"
+          Bordered="false"
+          Elevation="0"
+          OnRowClick="@Navigate"
+          T="PuzzleDataAttribute"
+Class="p0">
+    <ColGroup>
+        <col style="width:100px;padding:0" />
+        <col style="width:30px" />
+        <col />
+        <col style="width:32px" />
+    </ColGroup>
+    <RowTemplate>
+        <MudTd><Stars StarCount="@context.Stars" /> </MudTd>
+        <MudTd><b>@context.Day</b></MudTd>
+        <MudTd>@context.Title</MudTd>
+        <MudTd DataLabel="Has Visualisation">
+            @if (context.HasVisualisation)
+            {
+                <img src="_content/unity/unity-logo-dark.png" style="height:32px" />
+            }
+        </MudTd>
+    </RowTemplate>
+</MudTable>
+
+@code {
+    [Parameter]
+    public int Year { get; set; } = 0;
+
+    [Parameter]
+    public IEnumerable<PuzzleDataAttribute> PuzzleData { get; set; } = new List<Puzzles.PuzzleDataAttribute>();
+
+    private void Navigate(TableRowClickEventArgs<PuzzleDataAttribute> data)
+    {
+        NavigationManager.NavigateTo( $"{Settings.WEB_PATH_PREFIX}puzzle/{data.Item.Year}/{data.Item.Day}", false);
+    }
+}

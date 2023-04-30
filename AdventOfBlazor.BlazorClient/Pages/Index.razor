@@ -1,27 +1,11 @@
 ﻿@page "/"
 
-<h2>Welcome to Advent of Blazor!</h2>
-<p>Solutions to the excellent advent of code delivered using Blazor Client.  Use the tree view on the right to select the puzzle to run</p>
-
-<MudTable Items="@Puzzles" Hover="true" Breakpoint="Breakpoint.Sm">
-    <HeaderContent>
-        <MudTh>Year</MudTh>
-        <MudTh>Day</MudTh>
-        <MudTh>Title</MudTh>
-        <MudTh>Status</MudTh>
-        <MudTh>TakesAges</MudTh>
-    </HeaderContent>
-    <RowTemplate>
-        <MudTd DataLabel="Year">@context.Year</MudTd>
-        <MudTd DataLabel="Day">@context.Day</MudTd>
-        <MudTd DataLabel="Title">@context.Title</MudTd>
-        <MudTd DataLabel="Stars">@context.Stars</MudTd>
-        <MudTd DataLabel="This Repo">@context.TakesAges</MudTd>
-    </RowTemplate>
-</MudTable>
+<MudText Typo="Typo.h4" Color="Color.Secondary">Welcome to Advent of Blazor!</MudText>
+<MudText Typo="Typo.body1" Color="Color.Primary">Solutions to the excellent advent of code delivered using Blazor Client.  Use the tree view on the right to select the puzzle to run</MudText>
 
 @code {
-   private IEnumerable<Puzzles.PuzzleDataAttribute>? Puzzles = null;
+    private IEnumerable<Puzzles.PuzzleDataAttribute> Puzzles = new List<Puzzles.PuzzleDataAttribute>();
+    private IEnumerable<int> Years { get; set; } = new List<int>();
 
     protected override void OnInitialized()
     {
@@ -29,5 +13,7 @@
           .Where(p => p.Year != 0 && p.Day != 0)
           .OrderBy(p => p.Year)
           .ThenBy(p => p.Day);
+
+        Years = Puzzles.Select(p => p.Year).Distinct().Order();
     }
 }

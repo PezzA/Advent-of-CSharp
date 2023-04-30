@@ -1,5 +1,12 @@
 
+.unity-on {
 
+}
+
+
+.unity-off {
+    display:none
+}
 
 #unity-container.unity-desktop {
     width: 100%;

@@ -11,11 +11,14 @@
 }
 else
 {
-    <h2>@puzzleMetaData.Title</h2>
-    <hr />
-    <p>@puzzleMetaData.Year, Day @puzzleMetaData.Day</p>
+    <h2>
+        <MudText Color="Color.Primary">--- (@puzzleMetaData.Year) Day @puzzleMetaData.Day: @puzzleMetaData.Title ---</MudText>
+    </h2>
+    
 
-    <MudGrid Class="mt-4">
+    <h3><MudText  Color="Color.Secondary" Class="mb-2">-- Embedded Implementation --</MudText></h3>
+    <p> The embedded implementation is in the advent-of-blazor repo and delivered as part of the Web Assembly binary.</p>
+    <MudGrid>
         <MudItem xs="6">
            <PuzzlePart @ref="partOne" Title="Part One" Action="()=> puzzle.PartOne(puzzle.PuzzleInput())"/>
         </MudItem>
@@ -24,7 +27,12 @@ else
         </MudItem>
     </MudGrid>
 
-    <UnityApp/>
+    @if (@puzzleMetaData.HasVisualisation)
+    {
+        <h3><MudText Color="Color.Secondary" Class="mb-2">-- Unity3D Visualisation --</MudText></h3>
+    }
+    // this just hides & displays to minimise unity player issues
+    <UnityApp Visible="@puzzleMetaData.HasVisualisation"/>    
 }
 
 @code {
@@ -39,8 +47,6 @@ else
 
     private IBasicPuzzle? puzzle;
 
-    private string VisUrl = $"{Settings.WEB_PATH_PREFIX}visualisations/2015-01/visualisation.html";
-
     private PuzzleDataAttribute? puzzleMetaData;
 
     protected override void OnInitialized()
@@ -52,7 +58,6 @@ else
     {
         ResetState();
         partOne?.RefreshMe();
-        StateHasChanged();
     }
 
     void ResetState()
