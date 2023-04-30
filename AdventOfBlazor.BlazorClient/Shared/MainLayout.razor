@@ -6,8 +6,6 @@
 <MudSnackbarProvider />
 
 <MudLayout>
-    <MudContainer MaxWidth="MaxWidth.ExtraLarge">
-
         <MudAppBar Elevation="1" Fixed="true">
             <MudIconButton Icon="@Icons.Material.Filled.Home"  Fixed="false" Color="Color.Inherit"  OnClick="@((e) => Home())" />
             <MudText Typo="Typo.h5" Class="ml-3" Color="Color.Secondary">Advent of Blazor</MudText>
@@ -41,7 +39,6 @@
                 @Body
             </MudContainer>
         </MudMainContent>
-    </MudContainer>
 </MudLayout>
 
 @code {
