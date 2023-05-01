@@ -1,7 +1,71 @@
 ﻿@page "/"
 
-<MudText Typo="Typo.h4" Color="Color.Secondary">Welcome to Advent of Blazor!</MudText>
-<MudText Typo="Typo.body1" Color="Color.Primary">Solutions to the excellent advent of code delivered using Blazor Client.  Use the tree view on the right to select the puzzle to run</MudText>
+<h2 class="mud-typography mud-secondary-text">Welcome to PezzA's Advent of Code!</h2>
+
+<MudText Typo="Typo.body1" Color="MudBlazor.Color.Primary">Solutions to the excellent advent of code delivered using Blazor Client.  Use the tree view on the right to select the puzzle to run</MudText>
+<p class="mt-2">
+    One of the idioms of advent of code is to always be learning.  Use a new language, a new editor or a new platform.  Do it in a way that makes
+    you work with the code differently.
+</p>
+<p class="mt-2">
+    With this in mind, over the years I have used a variety of languages to solve the puzzles.  Sometimes the target language would be aligning with
+    what is happening in work (Elm/Typescript), but othertimes just what I've heard about and wanted to play with (Go/Rust).
+</p>
+<p class="mt-2">
+    Here is a summary of what I used each year as the initial approach:
+</p>
+
+<MudSimpleTable Style="overflow-x: auto;vertical-align: top ;">
+    <thead>
+        <tr>
+            <td>Year</td>
+            <td>Primary Language</td>
+            <td>Other Languages</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>2015</td>
+            <td><i class="devicon-csharp-plain"></i> Repo deleted! :cry:</td>
+            <td><a href="https://github.com/PezzA/advent-of-code" target="_blank"><i class="devicon-go-original-wordmark"></i></a></td>
+        </tr>
+        <tr>
+            <td>2016</td>
+            <td><a href="https://github.com/PezzA/Advent-of-Code-2016" target="_blank"><i class="devicon-elm-plain-wordmark"></i></a></td>
+            <td><a href="https://github.com/PezzA/advent-of-code" target="_blank"><i class="devicon-go-original-wordmark"></i></a></td>
+        </tr>
+        <tr>
+            <td>2017</td>
+            <td><a href="https://github.com/PezzA/advent-of-code" target="_blank"><i class="devicon-go-original-wordmark"></i></a></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2018</td>
+            <td><a href="https://github.com/PezzA/advent-of-code" target="_blank"><i class="devicon-go-original-wordmark"></i></a></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2019</td>
+            <td><a href="https://github.com/PezzA/advent-of-go" target="_blank"><i class="devicon-rust-plain"></i></a></td>
+            <td><a href="https://github.com/PezzA/advent-of-code" target="_blank"><i class="devicon-go-original-wordmark"></i></a></td>
+        </tr>
+        <tr>
+            <td>2020</td>
+            <td><a href="https://github.com/PezzA/advent-of-code" target="_blank"><i class="devicon-go-original-wordmark"></i></a></td>
+            <td/>
+        </tr>
+        <tr>
+            <td>2021</td>
+            <td><a href="https://github.com/PezzA/advent-of-code-2021" target="_blank"><i class="devicon-typescript-plain"></i></a></td>
+            <td><a href="https://github.com/PezzA/advent-of-code" target="_blank"><i class="devicon-go-original-wordmark"></i></a></td>
+        </tr>
+        <tr>
+            <td>2022</td>
+            <td> <a href="https://github.com/PezzA/advent-of-code" target="_blank"><i class="devicon-go-original-wordmark"></i></a> ... but using <i class="devicon-vim-plain"></i> only!</td>
+            <td/>
+        </tr>
+    </tbody>
+</MudSimpleTable>
 
 @code {
     private IEnumerable<Puzzles.PuzzleDataAttribute> Puzzles = new List<Puzzles.PuzzleDataAttribute>();

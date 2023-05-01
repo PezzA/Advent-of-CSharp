@@ -11,10 +11,22 @@
         <MudText>@StatusText</MudText>
     </MudCardContent>
     <MudCardActions>
-        <MudButton Color="Color.Primary" OnClick="RunPuzzle">Run</MudButton>
+        <MudButton Color="MudBlazor.Color.Primary" OnClick="RunPuzzle">Run</MudButton>
     </MudCardActions>
 </MudCard>
+<ApexChart TItem="Timing"
+           Title="Execution time (ms)"
+           Options="options"
+           @ref=chart>
 
+    <ApexPointSeries TItem="Timing"
+                     Items="timings"
+                     Name="Execution time (ms)"
+                     SeriesType="SeriesType.Line"
+                     XValue="@(e => $"Run {e.Index}")"
+                     YValue="@(e => Convert.ToDecimal(e.Time))" />
+
+</ApexChart>
 @code {
     [Parameter]
     public string Title { get; set; } = "Not Set";
@@ -26,13 +38,57 @@
 
     private string StatusText { get; set; } = NOT_YET_RUN;
 
-    public void RefreshMe()
+
+    public List<Timing> timings = new List<Timing>();
+
+    private ApexChart<Timing>? chart;
+    private ApexChartOptions<Timing> options => new ApexChartOptions<Timing>()
+        {
+            Theme = new Theme
+            {
+                Mode = Mode.Dark,
+                Palette = PaletteType.Palette1,
+            },
+            Chart = new Chart
+            {
+                Toolbar = new Toolbar
+                {
+                    Show = false
+                }
+            },
+            Xaxis = new XAxis
+            {
+                Labels = new XAxisLabels()
+                {
+                    Show = false    
+                }    
+            }
+
+        };
+
+    public class Timing
     {
-        StatusText = NOT_YET_RUN;
+        public double Time { get; set; }
+        public int Index { get; set; }
     }
 
-    void RunPuzzle()
+    private int runs;
+
+    public async void RefreshMe()
     {
+        StatusText = NOT_YET_RUN;
+        timings = new List<Timing>();
+        if (chart != null)
+        {
+            await chart.UpdateSeriesAsync(true);
+            await chart.RenderAsync();
+        }
+        StateHasChanged();
+    }
+
+    async void RunPuzzle()
+    {
+        runs++;
         var sw = new Stopwatch();
         var result = string.Empty;
 
@@ -46,9 +102,15 @@
         {
             result = err.Message;
         }
-
         sw.Stop();
 
-        StatusText = $"{result} ({sw.Elapsed.ToString()})";
+        timings.Add(new Timing() { Time = sw.Elapsed.TotalMilliseconds, Index = runs });
+
+        StatusText = $"{result}";
+
+        if (chart != null)
+        {
+            await chart.UpdateSeriesAsync(true);
+        }
     }
 }
