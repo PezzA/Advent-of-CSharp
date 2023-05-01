@@ -13,6 +13,7 @@
     <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
     <link href='//fonts.googleapis.com/css?family=Source+Code+Pro:300&subset=latin,latin-ext' rel="stylesheet" />
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <style>
         /* Center content */
         body {
@@ -70,8 +71,12 @@
         .loading-text-caption {
             color: #EEEEEE;
             font-size: 12px;
-            font-style:italic;
             margin-left: 10px;
+        }
+
+        .loading-text-caption i {
+            color: #EEEEEE;
+            font-size: 12px;
         }
 
         .loading-dialog {
@@ -85,6 +90,16 @@
             display: grid;
             place-items: center;
         }
+
+        a {
+            text-decoration: underline;
+            cursor: pointer
+        }
+
+        i {
+            color:#ffffff;
+            font-size:32px
+        }
     </style>
 </head>
 
@@ -94,7 +109,7 @@
             <div class="loader">
             </div>
             <div class="loading-text">Loading...</div>
-            <div class="loading-text-caption">(This loading screen is mostly the work of <a href="https://openai.com/blog/chatgpt" target="_blank">ChatGPT</a>)</div>
+            <div class="loading-text-caption">(This loading screen, which is <i>mostly</i> about centering content, is <i>mostly</i> the work of <a href="https://openai.com/blog/chatgpt" target="_blank">ChatGPT</a>)</div>
             <div class="snow"></div>
         </div>
     </div>
@@ -107,6 +122,8 @@
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
     <script src="_content/unity/unity-loader.js"></script>
+    <script src="_content/Blazor-ApexCharts/js/apex-charts.min.js"></script>
+    <script src="_content/Blazor-ApexCharts/js/blazor-apex-charts.js"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>
 </body>
 </html>

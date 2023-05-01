@@ -69,7 +69,7 @@
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-ICosLoE/HkTIfagch516ZR/AMluQDaS4BaFnU7SM0tk=",
+      "hash": "sha256-GPKBFdtKVkNBkbYu9ukGk/i7ST1IGEOZHrB4big6NZ0=",
       "url": "index.html"
     },
     {
@@ -101,11 +101,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-G2zai4iyyH1aqxXXETFGrGaMDmc73dnN8xuyXf6sM8s=",
+      "hash": "sha256-+fgUNlXGKYujTlM+h09aPPAdkdpr9YN7DKLuIMl8fzY=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-xcvDCS6chJ8oBA+e+fm+GzlhV9ah\/mqqq+C1jtu2PJI=",
+      "hash": "sha256-x1YJUjjYWkkIYfuIB\/nDLPObDxwxVQFItp9qWAxfRp8=",
       "url": "_framework\/AdventOfBlazor.BlazorClient.dll"
     },
     {
@@ -113,7 +113,11 @@
       "url": "_framework\/AdventOfBlazor.Puzzles.dll"
     },
     {
-      "hash": "sha256-auU1EvHaO+\/Rgv870D6mVgXjEZFIYi9T2qzCGWDQDRg=",
+      "hash": "sha256-rMN5tyQ9xrvHiSq9hXaDEBwNJEeEfryywxzC0BBdlDk=",
+      "url": "_framework\/Blazor-ApexCharts.dll"
+    },
+    {
+      "hash": "sha256-i4YtTmSMn6xfxXPgMHqN28GjvMQATHZgeoWlKGyPfJE=",
       "url": "_framework\/Microsoft.AspNetCore.Components.dll"
     },
     {
@@ -173,7 +177,7 @@
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
-      "hash": "sha256-DWgLshHFTNCtJ6Tg3gMLC9neGVfS+6XaHhjTjyHeUKE=",
+      "hash": "sha256-Osqk2y2iMO91fNYgzUa6KZBNXjDgmhqHrMQSH4x7b+c=",
       "url": "_framework\/MudBlazor.dll"
     },
     {
@@ -209,12 +213,16 @@
       "url": "_framework\/System.dll"
     },
     {
-      "hash": "sha256-Ft0Ply350YciwV2dbK7zfpH8gnoj5uXFeKG+fgd+EdI=",
+      "hash": "sha256-29s4q3KGpQJ52S5HvEyHi1D8KPZTUvrDcgOHkBGLZ\/M=",
       "url": "_framework\/System.Linq.dll"
     },
     {
-      "hash": "sha256-YAuAa04bWT95f1+mgg5poaBGjD1+Qplb6fhHk\/pzREU=",
+      "hash": "sha256-xJoDZTapF19kaG7eRhlQo0NMIVnKrgdkpS94bYOQZcY=",
       "url": "_framework\/System.Linq.Expressions.dll"
+    },
+    {
+      "hash": "sha256-8m74VS0M3C27b2UykxRh\/xL8t9QV0CJbgyeWvlOaKp4=",
+      "url": "_framework\/System.Linq.Queryable.dll"
     },
     {
       "hash": "sha256-JXImOhG2oDuiRYqFJcwoBXPI04+Wgv9+8NqWpM0\/Mxo=",
@@ -233,7 +241,7 @@
       "url": "_framework\/System.ObjectModel.dll"
     },
     {
-      "hash": "sha256-XBJKLq3cpWcRjO1yyjFmLkwk+lkcwGlcvSyXGCEhg1g=",
+      "hash": "sha256-3g7oFYH43qjmmTunuZWRO9GNcf4Z6g66Chm795S7cs0=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
@@ -241,7 +249,7 @@
       "url": "_framework\/System.Private.Uri.dll"
     },
     {
-      "hash": "sha256-6hXXxLnaYEVjKoL1W9YnuaIF7PDs0MvsfZsqgzh9bxc=",
+      "hash": "sha256-DJhqunWZgJjdgQ1IKXsULtEzHUZvvEY\/lg4bvhBllm4=",
       "url": "_framework\/System.Runtime.dll"
     },
     {
@@ -249,11 +257,15 @@
       "url": "_framework\/System.Runtime.InteropServices.JavaScript.dll"
     },
     {
+      "hash": "sha256-JBtkbR8dUvZjDSwHRYHFv7jNLDQvjYE77+iSL8oK9ww=",
+      "url": "_framework\/System.Runtime.Serialization.Primitives.dll"
+    },
+    {
       "hash": "sha256-xI0zCH0pPePsNMfDlBt0akz7DWAFz9MNlPswfkaRcyA=",
       "url": "_framework\/System.Text.Encodings.Web.dll"
     },
     {
-      "hash": "sha256-pKEn4PQuiTDPGY3fQ2dOr77buKt+J9PCT+GBwZFXuqA=",
+      "hash": "sha256-EdHB58fxYDQ5T1SueFIPtcgg8qXWuL\/BBrMqDtAkLSQ=",
       "url": "_framework\/System.Text.Json.dll"
     },
     {
@@ -265,12 +277,24 @@
       "url": "_framework\/dotnet.7.0.5.8xkwurfq18.js"
     },
     {
-      "hash": "sha256-wjjyN3hH4mpnAG79lWNnws2THtw0WuRaEfSPOiup9N4=",
+      "hash": "sha256-yTLzKwhwdYSsBvzrC2ehfsuonpjBwlVPgqSH+k4LkbE=",
       "url": "_framework\/dotnet.wasm"
     },
     {
       "hash": "sha256-XFtoczM5U33dUO5R85v61+Mj27CaOIFNB4hvF6e83z8=",
       "url": "AdventOfBlazor.BlazorClient.styles.css"
+    },
+    {
+      "hash": "sha256-We76yQ6BbUqy3OL7pB4AiChSOtAH\/BdDsZ0Z+MzXvD0=",
+      "url": "_content\/Blazor-ApexCharts\/css\/apexcharts.css"
+    },
+    {
+      "hash": "sha256-8AqgFKtDU\/qXto\/PcmmJ8FZewlauhA+dHvkk4PMlmaU=",
+      "url": "_content\/Blazor-ApexCharts\/js\/apex-charts.min.js"
+    },
+    {
+      "hash": "sha256-cPiYEIMm\/7G0vPTs9D6uY5GXTiHb8X2OyCrw9X1aEQo=",
+      "url": "_content\/Blazor-ApexCharts\/js\/blazor-apex-charts.js"
     },
     {
       "hash": "sha256-rqchcPyv1qTX6jCJrNMR5kp+uhuYiKqQZgYlNqBTzro=",
@@ -281,5 +305,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "dnvZp9Ee"
+  "version": "1gq\/1Sv4"
 };
