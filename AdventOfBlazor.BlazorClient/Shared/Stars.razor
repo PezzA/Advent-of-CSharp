@@ -1,19 +1,19 @@
 ﻿@if (StarCount == 0)
 {                               {
-<MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part One" Color="Color.Default" />
-<MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part Two" Color="Color.Default" />
+        <MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part One" Color="MudBlazor.Color.Default" />
+        <MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part Two" Color="MudBlazor.Color.Default" />
 }                     }
 
 @if (StarCount == 1)
 {
-    <MudIcon Icon="@Icons.Material.Rounded.Star" Title="Part One" Color="Color.Warning" />
-    <MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part Two" Color="Color.Default" />
+    <MudIcon Icon="@Icons.Material.Rounded.Star" Title="Part One" Color="MudBlazor.Color.Warning" />
+    <MudIcon Icon="@Icons.Material.Rounded.StarBorder" Title="Part Two" Color="MudBlazor.Color.Default" />
 }
 
 @if (StarCount == 2)
 {
-    <MudIcon Icon="@Icons.Material.Rounded.Star" Title="Part One" Color="Color.Warning" />
-    <MudIcon Icon="@Icons.Material.Rounded.Star" Title="Part Two" Color="Color.Warning" />
+    <MudIcon Icon="@Icons.Material.Rounded.Star" Title="Part One" Color="MudBlazor.Color.Warning" />
+    <MudIcon Icon="@Icons.Material.Rounded.Star" Title="Part Two" Color="MudBlazor.Color.Warning" />
 }
 @code {
     [Parameter]

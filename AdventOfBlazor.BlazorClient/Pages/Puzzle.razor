@@ -12,11 +12,11 @@
 else
 {
     <h2>
-        <MudText Color="Color.Primary">--- (@puzzleMetaData.Year) Day @puzzleMetaData.Day: @puzzleMetaData.Title ---</MudText>
+        <MudText Color="MudBlazor.Color.Primary">--- (@puzzleMetaData.Year) Day @puzzleMetaData.Day: @puzzleMetaData.Title ---</MudText>
     </h2>
-    
 
-    <h3><MudText  Color="Color.Secondary" Class="mb-2">-- Embedded Implementation --</MudText></h3>
+
+    <h3><MudText Color="MudBlazor.Color.Secondary" Class="mb-2">-- Embedded Implementation --</MudText></h3>
     <p> The embedded implementation is in the advent-of-blazor repo and delivered as part of the Web Assembly binary.</p>
     <MudGrid>
         <MudItem xs="6">
@@ -29,7 +29,7 @@ else
 
     @if (@puzzleMetaData.HasVisualisation)
     {
-        <h3><MudText Color="Color.Secondary" Class="mb-2">-- Unity3D Visualisation --</MudText></h3>
+        <h3><MudText Color="MudBlazor.Color.Secondary" Class="mb-2">-- Unity3D Visualisation --</MudText></h3>
     }
     // this just hides & displays to minimise unity player issues
     <UnityApp Visible="@puzzleMetaData.HasVisualisation"/>    
@@ -58,6 +58,7 @@ else
     {
         ResetState();
         partOne?.RefreshMe();
+        partTwo?.RefreshMe();
     }
 
     void ResetState()
