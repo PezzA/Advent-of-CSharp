@@ -47,7 +47,7 @@ jobs:
     # fix fromhttps://swimburger.net/blog/dotnet/how-to-deploy-aspnet-blazor-webassembly-to-github-pages
     - name: sed index.html
       if: github.ref == 'refs/heads/master'  
-      run: sed -i 's/<base href="\/" \/>/<base href="\/advent-of-blazor\/" \/>/g' dist/Web/wwwroot/index.html
+      run: sed -i 's/<base href="\/" \/>/<base href="\/advent-of-csharp\/" \/>/g' dist/Web/wwwroot/index.html
 
       # fix for integrity checks from https://swimburger.net/blog/dotnet/fix-blazor-webassembly-pwa-integrity-checks
     - name: Fix service-worker-assets.js hashes
