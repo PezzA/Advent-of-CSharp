@@ -1,6 +1,6 @@
 {
-  "name": "AdventOfBlazor.BlazorClient",
-  "short_name": "AdventOfBlazor.BlazorClient",
+  "name": "AdventOfCSharp.BlazorClient",
+  "short_name": "AdventOfCSharp.BlazorClient",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
