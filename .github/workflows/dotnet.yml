@@ -24,7 +24,7 @@ jobs:
       run: dotnet restore
 
     - name: sed Settings.cs
-      run: sed -i 's/WEB_PATH_PREFIX = "\/"/WEB_PATH_PREFIX = "\/advent-of-blazor\/"/g' AdventOfBlazor.BlazorClient/Settings.cs
+      run: sed -i 's/WEB_PATH_PREFIX = "\/"/WEB_PATH_PREFIX = "\/advent-of-csharp\/"/g' AdventOfCSharp.BlazorClient/Settings.cs
     
     - name: Build
       run: dotnet build --no-restore
@@ -41,7 +41,7 @@ jobs:
     # Publishes Blazor project to the release-folder
     - name: Publish .NET Core Project
       if: github.ref == 'refs/heads/master'  
-      run: dotnet publish AdventOfBlazor.BlazorClient/AdventOfBlazor.BlazorClient.csproj -c:Release -p:GHPages=true -o dist/Web --nologo
+      run: dotnet publish AdventOfCSharp.BlazorClient/AdventOfCSharp.BlazorClient.csproj -c:Release -p:GHPages=true -o dist/Web --nologo
 
     # changes the base-tag in index.html from '/' to '/advent-of-blazor' to match GitHub Pages repository subdirectory
     # fix fromhttps://swimburger.net/blog/dotnet/how-to-deploy-aspnet-blazor-webassembly-to-github-pages
