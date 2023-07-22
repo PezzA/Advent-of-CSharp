@@ -24,7 +24,7 @@ jobs:
       run: dotnet restore
 
     - name: sed Settings.cs
-      run: sed -i 's/WEB_PATH_PREFIX = "\/"/WEB_PATH_PREFIX = "\/advent-of-csharp\/"/g' AdventOfCSharp.BlazorClient/Settings.cs
+      run: sed -i 's/WEB_PATH_PREFIX = "\/"/WEB_PATH_PREFIX = "\/Advent-of-CSharp\/"/g' AdventOfCSharp.BlazorClient/Settings.cs
     
     - name: Build
       run: dotnet build --no-restore
@@ -47,7 +47,7 @@ jobs:
     # fix fromhttps://swimburger.net/blog/dotnet/how-to-deploy-aspnet-blazor-webassembly-to-github-pages
     - name: sed index.html
       if: github.ref == 'refs/heads/master'  
-      run: sed -i 's/<base href="\/" \/>/<base href="\/advent-of-csharp\/" \/>/g' dist/Web/wwwroot/index.html
+      run: sed -i 's/<base href="\/" \/>/<base href="\/Advent-of-CSharp\/" \/>/g' dist/Web/wwwroot/index.html
 
       # fix for integrity checks from https://swimburger.net/blog/dotnet/fix-blazor-webassembly-pwa-integrity-checks
     - name: Fix service-worker-assets.js hashes
