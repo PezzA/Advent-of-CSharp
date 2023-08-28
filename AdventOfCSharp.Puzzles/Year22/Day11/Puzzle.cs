@@ -105,14 +105,11 @@ public partial class Puzzle : IBasicPuzzle
                     newWorry /= divisor;
                 }
 
-                if (newWorry % m.TestValue == 0)
-                {
-                    newWorry -= 500 * m.TestValue;
-                    monkeys[m.TestTrue].Items.Add(newWorry);
-                }
-                else {
-                    monkeys[m.TestFalse].Items.Add(newWorry);
-                }
+                var monkyIndex = newWorry % m.TestValue == 0
+                       ? m.TestTrue 
+                       : m.TestFalse;
+
+                monkeys[monkyIndex].Items.Add(newWorry);
             }
             m.Items = new List<BigInteger>();
         }
