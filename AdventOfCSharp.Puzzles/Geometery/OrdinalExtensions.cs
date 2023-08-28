@@ -35,5 +35,13 @@
             Ordinal.West => new Point2D(-1, 0),
             _ => throw new NotImplementedException()
         };
+
+        public static Point2D[] OrdinalPoints => new Point2D[]
+        {
+            new Point2D(0, 1),
+            new Point2D(1, 0),
+            new Point2D(0, -1),
+            new Point2D(-1, 0)
+        };
     }
 }

@@ -7,5 +7,7 @@ namespace AdventOfCSharp.Puzzles.Geometery
     {
         public Point2D Add(Point2D point) => new(X + point.X, Y + point.Y);
         public int Length => Math.Abs(X) + Math.Abs(Y);
+
     }
 }
+
