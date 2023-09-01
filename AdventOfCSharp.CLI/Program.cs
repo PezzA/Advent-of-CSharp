@@ -32,7 +32,6 @@ if (args.Length > 2 && !string.IsNullOrEmpty(args[2]))
         Console.Error.WriteLine($"Problem reading file: {ex.Message}");
         return;
     }
-
 }
 
 Console.WriteLine($"-- {data.Title} --");
