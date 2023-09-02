@@ -1,0 +1,136 @@
+﻿@using AdventOfCSharp.Puzzles.Geometery;
+@using AdventOfCSharp.Puzzles.Parsing;
+@using AdventOfCSharp.Puzzles.Year22.Day12;
+@using System.Drawing;
+@using Blazor.Extensions.Canvas.Canvas2D;
+@using Blazor.Extensions;
+@inject IJSRuntime JsRuntime;
+
+
+<BECanvas Width="900" Height="400" @ref="_canvasReference"></BECanvas>
+
+<h3>Stats</h3>
+Pixel Density Ratio: @_dpr
+
+@code {
+    private Canvas2DContext? _context;
+    protected BECanvasComponent? _canvasReference;
+    private float _dpr;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await JsRuntime.InvokeAsync<object>("initGame", DotNetObjectReference.Create(this));
+
+        _dpr = await JsRuntime.InvokeAsync<float>("getDisplayRatio", DotNetObjectReference.Create(this));
+
+        await base.OnInitializedAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _context = await _canvasReference.CreateCanvas2DAsync();
+
+            await _context.SetFontAsync("10px courier");
+            await _context.ScaleAsync(1.25, 1.25);
+
+            var puzzle = new Puzzle();
+
+
+            _map = Puzzle.LoadData(puzzle.PuzzleInput());
+
+            _map.OrderBy(x => x.Value);
+
+        }
+    }
+
+    private Dictionary<Point2D, char> _map;
+
+    private float _lastTimeStamp;
+
+    private bool _drawMap;
+
+    private Dictionary<char, string> _colors = new Dictionary<char, string>
+    {
+            { 'S', "#FF0000"},
+            { 'E', "#00FF00"},
+            { 'a', "#006600"},
+            { 'b', "#00AA00"},
+            { 'c', "#00DD00"},
+            { 'd', "#2a4858"},
+            { 'e', "#345060"},
+            { 'f', "#3e5867"},
+            { 'g', "#48616f"},
+            { 'h', "#526977"},
+            { 'i', "#5d727f"},
+            { 'j', "#677b87"},
+            { 'k', "#71838f"},
+            { 'l', "#7b8c97"},
+            { 'm', "#86959f"},
+            { 'n', "#909fa8"},
+            { 'o', "#9ba8b0"},
+            { 'p', "#a6b1b9"},
+            { 'q', "#b1bbc1"},
+            { 'u', "#bbc4ca"},
+            { 'v', "#c7ced3"},
+            { 'r', "#d2d7db"},
+            { 's', "#dde1e4"},
+            { 't', "#e8ebed"},
+            { 'w', "#f4f5f6"},
+            { 'x', "#ffffff"},
+            { 'y', "#ffffff"},
+            { 'z', "#ffffff"},
+    };
+
+    private async ValueTask DrawMap()
+    {
+        await _context.BeginBatchAsync();
+      
+        await _context.ClearRectAsync(0, 0, _canvasReference.Width, _canvasReference.Height);
+
+        foreach (var item in _map)
+        {
+            await _context.SetFillStyleAsync(_colors[item.Value]);
+            await _context.FillTextAsync($"{item.Value}", item.Key.X * 6, 30 + (item.Key.Y * 7));
+        }
+
+        await _context.EndBatchAsync();
+    }
+
+    private async ValueTask UpdateModel(float timeStamp)
+    {
+
+    }
+
+    private async ValueTask DrawHeader(float delta)
+    {
+        var fps = Convert.ToInt32(1000 / delta);
+
+        await _context.BeginBatchAsync();
+        await _context.ClearRectAsync(0, 0, 800, 20);
+        await _context.SetStrokeStyleAsync($"white");
+        await _context.StrokeTextAsync($"FPS: {fps}", 0, 10);
+        await _context.EndBatchAsync();
+    }
+
+    [JSInvokable]
+    public async ValueTask GameLoop(float timeStamp)
+    {
+        var delta = timeStamp - _lastTimeStamp;
+        _lastTimeStamp = timeStamp;
+
+        if (_context == null || _map == null) return;
+
+
+
+        if (!_drawMap)
+        {
+            await DrawMap();
+            _drawMap = true;
+        }
+
+        await DrawHeader(delta);
+        await UpdateModel(timeStamp);
+    }
+}
