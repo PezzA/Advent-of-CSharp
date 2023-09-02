@@ -33,6 +33,11 @@ else
     }
     // this just hides & displays to minimise unity player issues
     <UnityApp Visible="@puzzleMetaData.HasVisualisation"/>    
+
+    @if (@puzzleMetaData.Year == 2022 && puzzleMetaData.Day == 12)
+    {
+        <Y22_D12/>
+    }
 }
 
 @code {

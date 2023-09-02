@@ -1,0 +1,60 @@
+﻿@using AdventOfCSharp.Puzzles.Geometery;
+@using AdventOfCSharp.Puzzles.Parsing;
+@using AdventOfCSharp.Puzzles.Year22.Day12;
+@using System.Drawing;
+@using Blazor.Extensions.Canvas.Canvas2D;
+@using Blazor.Extensions;
+@inject IJSRuntime JsRuntime;
+<h3>Year 2022, Day 12.</h3>
+<BECanvas Width="300" Height="400" @ref="_canvasReference" ></BECanvas>
+
+<style>
+    @for(char c = 'a'; c <= 'z'; c++)
+    {
+        var scale = (256 / 40) * (15 + (c - 96));
+        var colorString = ColorTranslator.ToHtml(System.Drawing.Color.FromArgb(scale, scale, scale));
+
+        @($$""".elevation-{{c}} { color: {{colorString}} }""");
+    }
+    
+    .start { color:#00FF00; border:solid 1px}
+    .end { color:#FFFF00; border:solid 1px}
+    .checking { color:#00FFFF; border:solid 1px}
+</style>
+
+
+
+@code {
+    private Canvas2DContext _context;
+
+    protected BECanvasComponent _canvasReference;
+
+    protected override async Task OnInitializedAsync()
+    {
+            await JsRuntime.InvokeAsync<object>("initGame", DotNetObjectReference.Create(this));
+
+            await base.OnInitializedAsync();
+
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+            if (firstRender)
+            {
+                _context = await _canvasReference.CreateCanvas2DAsync();
+                await _context.SetTextBaselineAsync(TextBaseline.Top);
+            }
+    }
+
+    [JSInvokable]
+    public async ValueTask GameLoop(float timeStamp)
+    {
+        await _context.ClearRectAsync(0, 0, 300, 400);
+
+        await _context.SetFillStyleAsync("green");
+        await _context.FillRectAsync(10, 50, 300, 100);
+
+        await _context.SetFontAsync("24px verdana");
+        await _context.StrokeTextAsync($"time: {timeStamp}", 20, 80);
+    }
+}

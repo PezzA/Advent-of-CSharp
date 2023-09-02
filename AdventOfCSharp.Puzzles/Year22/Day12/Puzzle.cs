@@ -56,58 +56,60 @@ public partial class Puzzle : IBasicPuzzle
         return c;
     }
 
+    public static void RunQueue(Dictionary<Point2D, char> map, Dictionary<Point2D, int> distances, Queue<Point2D> queue) {
+        // get the next item we are looking at
+        var nextPoint = queue.Dequeue();
+
+        // get it's current value
+        var currentDistance = distances[nextPoint];
+        var currentHeight = GetElevation(map[nextPoint]);
+
+        foreach (var ordinalPoint in OrdinalExtensions.OrdinalPoints)
+        {
+            var testPoint = nextPoint.Add(ordinalPoint);
+
+            //ignore off map or start
+            if (!map.ContainsKey(testPoint) || map[testPoint] == 'S')
+            {
+                continue;
+            }
+
+            var mapHeight = GetElevation(map[testPoint]);
+
+            if (!distances.ContainsKey(testPoint))
+            {
+                distances[testPoint] = int.MaxValue;
+            }
+
+            var mapDistance = distances[testPoint];
+            // ignore if too high (cannot be too low)
+            if (mapHeight - currentHeight > 1)
+            {
+                continue;
+            }
+
+            if ((currentDistance + 1) < mapDistance)
+            {
+                distances[testPoint] = currentDistance + 1;
+                queue.Enqueue(testPoint);
+            }
+        }
+    }
+
     public static Dictionary<Point2D, int> WalkMap(Dictionary<Point2D, char> map, Point2D start)
     {
         var queue = new Queue<Point2D>();
         queue.Enqueue(start);
-
         var distances = new Dictionary<Point2D, int>();
         distances[start] = 0;
 
         while (queue.Count > 0)
         {
-            // get the next item we are looking at
-            var nextPoint = queue.Dequeue();
-
-            // get it's current value
-            var currentDistance = distances[nextPoint];
-            var currentHeight = GetElevation(map[nextPoint]);
-
-            foreach (var ordinalPoint in OrdinalExtensions.OrdinalPoints)
-            {
-                var testPoint = nextPoint.Add(ordinalPoint);
-
-                //ignore off map or start
-                if (!map.ContainsKey(testPoint) || map[testPoint] == 'S')
-                {
-                    continue;
-                }
-
-                var mapHeight = GetElevation(map[testPoint]);
-
-                if (!distances.ContainsKey(testPoint))
-                {
-                    distances[testPoint] = int.MaxValue;
-                }
-
-                var mapDistance = distances[testPoint];
-                // ignore if too high (cannot be too low)
-                if (mapHeight - currentHeight > 1)
-                {
-                    continue;
-                }
-
-                if ((currentDistance + 1) < mapDistance)
-                {
-                    distances[testPoint] = currentDistance + 1;
-                    queue.Enqueue(testPoint);
-                }
-            }
+            RunQueue(map, distances, queue);
         }
 
         return distances;
     }
-
 
     public string[] PartOne(string input)
     {

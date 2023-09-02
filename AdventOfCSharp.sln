@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCSharp.Puzzles.Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCSharp.BlazorClient", "AdventOfCSharp.BlazorClient\AdventOfCSharp.BlazorClient.csproj", "{179413EC-9035-4A23-87EF-71DC9E7D3041}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCSharp.CLI", "AdventOfCSharp.CLI\AdventOfCSharp.CLI.csproj", "{6DEA3C64-6E3E-4EC8-A6FF-6EC5E76732EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCSharp.CLI", "AdventOfCSharp.CLI\AdventOfCSharp.CLI.csproj", "{6DEA3C64-6E3E-4EC8-A6FF-6EC5E76732EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
