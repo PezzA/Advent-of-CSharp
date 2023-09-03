@@ -6,9 +6,12 @@
 @using Blazor.Extensions;
 @inject IJSRuntime JsRuntime;
 
-
+<h2>HTML 5 Visualisation</h2>
+<P> This is a standard requestAnimationFrame loop, with interop within the frame function to call the C# Web Assembly file. </P>
 <BECanvas Width="900" Height="400" @ref="_canvasReference"></BECanvas>
 
+<MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary" OnClick="ProcessSomething">Part One</MudButton>
+<MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary">Part Two</MudButton>
 <h3>Stats</h3>
 Pixel Density Ratio: @_dpr
 
@@ -16,6 +19,15 @@ Pixel Density Ratio: @_dpr
     private Canvas2DContext? _context;
     protected BECanvasComponent? _canvasReference;
     private float _dpr;
+    private bool _runningPartOne;
+    public float _partOneIncrement;
+    private Dictionary<Point2D, char> _map;
+    private float _lastTimeStamp;
+    private bool _drawMap;
+    private Queue<Point2D> _queue;
+    private Dictionary<Point2D, int> _distances;
+    int _fpsscale = 255;
+    private Queue<Point2D> _prevQueue = new Queue<Point2D>();
 
     protected override async Task OnInitializedAsync()
     {
@@ -33,23 +45,13 @@ Pixel Density Ratio: @_dpr
             _context = await _canvasReference.CreateCanvas2DAsync();
 
             await _context.SetFontAsync("10px courier");
-            await _context.ScaleAsync(1.25, 1.25);
+            await _context.ScaleAsync(_dpr, _dpr);
 
             var puzzle = new Puzzle();
-
-
             _map = Puzzle.LoadData(puzzle.PuzzleInput());
-
             _map.OrderBy(x => x.Value);
-
         }
     }
-
-    private Dictionary<Point2D, char> _map;
-
-    private float _lastTimeStamp;
-
-    private bool _drawMap;
 
     private Dictionary<char, string> _colors = new Dictionary<char, string>
     {
@@ -83,46 +85,83 @@ Pixel Density Ratio: @_dpr
             { 'z', "#ffffff"},
     };
 
+    private async ValueTask DrawCell(Point2D pos, char val, string color)
+    {
+        await _context.SetFillStyleAsync(color);
+        await _context.FillTextAsync($"{val}", pos.X * 6, 30 + (pos.Y * 7));
+    }
+
     private async ValueTask DrawMap()
     {
-        await _context.BeginBatchAsync();
-      
         await _context.ClearRectAsync(0, 0, _canvasReference.Width, _canvasReference.Height);
 
         foreach (var item in _map)
         {
-            await _context.SetFillStyleAsync(_colors[item.Value]);
-            await _context.FillTextAsync($"{item.Value}", item.Key.X * 6, 30 + (item.Key.Y * 7));
+            await DrawCell(item.Key, item.Value, _colors[item.Value]);
         }
+    }
 
-        await _context.EndBatchAsync();
+    public async Task ProcessSomething()
+    {
+        _runningPartOne = !_runningPartOne;
+
+        if (_runningPartOne)
+        {
+            await _context.BeginBatchAsync();
+            await DrawMap();
+            await _context.EndBatchAsync();
+
+            var start = Puzzle.GetStart(_map);
+
+            _queue = new Queue<Point2D>();
+            _queue.Enqueue(start);
+
+            _distances = new Dictionary<Point2D, int>();
+            _distances[start] = 0;
+        }
     }
 
     private async ValueTask UpdateModel(float timeStamp)
     {
+        if (_queue.Count == 0)
+        {
+            _runningPartOne = false;
+            return;
+        };
 
+        Puzzle.RunQueue(_map, _distances, _queue);
+
+        foreach (var item in _queue)
+        {
+            if (!_prevQueue.Contains(item))
+            {
+                await DrawCell(item, _map[item], "#00FFFF");    
+            }
+        }
+
+        _prevQueue = new Queue<Point2D>();
+        foreach (var item in _queue)
+        {
+            _prevQueue.Enqueue(item);
+        }
     }
 
     private async ValueTask DrawHeader(float delta)
     {
         var fps = Convert.ToInt32(1000 / delta);
-
-        await _context.BeginBatchAsync();
         await _context.ClearRectAsync(0, 0, 800, 20);
-        await _context.SetStrokeStyleAsync($"white");
+        await _context.SetStrokeStyleAsync($"RGB({_fpsscale} {_fpsscale} {_fpsscale})");
         await _context.StrokeTextAsync($"FPS: {fps}", 0, 10);
-        await _context.EndBatchAsync();
     }
 
     [JSInvokable]
     public async ValueTask GameLoop(float timeStamp)
     {
+        await _context.BeginBatchAsync();
         var delta = timeStamp - _lastTimeStamp;
         _lastTimeStamp = timeStamp;
 
         if (_context == null || _map == null) return;
-
-
 
         if (!_drawMap)
         {
@@ -131,6 +170,19 @@ Pixel Density Ratio: @_dpr
         }
 
         await DrawHeader(delta);
-        await UpdateModel(timeStamp);
+
+        if (_runningPartOne)
+        {
+            _partOneIncrement += delta;
+        }
+        if (_partOneIncrement > 16)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                await UpdateModel(timeStamp);
+            }   
+            _partOneIncrement = 0;
+        }
+        await _context.EndBatchAsync();
     }
 }
