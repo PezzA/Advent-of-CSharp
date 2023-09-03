@@ -8,33 +8,42 @@
 
 <h2>HTML 5 Visualisation</h2>
 <P> This is a standard requestAnimationFrame loop, with interop within the frame function to call the C# Web Assembly file. </P>
-<BECanvas Width="900" Height="400" @ref="_canvasReference"></BECanvas>
+<BECanvas Width="@_width" Height="@_height" @ref="_canvasReference"></BECanvas>
 
 <MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary" OnClick="ProcessSomething">Part One</MudButton>
 <MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary">Part Two</MudButton>
-<h3>Stats</h3>
-Pixel Density Ratio: @_dpr
+
+<h3>Info</h3>
+devicePixelRatio : @_dpr
+
 
 @code {
+    // Canvas
     private Canvas2DContext? _context;
     protected BECanvasComponent? _canvasReference;
-    private float _dpr;
-    private bool _runningPartOne;
-    public float _partOneIncrement;
+
+    private int _width = 900;
+    private int _height = 400;
+
+    private float _dpr = 0;
+
+    // Puzzle
     private Dictionary<Point2D, char> _map;
-    private float _lastTimeStamp;
-    private bool _drawMap;
     private Queue<Point2D> _queue;
     private Dictionary<Point2D, int> _distances;
+
+    // View Logic
+    private bool _runningPartOne;
+    public float _partOneIncrement;
+    private float _lastTimeStamp;
+    private bool _drawMap;
     int _fpsscale = 255;
     private Queue<Point2D> _prevQueue = new Queue<Point2D>();
 
     protected override async Task OnInitializedAsync()
     {
-        await JsRuntime.InvokeAsync<object>("initGame", DotNetObjectReference.Create(this));
 
-        _dpr = await JsRuntime.InvokeAsync<float>("getDisplayRatio", DotNetObjectReference.Create(this));
-
+        await JsRuntime.InvokeAsync<object>("startGameLoop", DotNetObjectReference.Create(this));
         await base.OnInitializedAsync();
     }
 
@@ -42,10 +51,11 @@ Pixel Density Ratio: @_dpr
     {
         if (firstRender)
         {
-            _context = await _canvasReference.CreateCanvas2DAsync();
+            _dpr = await JsRuntime.InvokeAsync<float>("setupCanvas", _canvasReference, _width, _height);
 
+            _context = await _canvasReference.CreateCanvas2DAsync();
+            await _context.ScaleAsync(1.25, 1.25);
             await _context.SetFontAsync("10px courier");
-            await _context.ScaleAsync(_dpr, _dpr);
 
             var puzzle = new Puzzle();
             _map = Puzzle.LoadData(puzzle.PuzzleInput());
@@ -88,12 +98,13 @@ Pixel Density Ratio: @_dpr
     private async ValueTask DrawCell(Point2D pos, char val, string color)
     {
         await _context.SetFillStyleAsync(color);
-        await _context.FillTextAsync($"{val}", pos.X * 6, 30 + (pos.Y * 7));
+        await _context.FillRectAsync(pos.X * 8, 30 + (pos.Y * 8), 7, 8);
+        //await _context.FillTextAsync($"{val}", pos.X * 8, 30 + (pos.Y * 9));
     }
 
     private async ValueTask DrawMap()
     {
-        await _context.ClearRectAsync(0, 0, _canvasReference.Width, _canvasReference.Height);
+        await _context.ClearRectAsync(0, 0, _width,_height);
 
         foreach (var item in _map)
         {
@@ -149,7 +160,7 @@ Pixel Density Ratio: @_dpr
     private async ValueTask DrawHeader(float delta)
     {
         var fps = Convert.ToInt32(1000 / delta);
-        await _context.ClearRectAsync(0, 0, 800, 20);
+        await _context.ClearRectAsync(0, 0, _width, 20);
         await _context.SetStrokeStyleAsync($"RGB({_fpsscale} {_fpsscale} {_fpsscale})");
         await _context.StrokeTextAsync($"FPS: {fps}", 0, 10);
     }
