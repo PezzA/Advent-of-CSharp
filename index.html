@@ -127,14 +127,22 @@
             theInstance.invokeMethodAsync('GameLoop', timeStamp);
         }
 
-        window.initGame = (instance) => {
+        window.startGameLoop = (instance) => {
             window.theInstance = instance;
             window.requestAnimationFrame(gameLoop);
         };
 
-        window.getDisplayRatio = () => {
+        window.setupCanvas = (canvas, width, height) => {
+            const canvasRef = canvas.canvasReference;
+            const ratio = window.devicePixelRatio;
+            canvasRef.width = width * ratio;
+            canvasRef.height = height * ratio;
+            canvasRef.style.width = `${width}px`;
+            canvasRef.style.height = `${height}px`;
+
             return window.devicePixelRatio;
         };
+
     </script>
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
     <script src="_content/unity/unity-loader.js"></script>
