@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "AdventOfCSharp.BlazorClient.dll": "sha256-N4M+QH\/3x9zNutjOm0aVsnMyxzK5QfJDivO4Uylbw\/E=",
+      "AdventOfCSharp.BlazorClient.dll": "sha256-ydDGMWIEL3RBM\/T5boXFh\/MTpGeKfWmt9USwv\/roBSE=",
       "AdventOfCSharp.Puzzles.dll": "sha256-01kRyfPaVDlNpFGk8hjo0Airmh2XXRe1TAj6+ZwWtcc=",
       "Blazor-ApexCharts.dll": "sha256-rMN5tyQ9xrvHiSq9hXaDEBwNJEeEfryywxzC0BBdlDk=",
       "Blazor.Extensions.Canvas.dll": "sha256-W20pWMXQg2yTv0w4VJhrjCJKNRYe3PiUU9S76XipNe8=",
@@ -50,7 +50,7 @@
       "System.Net.Http.dll": "sha256-JVoxp4b342ZNm9h0NfxHvc+GkhRb7c+kfCQJAPAMMZ4=",
       "System.Net.Primitives.dll": "sha256-s+5DbwuQFwjUmtfnDXL\/Hyra3ajgNyaZg8FIuWonkQ0=",
       "System.ObjectModel.dll": "sha256-4ynpfONtHzbKOXOrfEXxDJAWMaZLp6dytGnCRIElvgU=",
-      "System.Private.CoreLib.dll": "sha256-dBSw1grg5WVPP4tRynAdBVt66WuIzi1ppj601tUVeSU=",
+      "System.Private.CoreLib.dll": "sha256-YNNcWnRSZvuOMU9145vMpyYr9blPDeIdtvRvD1ELPtI=",
       "System.Private.Uri.dll": "sha256-wQJkIycQ2\/2vUwVv8GbySIxV4PZJ+rpkYXdo1MrYBtY=",
       "System.Private.Xml.dll": "sha256-ge5tqwSLA9ZJEWhQ3tFfpFtTCIBYiTL0CHOMR\/oULFg=",
       "System.Private.Xml.Linq.dll": "sha256-Q4IkU0G\/2RIREEXKSg+D6BhOBAyQIJCHn88\/kGiRqkY=",
@@ -80,7 +80,7 @@
     "runtime": {
       "dotnet.7.0.10.es612ii1c6.js": "sha256-tUkVS4U0Vxxtapw398+Wa99LWNq9tlbfXS5gC7\/8Yh4=",
       "dotnet.timezones.blat": "sha256-pf9chcB37Cf13KuuvScsozomnAUanMeCfvDr9Wqofh8=",
-      "dotnet.wasm": "sha256-fr95WzZFsuL0o7yJRzadw+s\/GhshVBqimkZ11JGuEA0=",
+      "dotnet.wasm": "sha256-NOo5lIKkplVXLag2u+1YvuoDwzNXZZbPK6ujBCdZjQk=",
       "icudt_CJK.dat": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
       "icudt_EFIGS.dat": "sha256-8fItetYY8kQ0ww6oxwTLiT3oXlBwHKumbeP2pRF4yTc=",
       "icudt_no_CJK.dat": "sha256-L7sV7NEYP37\/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs=",
@@ -89,7 +89,7 @@
     "runtimeAssets": {
       "dotnet.wasm": {
         "behavior": "dotnetwasm",
-        "hash": "sha256-fr95WzZFsuL0o7yJRzadw+s\/GhshVBqimkZ11JGuEA0="
+        "hash": "sha256-NOo5lIKkplVXLag2u+1YvuoDwzNXZZbPK6ujBCdZjQk="
       }
     },
     "satelliteResources": null
