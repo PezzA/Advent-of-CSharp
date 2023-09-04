@@ -127,10 +127,20 @@
             theInstance.invokeMethodAsync('GameLoop', timeStamp);
         }
 
-        window.startGameLoop = (instance) => {
+        let animationFrame = null;
+
+        window.startAnimLoop = (instance) => { 
+            if (animationFrame) return;
+
             window.theInstance = instance;
-            window.requestAnimationFrame(gameLoop);
+            animationFrame = window.requestAnimationFrame(gameLoop);
         };
+
+        window.stopAnimLoop = () => {
+            if (!animationFrame) return;
+
+            window.cancelAnimationFrame(animationFrame);
+        }
 
         window.setupCanvas = (canvas, width, height) => {
             const canvasRef = canvas.canvasReference;
