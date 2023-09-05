@@ -69,7 +69,7 @@
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-DmaFDq4yrqe7stAk8WJM9/Evp77CwWNQLZm0JE62d6w=",
+      "hash": "sha256-wMOcMSxcAf5ogHTR5V35/4kQ4av4tO0dsDoghamDIfc=",
       "url": "index.html"
     },
     {
@@ -101,11 +101,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-x6guLVkR+N8vl\/gx0Z06cIGIsQ\/PyIHsWyodPmta5FM=",
+      "hash": "sha256-5dvGw0T7ESwCfmhjUsVhFOZKFOdxI6X3RaPE7shERvM=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-c9DY+SRdyRSfbRsMqvuytw+jhUFloRN+F0BvD6WbQ1w=",
+      "hash": "sha256-tyaxqj0+axxWehrq+ug0m8z7FgSQ0\/qHFJPi8p2Jd68=",
       "url": "_framework\/AdventOfCSharp.BlazorClient.dll"
     },
     {
@@ -125,7 +125,7 @@
       "url": "_framework\/Blazor.Extensions.Canvas.JS.dll"
     },
     {
-      "hash": "sha256-OwQhLxKOGW4dIleUYWXsaPXF1POPr6MZ3OzuX47AHNI=",
+      "hash": "sha256-JBkIXJa7LGXna4Dk8h\/L8SX8etNrr4ICzHGAqMmQ2K8=",
       "url": "_framework\/Microsoft.AspNetCore.Components.dll"
     },
     {
@@ -189,7 +189,7 @@
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
-      "hash": "sha256-W+0FQbc1NZw4W\/21Uo8uEA5j3hBzxrTPiwlnkkfgeOw=",
+      "hash": "sha256-toLHOKo+ZXWjp+SJXI0JW+NegtGt4M3H2nHPZxCHcRk=",
       "url": "_framework\/MudBlazor.dll"
     },
     {
@@ -277,7 +277,7 @@
       "url": "_framework\/System.ObjectModel.dll"
     },
     {
-      "hash": "sha256-YNNcWnRSZvuOMU9145vMpyYr9blPDeIdtvRvD1ELPtI=",
+      "hash": "sha256-4T4ZXQY6L\/7ygNgn2IzNm22JoZdcCk5s9HPJVsWFLOk=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
@@ -369,7 +369,7 @@
       "url": "_framework\/dotnet.7.0.10.es612ii1c6.js"
     },
     {
-      "hash": "sha256-NOo5lIKkplVXLag2u+1YvuoDwzNXZZbPK6ujBCdZjQk=",
+      "hash": "sha256-FI+6KigwCgem7MDMhdFZsjLYAxitVADvAWVhJr0o\/hA=",
       "url": "_framework\/dotnet.wasm"
     },
     {
@@ -401,5 +401,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "wAk5qRAB"
+  "version": "j3X5yD27"
 };
