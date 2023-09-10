@@ -9,6 +9,7 @@
         public int Stars { get; set; }
         public bool ImplementedElsewhere { get; set; }
         public bool TakesAges { get; set; }
-        public bool HasVisualisation { get; set; }
+        public bool HasUnityVisualisation { get; set; }
+        public bool HasHTML5Visualisation { get; set; }
     }
 }

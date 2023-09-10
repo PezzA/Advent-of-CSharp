@@ -5,36 +5,34 @@
 <MudDialogProvider />
 <MudSnackbarProvider />
 
-<MudLayout>
+<MudLayout >
 
     <MudAppBar Elevation="1">
         <MudIconButton Icon="@Icons.Material.Filled.Home" Fixed="false" Color="MudBlazor.Color.Inherit" OnClick="@((e) => Home())" />
         <MudText Typo="Typo.h5" Class="ml-3" Color="MudBlazor.Color.Secondary">Advent of Blazor</MudText>
-            <MudSpacer />
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="MudBlazor.Color.Secondary" OnClick="@((e) => DrawerToggle())" />
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Fixed="false" Color="MudBlazor.Color.Inherit" OnClick="@((e) => Github())" />
     </MudAppBar>
-    <MudDrawer @bind-Open="_drawerOpen" Elevation="2" Width="500px" Anchor="Anchor.Right" Class="border-l-2 border-solid mud-border-secondary pa-4">
-        <DrawerList />
-    </MudDrawer>
+
+   
     <MudMainContent>
-        <MudContainer MaxWidth="MaxWidth.Medium" Class="mt-4">
+        <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Fixed="false">
+
+        
             @Body
         </MudContainer>
     </MudMainContent>
-
 </MudLayout>
 
 @code {
 
-    bool _drawerOpen = true;
-
-    void DrawerToggle()
-    {
-        _drawerOpen = !_drawerOpen;
-    }
-
     void Home()
     {
         NavigationManager.NavigateTo($"{Settings.WEB_PATH_PREFIX}", false);
+    }
+
+    void Github()
+    {
+        NavigationManager.NavigateTo($"https://github.com/PezzA/Advent-of-CSharp", false);
     }
 }

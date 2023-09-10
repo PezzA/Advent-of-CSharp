@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 
 namespace AdventOfCSharp.Puzzles.Year22.Day13;
 
-[PuzzleData(Year = 2022, Day = 13, Title = "Distress Signal", Stars = 0, ImplementedElsewhere = false)]
+[PuzzleData(Year = 2022, Day = 13, Title = "Distress Signal", Stars = 2, ImplementedElsewhere = false)]
 public partial class Puzzle : IBasicPuzzle
 {
     public class Pair

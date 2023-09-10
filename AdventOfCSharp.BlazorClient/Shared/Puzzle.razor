@@ -1,0 +1,48 @@
+﻿@using System.Diagnostics;
+@using System.Timers;
+@inject NavigationManager NavigationManager
+
+@if (puzzleMetaData == null)
+{
+    <h2>Puzzle Not Found</h2>
+    <hr />
+    <p>Apologies! Either the implementation or metadata for the puzzle could not be found.</p>
+}
+else
+{
+    <h2>
+        <MudText Color="MudBlazor.Color.Primary">--- (@puzzleMetaData.Year) Day @puzzleMetaData.Day: @puzzleMetaData.Title ---</MudText>
+    </h2>
+
+    @if (@puzzleMetaData.Year == 2015 && puzzleMetaData.Day == 1)
+    {
+        <h3><MudText Color="MudBlazor.Color.Secondary" Class="mb-2">-- Unity3D Visualisation --</MudText></h3>
+        // this just hides & displays to minimise unity player issues
+        <UnityApp />
+    }
+  
+    @if (@puzzleMetaData.Year == 2022 && puzzleMetaData.Day == 12)
+    {
+        <Y22_D12/>
+    }
+}
+
+@code {
+    [Parameter]
+    public int Year { get; set; }
+
+    [Parameter]
+    public int Day { get; set; }
+
+    private PuzzleDataAttribute? puzzleMetaData;
+
+    protected override void OnInitialized()
+    {
+        ResetState();
+    }
+
+    void ResetState()
+    {
+        puzzleMetaData = PuzzleManager.GetPuzzleMetaData(Year, Day);
+    }
+}
