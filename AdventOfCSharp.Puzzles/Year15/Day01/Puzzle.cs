@@ -1,7 +1,7 @@
 ﻿
 namespace AdventOfCSharp.Puzzles.Year15.Day01;
 
-[PuzzleData(Year = 2015, Day = 1, Title = "Not Quite Lisp", Stars = 2, HasVisualisation = true)]
+[PuzzleData(Year = 2015, Day = 1, Title = "Not Quite Lisp", Stars = 2, HasUnityVisualisation = true)]
 public partial class Puzzle : IBasicPuzzle
 {
     public static int GoClimbing(string input, bool finishAtBasement) { 

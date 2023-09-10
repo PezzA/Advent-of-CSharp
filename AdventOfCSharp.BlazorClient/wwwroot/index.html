@@ -18,12 +18,10 @@
         /* Center content */
         body {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
             background-color: #0f0f23;
             font-family: Source Code Pro
         }
+
 
         /* Loading animation */
         .loader {
@@ -42,26 +40,26 @@
 
         @-webkit-keyframes spin {
             0% {
-                -webkit-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
             }
 
             100% {
-                -webkit-transform: rotate(360deg);
+            -webkit-transform: rotate(360deg);
             }
         }
 
         @keyframes spin {
             0% {
-                transform: rotate(0deg);
+            transform: rotate(0deg);
             }
 
             100% {
-                transform: rotate(360deg);
+            transform: rotate(360deg);
             }
         }
 
         /* Loading text */
-        .loading-text {
+            .loading-text {
             color: #009900;
             font-size: 24px;
             margin-left: 10px;
@@ -142,15 +140,28 @@
             window.cancelAnimationFrame(animationFrame);
         }
 
-        window.setupCanvas = (canvas, width, height) => {
+        window.getWindowDetails = (canvas) => {
             const canvasRef = canvas.canvasReference;
-            const ratio = window.devicePixelRatio;
-            canvasRef.width = width * ratio;
-            canvasRef.height = height * ratio;
-            canvasRef.style.width = `${width}px`;
-            canvasRef.style.height = `${height}px`;
+            const styles = getComputedStyle(canvasRef.parentNode);
+            console.log(styles);
+            var returnData = {
+                parentWidth: parseInt(styles.getPropertyValue("width"), 10),
+                parentHeight: parseInt(styles.getPropertyValue("height"), 10),
+                innerWidth: window.innerWidth,
+                devicePixelRatio: window.devicePixelRatio
+            }
 
-            return window.devicePixelRatio;
+            console.log(returnData);
+
+            return returnData;
+        }
+
+        window.setupCanvas = (canvas, displayWidth, displayHeight, canvasWidth, canvasHeight) => {
+            const canvasRef = canvas.canvasReference;
+            canvasRef.style.width = `${displayWidth}px`;
+            canvasRef.style.height = `${displayHeight}px`;
+            canvasRef.width = canvasWidth;
+            canvasRef.height = canvasHeight;
         };
 
     </script>

@@ -1,0 +1,245 @@
+﻿@page "/viz/2022/12"
+@using System.Drawing;
+@using Blazor.Extensions.Canvas.Canvas2D;
+@using Blazor.Extensions;
+@using AdventOfCSharp.BlazorClient.UI;
+@using AdventOfCSharp.BlazorClient.UI.Y22.D12;
+@using static AdventOfCSharp.BlazorClient.UI.Y22.D12.RenderExtensions;
+@inject IJSRuntime JsRuntime;
+<h2 style="Color:white">--(2022) Day 12: @_gameModel.MetaData.Title--</h2>
+
+<style>
+    .vert {
+        vertical-align: middle;
+        display: inline-block;
+    }
+</style>
+
+<a href="https://adventofcode.com/2022/day/12" target="_blank"><span Class="vert pl-1">Advent Of Code Puzzle</span><MudIcon Icon="@Icons.Material.Filled.Link" Color="MudBlazor.Color.Secondary" Class="vert ml=1" /></a>
+
+<div style="width:100%;" class="mt-2">
+    <BECanvas @ref="_canvas"></BECanvas>
+</div>
+
+<MudSlider @bind-Value="_checksPerFrame" Min="1" Max="80" Color="MudBlazor.Color.Info">Checks Per Update: @_checksPerFrame</MudSlider>
+<MudSlider @bind-Value="_updateTimer" Min="1" Max="60" Color="MudBlazor.Color.Warning">Updates Per Second: @_updateTimer</MudSlider>
+
+<MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary" OnClick="StartPartOne">Part One</MudButton>
+<MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary">Part Two</MudButton>
+
+<MudExpansionPanels Class="mt-2" Dense="true" DisableBorders="true">
+    <MudExpansionPanel Text="Notes">
+        <p>
+            My first blazor visualiation.  This is using a canvas and kicking of a requestAnimationFrame loop which calls into the wasm assembly to update the model and draw the frame.  I bit fiddly this, mainly down to the relatively slow perforamnce of rending the
+            data backdrop from scratch each frame. Rending the entire canvas each time, couldent get more than 2 frames per second.  So the background that you see on startup
+            is only rendered on startup, and when kicking off part one/part two.  When the anim is running is's only drawing the new cells.  This gets drawn directly on top of the now static background.
+        </p>
+
+        <p><em>TODO: Use 2 canvas's, draw the background to the back canvas and then only update the front canvas</em></p>
+        <p><em>TODO: Handle page resizes</em></p>
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Properties" IsInitiallyExpanded="true">
+        @if (_canvasProperties != null)
+        {
+            <MudSimpleTable Hover="true" Dense="true" FixedHeader="false">
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Device Pixel Ratio</td>
+                        <td>@_canvasProperties.Window.DevicePixelRatio</td>
+                    </tr>
+                    <tr>
+                        <td>Window Inner Width</td>
+                        <td>@_canvasProperties.Window.InnerWidth</td>
+                    </tr>
+                    <tr>
+                        <td>Wanted Width</td>
+                        <td>@_canvasProperties.Width</td>
+                    </tr>
+                    <tr>
+                        <td>Wanted Height</td>
+                        <td>@_canvasProperties.Height</td>
+                    </tr>
+                    <tr>
+                        <td>Scaled Width</td>
+                        <td>@_canvasProperties.ScaledWidth</td>
+                    </tr>
+                    <tr>
+                        <td>Scaled Height</td>
+                        <td>@_canvasProperties.ScaledHeight</td>
+                    </tr>
+                    <tr>
+                        <td>Cell Width</td>
+                        <td>@_cellWidth</td>
+                    </tr>
+                </tbody>
+            </MudSimpleTable>
+        }
+    </MudExpansionPanel>
+</MudExpansionPanels>
+
+
+@code {
+    // Canvas
+    private Canvas2DContext? _context;
+    protected BECanvasComponent? _canvas;
+
+    private int _checksPerFrame = 10;
+    private float _updateTimer = 60;
+
+    private int _cellWidth = 0;
+
+    private Model _gameModel = new Model();
+
+    // View Logic
+    private bool _runningPartOne;
+    public float _partOneIncrement;
+    private float _lastTimeStamp;
+
+    private CanvasProperties? _canvasProperties;
+
+    public record WindowProperties(int InnerWidth, float DevicePixelRatio, int ParentWidth, int ParentHeight)
+    {
+    }
+
+    public record CanvasProperties(int Width, int Height, WindowProperties Window)
+    {
+        public int ScaledWidth => (int)Math.Ceiling((float)Width * Window.DevicePixelRatio);
+        public int ScaledHeight => (int)Math.Ceiling((float)Height * Window.DevicePixelRatio);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            if (_canvas == null) return;
+
+            var windowProperties = await JsRuntime.InvokeAsync<WindowProperties>("getWindowDetails", _canvas);
+
+            _cellWidth = windowProperties.ParentWidth / _gameModel.GridWidth;
+
+            var drawWidth = (_cellWidth * _gameModel.GridWidth) + 1;
+            var drawHeight = (_cellWidth * _gameModel.GridHeight) + 1;
+
+            _canvasProperties = new CanvasProperties(drawWidth, drawHeight, windowProperties);
+
+
+            var result = await JsRuntime.InvokeAsync<string>("setupCanvas",
+                _canvas,
+                _canvasProperties.Width,
+                _canvasProperties.Height,
+                _canvasProperties.ScaledWidth,
+                _canvasProperties.ScaledHeight);
+
+            StateHasChanged();
+            _context = await _canvas.CreateCanvas2DAsync();
+            await _context.ScaleAsync(_canvasProperties.Window.DevicePixelRatio, _canvasProperties.Window.DevicePixelRatio);
+
+            await _context.BeginBatchAsync();
+            await RenderMap(_gameModel, _colors, _cellWidth, _context);
+            await _context.EndBatchAsync();
+        }
+    }
+
+    private Dictionary<char, string> _colors = new Dictionary<char, string>
+    {
+        { 'S', "#FF0000"},
+        { 'E', "#00FF00"},
+        { 'a', "#006600"},
+        { 'b', "#00AA00"},
+        { 'c', "#00DD00"},
+        { 'd', "#2a4858"},
+        { 'e', "#345060"},
+        { 'f', "#3e5867"},
+        { 'g', "#48616f"},
+        { 'h', "#526977"},
+        { 'i', "#5d727f"},
+        { 'j', "#677b87"},
+        { 'k', "#71838f"},
+        { 'l', "#7b8c97"},
+        { 'm', "#86959f"},
+        { 'n', "#909fa8"},
+        { 'o', "#9ba8b0"},
+        { 'p', "#a6b1b9"},
+        { 'q', "#b1bbc1"},
+        { 'u', "#bbc4ca"},
+        { 'v', "#c7ced3"},
+        { 'r', "#d2d7db"},
+        { 's', "#dde1e4"},
+        { 't', "#e8ebed"},
+        { 'w', "#f4f5f6"},
+        { 'x', "#ffffff"},
+        { 'y', "#ffffff"},
+        { 'z', "#ffffff"},
+    };
+
+    public async Task StartPartOne()
+    {
+        await JsRuntime.InvokeAsync<object>("startAnimLoop", DotNetObjectReference.Create(this));
+        if (_canvas == null || _context == null) return;
+
+        await _context.BeginBatchAsync();
+        await RenderMap(_gameModel, _colors, _cellWidth, _context);
+        await _context.EndBatchAsync();
+
+        _gameModel.Init();
+
+        _runningPartOne = true;
+    }
+
+    private void Update(float delta)
+    {
+        if (_canvas == null || _context == null) return;
+
+        if (!_runningPartOne) return;
+
+        _partOneIncrement += delta;
+
+        if (_partOneIncrement > (1000 / _updateTimer))
+        {
+            _gameModel.DrawQueue = new List<Puzzles.Geometery.Point2D>();
+
+            for (int i = 0; i < _checksPerFrame; i++)
+            {
+                _gameModel.Update();
+
+                if (_gameModel.Finished)
+                {
+                    break;
+                }
+
+            }
+            _partOneIncrement = 0;
+        }
+    }
+
+    public async ValueTask Render(float delta, string drawState, Canvas2DContext context, BECanvasComponent canvas)
+    {
+        await context.BeginBatchAsync();
+        await context.SetFillStyleAsync("#00FFFF");
+
+        foreach (var item in _gameModel.DrawQueue)
+        {
+            await DrawCell(item, string.Empty, _cellWidth, context);
+        }
+        await context.EndBatchAsync();
+    }
+
+    [JSInvokable]
+    public async ValueTask GameLoop(float timeStamp)
+    {
+        if (_context == null || _canvas == null) return;
+
+        var delta = timeStamp - _lastTimeStamp;
+        _lastTimeStamp = timeStamp;
+
+        Update(delta);
+
+        await Render(delta, "", _context, _canvas);
+    }
+}
