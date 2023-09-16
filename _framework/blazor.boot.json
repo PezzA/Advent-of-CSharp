@@ -7,8 +7,8 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "AdventOfCSharp.BlazorClient.dll": "sha256-cToV7iHWhH6Lkg4QwfM0HWklm+P0K\/OxgBM4MejdZDE=",
-      "AdventOfCSharp.Puzzles.dll": "sha256-IafOVMQ7DxppwcQ0DSouZ4Rz0Dk7y8m06rCjUVc1IMo=",
+      "AdventOfCSharp.BlazorClient.dll": "sha256-HIxkTIwEIlT4tWcJFST7rz1eGPLfXOxWVe4sqfmbPRg=",
+      "AdventOfCSharp.Puzzles.dll": "sha256-Yy6HvM9QgGg9d\/eENa77kwyeGdyRUGbc3OVoYh+f1FQ=",
       "Blazor-ApexCharts.dll": "sha256-rMN5tyQ9xrvHiSq9hXaDEBwNJEeEfryywxzC0BBdlDk=",
       "Blazor.Extensions.Canvas.dll": "sha256-W20pWMXQg2yTv0w4VJhrjCJKNRYe3PiUU9S76XipNe8=",
       "Blazor.Extensions.Canvas.JS.dll": "sha256-TrW1uaSNUS+J8xVJErxIf1NQuNC7kn50KzMYYF\/4JtM=",
@@ -27,7 +27,7 @@
       "Microsoft.Extensions.Primitives.dll": "sha256-eXvGx2jcjpTPEJoAHBsW\/VuMPbNyyU+AsuhPmkzSSRY=",
       "Microsoft.JSInterop.dll": "sha256-oMH7pLXNeoiskyZuYjXTASIdM0jWS5LrrmdmZRdDzc0=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-dtKm86rx8+scNgFoMXC71MicQVGTw0I9Jbe4yWypUBI=",
-      "MudBlazor.dll": "sha256-5ktxeHiOFe1Ze6XeiQFh\/0zN7D15QJvWFm+IxUH2utc=",
+      "MudBlazor.dll": "sha256-AyIAPx\/ARfyl0u8Zso6FaUYmjhR63qMNhjyJOpXaElg=",
       "netstandard.dll": "sha256-48Bd3rPuYpmEldB2FAC\/lzEu4weTdRD0X\/aFYz9qyYw=",
       "Newtonsoft.Json.dll": "sha256-XZbuUbKv9ZIDnuvC7SA9n1X935wIgvs00\/DgeDdJVKU=",
       "System.Collections.Concurrent.dll": "sha256-7G5JOk9ihRhUCkOX1KOP02xoRrwnXh9aZ4KoLKReVvQ=",

@@ -69,7 +69,7 @@
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-inDPqgL0xNUk/1LIcg8hu4nxE0sMjrC1w4mF5A7QaOU=",
+      "hash": "sha256-8DabgLBkq4kJb2xLfjuWb0hm4eqTNrfHDgipaorxFdE=",
       "url": "index.html"
     },
     {
@@ -101,15 +101,15 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-w4WYPDEdN+pgQHs+rJy+zbvd1ngYK\/o9GQtnuts2EpQ=",
+      "hash": "sha256-daLI86pvSIgiWQp4ZD9NZS6ZEiazkPSjapYwPnF1qkQ=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-cToV7iHWhH6Lkg4QwfM0HWklm+P0K\/OxgBM4MejdZDE=",
+      "hash": "sha256-HIxkTIwEIlT4tWcJFST7rz1eGPLfXOxWVe4sqfmbPRg=",
       "url": "_framework\/AdventOfCSharp.BlazorClient.dll"
     },
     {
-      "hash": "sha256-IafOVMQ7DxppwcQ0DSouZ4Rz0Dk7y8m06rCjUVc1IMo=",
+      "hash": "sha256-Yy6HvM9QgGg9d\/eENa77kwyeGdyRUGbc3OVoYh+f1FQ=",
       "url": "_framework\/AdventOfCSharp.Puzzles.dll"
     },
     {
@@ -185,7 +185,7 @@
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
-      "hash": "sha256-5ktxeHiOFe1Ze6XeiQFh\/0zN7D15QJvWFm+IxUH2utc=",
+      "hash": "sha256-AyIAPx\/ARfyl0u8Zso6FaUYmjhR63qMNhjyJOpXaElg=",
       "url": "_framework\/MudBlazor.dll"
     },
     {
@@ -389,5 +389,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "XckSbalD"
+  "version": "o\/ULUhKm"
 };
