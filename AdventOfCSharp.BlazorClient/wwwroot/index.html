@@ -22,7 +22,14 @@
             font-family: Source Code Pro
         }
 
+        .vert {
+            vertical-align: middle;
+            display: inline-block;
+        }
 
+        p {
+            margin-top:15px;
+        }
         /* Loading animation */
         .loader {
             border-top-color: #009900;
@@ -136,7 +143,6 @@
 
         window.stopAnimLoop = () => {
             if (!animationFrame) return;
-
             window.cancelAnimationFrame(animationFrame);
         }
 
@@ -150,9 +156,6 @@
                 innerWidth: window.innerWidth,
                 devicePixelRatio: window.devicePixelRatio
             }
-
-            console.log(returnData);
-
             return returnData;
         }
 
