@@ -42,13 +42,6 @@ public partial class Puzzle : IBasicPuzzle
         };
     }
 
-
-    public int MinimumSteps(Facility facility)
-    {
-
-        return 0;
-    }
-
     public string[] PartOne(string input)
     {
         var fac = LoadData(input);

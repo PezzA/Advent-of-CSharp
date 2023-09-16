@@ -1,0 +1,39 @@
+﻿@inject NavigationManager NavigationManager
+
+<MudSimpleTable Dense="true" Hover="true" Bordered="true" Style="overflow-x: auto;">
+    <thead>
+        <tr>
+           <td>Stars</td>
+           <td>Title</td>
+           <td>Visualisations</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var puzzle in @PuzzleData)
+        {
+            <tr>
+                <td><MudRating SelectedValue="@puzzle.Stars" MaxValue="2" ReadOnly="true" Color="MudBlazor.Color.Warning" /></td>
+                <td>@puzzle.Title</td>
+                <td>
+                    @if (puzzle.HasHTML5Visualisation)
+                    {
+                        <MudIconButton Icon="@Icons.Material.Filled.Html" Fixed="false" Color="MudBlazor.Color.Tertiary" OnClick="@((e) => Navigate(puzzle))">Run vis</MudIconButton>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</MudSimpleTable>
+
+@code {
+    [Parameter]
+    public int Year { get; set; } = 0;
+
+    [Parameter]
+    public IEnumerable<PuzzleDataAttribute> PuzzleData { get; set; } = new List<Puzzles.PuzzleDataAttribute>();
+
+    private void Navigate(PuzzleDataAttribute data)
+    {
+        NavigationManager.NavigateTo($"{Settings.WEB_PATH_PREFIX}viz/{data.Year}/{data.Day}", false);
+    }
+}

@@ -1,0 +1,8 @@
+﻿<h2 style="Color:white">-- (@MetaData.Year) Day @MetaData.Day: @MetaData.Title --</h2>
+
+<AoCLink Year="@MetaData.Year" Day="@MetaData.Year" />
+
+@code {
+    [Parameter]
+    public PuzzleDataAttribute MetaData { get; set; } = new PuzzleDataAttribute();
+}

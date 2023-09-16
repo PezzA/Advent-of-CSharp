@@ -1,20 +1,36 @@
 ﻿@page "/"
 
-<p><span style="color:white">Hi, I'm John Perrin (PezzA) and welcome to my Advent of Code site!</span>  This repo contains all the solutions I have done in c#.  (and specifically c# > 6.0).  Click on a year below to see all the puzzles solves so far.  If it has a HTML or UNITY icon, the puzzle has a visualisation!</p>
+<h3><span style="color:white">Hi, I'm John Perrin (PezzA) and welcome to my Advent of Code site!</span></h3>
+<p>This website is a kind of 'frontend-for-backend'' for my solutions to <a href="https://adventofcode.com">Advent of Code</a> puzzles.  It's purpose is purely to surface content from the main puzzle library.</p>
+<p>There are 2 forms of content.</p>
 
-<MudExpansionPanels MultiExpansion="false">
+<p>Firstly, there is the <a href="https://github.com/PezzA/Advent-of-CSharp/blob/master/AdventOfCSharp.Puzzles/Year22/Day01/Puzzle.cs#L3">class attibute</a> based puzzle metadata.  This is just a basic description of the puzzles and status etc...  This drives mainly navigational content such as the puzzle picker below, which is just grouping over the puzzle metadata</p>
+<p>
+    Then there is the fun bit, <em>the visualisations!</em>
+    In AdventOfCode, the themeing of the puzzles is generally very strong and as well as provinding an entertaining scenerio can also distill a particular facet of computer-science or a problem domain that you might not other encounter.  The problems are always backed with simple yet engaging visual aids that outline what the puzzle should be doing to solve the problem.  And quite often as well as seeing that you get the final answer, you want see the code solving the problem.
+</p>
+
+
+<p>What this site does is provide a content pipeline that can take the source code (and I'm using C#) and uses blazor client to produce a static website that is then published using github pages. </p>
+<p>For each puzzle that has a visualisation, the code has been through 2 passes.  An intial pass to get it to sput the right answer to get the <Stars StarCount="2"/>s  And then a second often slower pass to refactor that code so that it can support a game-loop based animation.</p>
+<MudExpansionPanels MultiExpansion="false" Class="mt-2">
     @foreach (var y in Years)
     {
+        var totalSolved = Puzzles.Where(p => p.Year == y).Sum(p => p.Stars);
+        var totalVizzed = Puzzles.Where(p => p.Year == y && (p.HasUnityVisualisation || p.HasHTML5Visualisation)).Count();
         <MudExpansionPanel DisableGutters="true">
             <TitleContent>
                 <div class="d-flex">
                     <MudText Class="mt-1">@y.ToString()</MudText>
-                    <MudText Class="d-flex ml-auto">@Puzzles.Where(p => p.Year == y).Sum(p=> p.Stars)/50<MudIcon Icon="@Icons.Material.Filled.Star" Color="MudBlazor.Color.Warning" /></MudText>
+                    <MudText Class="d-flex ml-auto">Stars: @totalSolved/50<MudIcon Icon="@Icons.Material.Filled.Star" Color="MudBlazor.Color.Warning" /></MudText>
+                    <MudText Class="d-flex ml-auto">Visualisations: @totalVizzed/25<MudIcon Icon="@Icons.Material.Filled.Star" Color="MudBlazor.Color.Secondary" /></MudText>
                 </div>
+                <MudProgressLinear Color="MudBlazor.Color.Warning" Striped="true" Size="Size.Large" Value="@(totalSolved * 2)" />
+                <MudProgressLinear Color="MudBlazor.Color.Success" Striped="true" Size="Size.Large" Value="@(totalVizzed * 4)" />
             </TitleContent>
             <ChildContent>
-                <YearListing Year="y" PuzzleData="@Puzzles.Where(p => p.Year == y)" />
-            </ChildContent> 
+                <YearTable Year="y" PuzzleData="@Puzzles.Where(p => p.Year == y)" />
+            </ChildContent>
         </MudExpansionPanel>
     }
 </MudExpansionPanels>

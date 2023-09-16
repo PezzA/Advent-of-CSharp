@@ -13,18 +13,16 @@ namespace AdventOfCSharp.BlazorClient.UI.Y22.D12
         public List<Point2D> DrawQueue { get; set; } = new List<Point2D>();
         public Dictionary<Point2D, int> Distances { get; set; } = new Dictionary<Point2D, int>();
         public bool Finished { get; set; }
-
         private Queue<Point2D> PrevQueue { get; set; } = new Queue<Point2D>();
 
         private readonly Puzzle _puzzle;
 
-        public PuzzleDataAttribute? MetaData => PuzzleManager.GetPuzzleMetaData(2022, 12);
+        public static PuzzleDataAttribute MetaData => PuzzleManager.GetPuzzleMetaData(2022, 12) ?? throw new InvalidOperationException("Wot no metadata for 2022/12");
 
         private readonly string[] _lines;
 
         public Model()
         {
-
             _puzzle = new Puzzle();
             _lines = _puzzle.PuzzleInput().ParseStringArray() ?? Array.Empty<string>();
             Map = Puzzle.LoadData(_puzzle.PuzzleInput());
@@ -74,7 +72,6 @@ namespace AdventOfCSharp.BlazorClient.UI.Y22.D12
             }
         }
     }
-
 
     public class RenderExtensions
     {

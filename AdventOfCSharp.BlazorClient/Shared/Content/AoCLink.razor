@@ -1,0 +1,11 @@
+﻿<a href="@Url" target="_blank"><span Class="vert pl-1">Advent Of Code Puzzle</span><MudIcon Icon="@Icons.Material.Filled.Link" Color="MudBlazor.Color.Secondary" Class="vert ml=1" /></a>
+
+@code {
+    [Parameter]
+    public int Year { get; set; }
+
+    [Parameter]
+    public int Day { get; set; }
+
+    private string Url => $"https://adventofcode.com/{Year}/day/{Day}";
+}
