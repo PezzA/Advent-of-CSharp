@@ -57,6 +57,10 @@
       "url": "_content\/unity\/webgl-logo.png"
     },
     {
+      "hash": "sha256-gM51UJNV1M7xgx\/ymKRZGTa15xtAT8mas2txFPtDIQ8=",
+      "url": "assets\/css\/main.css"
+    },
+    {
       "hash": "sha256-4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg=",
       "url": "favicon.png"
     },
@@ -69,7 +73,7 @@
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-8DabgLBkq4kJb2xLfjuWb0hm4eqTNrfHDgipaorxFdE=",
+      "hash": "sha256-nA++33QZmZ26i3x89Ec0jOVnnc7FtvnTK2u7RxnksZo=",
       "url": "index.html"
     },
     {
@@ -101,11 +105,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-daLI86pvSIgiWQp4ZD9NZS6ZEiazkPSjapYwPnF1qkQ=",
+      "hash": "sha256-yBXEVJsHvDATcrH8bdpX6fcSHOgEwsva4PJGwXZ5VkM=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-HIxkTIwEIlT4tWcJFST7rz1eGPLfXOxWVe4sqfmbPRg=",
+      "hash": "sha256-PH6P6AgYLVfSd9KNHBI6JCIEQdSVKB\/wxGPhbLPo2S0=",
       "url": "_framework\/AdventOfCSharp.BlazorClient.dll"
     },
     {
@@ -185,7 +189,7 @@
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
-      "hash": "sha256-AyIAPx\/ARfyl0u8Zso6FaUYmjhR63qMNhjyJOpXaElg=",
+      "hash": "sha256-u+nOQBQxENnxDLL9rSORmm\/wnQRzGSTcrDEsb1upTZo=",
       "url": "_framework\/MudBlazor.dll"
     },
     {
@@ -361,7 +365,7 @@
       "url": "_framework\/dotnet.wasm"
     },
     {
-      "hash": "sha256-CypL4uFEhy6a9ff\/D5kG6IQUtugXc9AFYNK2E3nPinM=",
+      "hash": "sha256-7NLWM53HXweJrA9szl+KS4chTwWKugodplnCXYTB+pc=",
       "url": "AdventOfCSharp.BlazorClient.styles.css"
     },
     {
@@ -389,5 +393,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "o\/ULUhKm"
+  "version": "sBbu563A"
 };
