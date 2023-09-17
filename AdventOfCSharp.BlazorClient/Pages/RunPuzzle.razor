@@ -1,0 +1,65 @@
+﻿@page "/puzzle/{Year:int}/{Day:int}"
+@using AdventOfCSharp.BlazorClient.Shared.Content
+@using AdventOfCSharp.BlazorClient.Shared.Puzzle;
+
+@if (puzzleMetaData == null)
+{
+    <h2>Puzzle Not Found</h2>
+    <hr />
+    <p>Apologies! Either the implementation or metadata for the puzzle could not be found.</p>
+}
+else
+{
+    <PuzzleTitle MetaData="puzzleMetaData" />
+    <AoCLink Year="Year" Day="Day"/>
+
+    <p>This page is runner for the puzzle, and is the web equivalent of the CLI output.</p>
+
+    <VisualisationNavigation Year="Year" Day="Day"/>
+
+    <MudGrid style="margin-top: 20px">
+        @if (puzzle != null)
+        {
+            <MudItem xs="6">
+                <PuzzlePart @ref="partOne" Title="Part One" Action="()=> puzzle.PartOne(puzzle.PuzzleInput())" />
+            </MudItem>
+            <MudItem xs="6">
+                <PuzzlePart @ref="partTwo" Title="Part Two" Action="()=> puzzle.PartTwo(puzzle.PuzzleInput())" />
+            </MudItem>
+        }
+    </MudGrid>
+}
+
+@code {
+    [Parameter]
+    public int Year { get; set; }
+
+    [Parameter]
+    public int Day { get; set; }
+
+    private PuzzlePart? partOne;
+    private PuzzlePart? partTwo;
+
+    private IBasicPuzzle? puzzle;
+
+    private PuzzleDataAttribute? puzzleMetaData;
+
+    protected override void OnInitialized()
+    {
+        ResetState();
+    }
+
+    protected override void OnParametersSet()
+    {
+        ResetState();
+        partOne?.RefreshMe();
+        partTwo?.RefreshMe();
+    }
+
+    void ResetState()
+    {
+        puzzle = PuzzleManager.GetPuzzle(Year, Day);
+        puzzleMetaData = PuzzleManager.GetPuzzleMetaData(Year, Day);
+    }
+}
+

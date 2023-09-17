@@ -1,0 +1,25 @@
+﻿@inject NavigationManager NavigationManager
+
+@if (_metaData != null && _metaData.HasHTML5Visualisation)
+{
+    <p>
+        <em>Don't forget to checkout this puzzles visualisation!</em> <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Html" Color="MudBlazor.Color.Tertiary" OnClick="@((e) =>  NavigationManager.NavigateTo($"{Settings.WEB_PATH_PREFIX}viz/{Year}/{Day}", false))">Run HTML Visualisation</MudIconButton>
+    </p>
+    
+}
+
+@code {
+    [Parameter]
+    public int Year { get; set; }
+
+    [Parameter]
+    public int Day { get; set; }
+
+    private PuzzleDataAttribute? _metaData;
+
+    protected override void OnInitialized()
+    {
+        _metaData = PuzzleManager.GetPuzzleMetaData(Year, Day);
+    }
+
+}

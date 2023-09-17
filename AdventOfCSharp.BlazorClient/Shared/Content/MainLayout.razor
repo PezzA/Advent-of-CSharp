@@ -6,33 +6,23 @@
 <MudSnackbarProvider />
 
 <MudLayout >
-
     <MudAppBar Elevation="1" Fixed="true">
-        <MudIconButton Icon="@Icons.Material.Filled.Home" Fixed="false" Color="MudBlazor.Color.Inherit" OnClick="@((e) => Home())" />
+        <MudLink Href="@HomeUrl" Color="MudBlazor.Color.Secondary"><MudIcon Size="Size.Large" Icon="@Icons.Material.Filled.Home" Style="color:white" /></MudLink>
         <MudText Typo="Typo.h5" Class="ml-3" Color="MudBlazor.Color.Secondary">Advent of Blazor</MudText>
         <MudSpacer />
-        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Fixed="false" Color="MudBlazor.Color.Inherit" OnClick="@((e) => Github())" />
+        <MudLink Href="@AboutUrl" Color="MudBlazor.Color.Secondary">About</MudLink>
+        <MudText Class ="ml-2 mr-2">|</MudText>
+        <MudLink Href="https://github.com/PezzA/Advent-of-CSharp" Color="MudBlazor.Color.Secondary" Class="ml-2">github</MudLink>
     </MudAppBar>
 
-   
     <MudMainContent>
         <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Fixed="false">
-
-        
             @Body
         </MudContainer>
     </MudMainContent>
 </MudLayout>
 
 @code {
-
-    void Home()
-    {
-        NavigationManager.NavigateTo($"{Settings.WEB_PATH_PREFIX}", false);
-    }
-
-    void Github()
-    {
-        NavigationManager.NavigateTo($"https://github.com/PezzA/Advent-of-CSharp", false);
-    }
+    private string AboutUrl = $"{Settings.WEB_PATH_PREFIX}about";
+    private string HomeUrl = $"{Settings.WEB_PATH_PREFIX}";
 }

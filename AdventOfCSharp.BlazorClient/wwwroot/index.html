@@ -6,108 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>PezzA - Advent Of Blazor</title>
     <base href="/" />
-    <link href="_content/unity/unity.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link href="manifest.json" rel="manifest" />
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
     <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
     <link href='//fonts.googleapis.com/css?family=Source+Code+Pro:300&subset=latin,latin-ext' rel="stylesheet" />
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+    <link href="_content/unity/unity.css" rel="stylesheet" />
+    <link href="assets/css/main.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <style>
-        /* Center content */
-        body {
-            display: flex;
-            background-color: #0f0f23;
-            font-family: Source Code Pro
-        }
-
-        .vert {
-            vertical-align: middle;
-            display: inline-block;
-        }
-
-        p {
-            margin-top:15px;
-        }
-        /* Loading animation */
-        .loader {
-            border-top-color: #009900;
-            -webkit-animation: spin 1s linear infinite;
-            animation: spin 1s linear infinite;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #0d1117;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            transform: translate(-50%, -50%);
-            left: 50%;
-            top: 50%;
-        }
-
-        @-webkit-keyframes spin {
-            0% {
-            -webkit-transform: rotate(0deg);
-            }
-
-            100% {
-            -webkit-transform: rotate(360deg);
-            }
-        }
-
-        @keyframes spin {
-            0% {
-            transform: rotate(0deg);
-            }
-
-            100% {
-            transform: rotate(360deg);
-            }
-        }
-
-        /* Loading text */
-            .loading-text {
-            color: #009900;
-            font-size: 24px;
-            margin-left: 10px;
-            text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
-        }
-
-        .loading-text-caption {
-            color: #EEEEEE;
-            font-size: 12px;
-            margin-left: 10px;
-        }
-
-        .loading-text-caption i {
-            color: #EEEEEE;
-            font-size: 12px;
-        }
-
-        .loading-dialog {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            display: grid;
-            place-items: center;
-        }
-
-        a {
-            text-decoration: underline;
-            cursor: pointer
-        }
-
-        i {
-            color:#ffffff;
-            font-size:32px
-        }
-    </style>
 </head>
-
 <body>
     <div id="app">
         <div class="loading-dialog">
@@ -124,6 +32,7 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
+
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/Blazor.Extensions.Canvas/blazor.extensions.canvas.js"></script>
     <script>

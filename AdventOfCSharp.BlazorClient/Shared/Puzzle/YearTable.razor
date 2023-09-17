@@ -1,13 +1,6 @@
 ﻿@inject NavigationManager NavigationManager
 
-<MudSimpleTable Dense="true" Hover="true" Bordered="true" Style="overflow-x: auto;">
-    <thead>
-        <tr>
-           <td>Stars</td>
-           <td>Title</td>
-           <td>Visualisations</td>
-        </tr>
-    </thead>
+<MudSimpleTable Dense="true" Hover="true" Bordered="false" Style="overflow-x: auto;">
     <tbody>
         @foreach (var puzzle in @PuzzleData)
         {
@@ -15,9 +8,12 @@
                 <td><MudRating SelectedValue="@puzzle.Stars" MaxValue="2" ReadOnly="true" Color="MudBlazor.Color.Warning" /></td>
                 <td>@puzzle.Title</td>
                 <td>
+                    <MudButton Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.PlayArrow" Color="MudBlazor.Color.Success" OnClick="@((e) => NavigateRun(puzzle))">Run</MudButton>
+                </td>
+                <td>
                     @if (puzzle.HasHTML5Visualisation)
                     {
-                        <MudIconButton Icon="@Icons.Material.Filled.Html" Fixed="false" Color="MudBlazor.Color.Tertiary" OnClick="@((e) => Navigate(puzzle))">Run vis</MudIconButton>
+                        <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Html" Color="MudBlazor.Color.Tertiary" OnClick="@((e) => NavigateViz(puzzle))">Run HTML Visualisation</MudIconButton>
                     }
                 </td>
             </tr>
@@ -32,7 +28,12 @@
     [Parameter]
     public IEnumerable<PuzzleDataAttribute> PuzzleData { get; set; } = new List<Puzzles.PuzzleDataAttribute>();
 
-    private void Navigate(PuzzleDataAttribute data)
+    private void NavigateRun(PuzzleDataAttribute data)
+    {
+        NavigationManager.NavigateTo($"{Settings.WEB_PATH_PREFIX}puzzle/{data.Year}/{data.Day}", false);
+
+    }
+    private void NavigateViz(PuzzleDataAttribute data)
     {
         NavigationManager.NavigateTo($"{Settings.WEB_PATH_PREFIX}viz/{data.Year}/{data.Day}", false);
     }
