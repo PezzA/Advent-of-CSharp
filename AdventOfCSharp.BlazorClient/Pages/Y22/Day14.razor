@@ -1,0 +1,230 @@
+﻿@page "/viz/2022/14"
+@using System.Drawing;
+@using AdventOfCSharp.BlazorClient.Shared.Content
+@using AdventOfCSharp.BlazorClient.Shared.Puzzle
+@using AdventOfCSharp.Puzzles.Geometery;
+@using Blazor.Extensions.Canvas.Canvas2D;
+@using Blazor.Extensions;
+@using AdventOfCSharp.Puzzles.Year22.Day14;
+@using static AdventOfCSharp.Puzzles.Year22.Day14.Puzzle;
+@inject IJSRuntime JsRuntime;
+
+<PuzzleTitle MetaData="_metaData" />
+
+<MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary" OnClick="StartPartOne">Part One</MudButton>
+<MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary">Part Two</MudButton>
+
+<MudSlider @bind-Value="_checksPerFrame" Min="1" Max="80" Color="MudBlazor.Color.Info">Checks Per Update: @_checksPerFrame</MudSlider>
+<MudSlider @bind-Value="_updateTimer" Min="1" Max="60" Color="MudBlazor.Color.Warning">Updates Per Second: @_updateTimer</MudSlider>
+
+
+<div style="width:100%;" class="mt-2">
+    <BECanvas @ref="_canvas"></BECanvas>
+</div>
+
+
+<MudExpansionPanels Class="mt-2" Dense="true" DisableBorders="true">
+    <MudExpansionPanel Text="Notes">
+        <p></p>
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Properties" IsInitiallyExpanded="true">
+        @if (_canvasProperties != null)
+        {
+            <MudSimpleTable Hover="true" Dense="true" FixedHeader="false">
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Device Pixel Ratio</td>
+                        <td>@_canvasProperties.Window.DevicePixelRatio</td>
+                    </tr>
+                    <tr>
+                        <td>Window Inner Width</td>
+                        <td>@_canvasProperties.Window.InnerWidth</td>
+                    </tr>
+                    <tr>
+                        <td>Wanted Width</td>
+                        <td>@_canvasProperties.Width</td>
+                    </tr>
+                    <tr>
+                        <td>Wanted Height</td>
+                        <td>@_canvasProperties.Height</td>
+                    </tr>
+                    <tr>
+                        <td>Scaled Width</td>
+                        <td>@_canvasProperties.ScaledWidth</td>
+                    </tr>
+                    <tr>
+                        <td>Scaled Height</td>
+                        <td>@_canvasProperties.ScaledHeight</td>
+                    </tr>
+                    <tr>
+                        <td>Cell Width</td>
+                        <td>@_cellWidth</td>
+                    </tr>
+                    <tr>
+                        <td>Grid Width</td>
+                        <td>@_gridWidth</td>
+                    </tr>
+                    <tr>
+                        <td>Grid Height</td>
+                        <td>@_gridHeight</td>
+                    </tr>
+                    <tr>
+                        <td>Bounds</td>
+                        <td>@_tl : @_br</td>
+                    </tr>
+                </tbody>
+            </MudSimpleTable>
+        }
+    </MudExpansionPanel>
+</MudExpansionPanels>
+
+
+@code {
+
+    // Canvas
+    private Canvas2DContext? _context;
+    protected BECanvasComponent? _canvas;
+    private CanvasProperties? _canvasProperties;
+
+    public record WindowProperties(int InnerWidth, float DevicePixelRatio, int ParentWidth, int ParentHeight)
+    {
+    }
+
+    public record CanvasProperties(int Width, int Height, WindowProperties Window)
+    {
+        public int ScaledWidth => (int)Math.Ceiling((float)Width * Window.DevicePixelRatio);
+        public int ScaledHeight => (int)Math.Ceiling((float)Height * Window.DevicePixelRatio);
+    }
+
+    private int _checksPerFrame = 10;
+    private float _updateTimer = 60;
+
+    private int _cellWidth = 0;
+    private int _gridWidth = 0;
+    private int _gridHeight = 0;
+    private Point2D _tl;
+    private Point2D _br;
+    private Puzzle _puzzle = new Puzzle();
+    private PuzzleDataAttribute _metaData = PuzzleManager.GetPuzzleMetaData(2022, 14) ?? throw new NotImplementedException();
+
+    public const string TestData = @"498,4 -> 498,6 -> 496,6
+503,4 -> 502,4 -> 502,9 -> 494,9";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+
+            if (_canvas == null) return;
+
+            var windowProperties = await JsRuntime.InvokeAsync<WindowProperties>("getWindowDetails", _canvas);
+
+            _cells = _puzzle.CreateLayout(_puzzle.LoadData(_puzzle.PuzzleInput()));
+
+            _tl = _puzzle.GetTopLeft(_cells);
+            _br = _puzzle.GetBottomRight(_cells);
+
+            _gridWidth = (_br.X - _tl.X) + 4;
+            _gridHeight = _br.Y + 3;
+
+            // _cellWidth = windowProperties.ParentWidth / _gridWidth;
+            _cellWidth = 10;
+            var drawWidth = (_cellWidth * _gridWidth) + 1;
+            var drawHeight = (_cellWidth * _gridHeight) + 1;
+
+            _canvasProperties = new CanvasProperties(drawWidth, drawHeight, windowProperties);
+
+            var result = await JsRuntime.InvokeAsync<string>("setupCanvas",
+                _canvas,
+                _canvasProperties.Width,
+                _canvasProperties.Height,
+                _canvasProperties.ScaledWidth,
+                _canvasProperties.ScaledHeight);
+
+            StateHasChanged();
+            _context = await _canvas.CreateCanvas2DAsync();
+            await _context.ScaleAsync(_canvasProperties.Window.DevicePixelRatio, _canvasProperties.Window.DevicePixelRatio);
+
+            await _context.BeginBatchAsync();
+            await RenderMap();
+            await _context.EndBatchAsync();
+        }
+    }
+
+    private Dictionary<Point2D, CellContents> _cells = new Dictionary<Point2D, CellContents>();
+
+    public async Task StartPartOne()
+    {
+        await JsRuntime.InvokeAsync<object>("startAnimLoop", DotNetObjectReference.Create(this));
+        if (_canvas == null || _context == null) return;
+        _cells = _puzzle.CreateLayout(_puzzle.LoadData(_puzzle.PuzzleInput()));
+        await _context.BeginBatchAsync();
+        await RenderMap();
+        await _context.SetFillStyleAsync("beige");
+        await _context.EndBatchAsync();
+    }
+
+    private async ValueTask RenderMap()
+    {
+        if (_context == null || _canvasProperties == null) return;
+
+        await _context.SetStrokeStyleAsync("white");
+        await _context.ClearRectAsync(0, 0, _canvasProperties.Width, _canvasProperties.Height);
+        await _context.StrokeRectAsync(0, 0, _canvasProperties.Width, _canvasProperties.Height);
+
+        await _context.SetFillStyleAsync("grey");
+
+        foreach (var cell in _cells)
+        {
+            await _context.FillRectAsync(((cell.Key.X - _tl.X) + 2) * _cellWidth, (cell.Key.Y + 2) * _cellWidth, _cellWidth, _cellWidth);
+        }
+
+        await _context.SetFillStyleAsync("blue");
+        await _context.FillRectAsync(((500 - _tl.X) + 2) * _cellWidth, 2 * _cellWidth, _cellWidth, _cellWidth);
+    }
+
+    private float _lastTimeStamp;
+    private float _interval = 0;
+    [JSInvokable]
+    public async ValueTask GameLoop(float timeStamp)
+    {
+        if (_context == null || _canvas == null) return;
+
+        var delta = timeStamp - _lastTimeStamp;
+        _lastTimeStamp = timeStamp;
+
+
+        await _context.BeginBatchAsync();
+        _interval += delta;
+
+        if (_interval > (1000 / _updateTimer))
+        {
+            _interval = 0;
+
+            for (int i = 0; i < _checksPerFrame; i++)
+            {
+                var restingPlace = _puzzle.DropSand(_cells, new Point2D(500, 0));
+
+                if (restingPlace == new Point2D(0, 0))
+                {
+                    await JsRuntime.InvokeAsync<object>("stopAnimLoop");
+                }
+                else    
+                {
+                    _cells[restingPlace] = Puzzle.CellContents.Sand;
+                    await _context.FillRectAsync(((restingPlace.X - _tl.X) + 2) * _cellWidth, (restingPlace.Y + 2) * _cellWidth, _cellWidth, _cellWidth);
+                }
+            }
+        }
+
+       
+        await _context.EndBatchAsync();
+
+    }
+}
