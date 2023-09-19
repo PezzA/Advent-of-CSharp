@@ -73,7 +73,7 @@
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-nA++33QZmZ26i3x89Ec0jOVnnc7FtvnTK2u7RxnksZo=",
+      "hash": "sha256-60DQc4TpR079vJqFE1Qz/wL085ZUKqNOU0w/BR38h5o=",
       "url": "index.html"
     },
     {
@@ -105,15 +105,15 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-yBXEVJsHvDATcrH8bdpX6fcSHOgEwsva4PJGwXZ5VkM=",
+      "hash": "sha256-dYlMEzAew+E6svWnLAAGYqNMSQyaMpBMA4wMoq5MZww=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-PH6P6AgYLVfSd9KNHBI6JCIEQdSVKB\/wxGPhbLPo2S0=",
+      "hash": "sha256-26Pw4nsC6eaVg3AuGSS6UZDFKBoZaqsyw3oZ6EmSh\/s=",
       "url": "_framework\/AdventOfCSharp.BlazorClient.dll"
     },
     {
-      "hash": "sha256-Yy6HvM9QgGg9d\/eENa77kwyeGdyRUGbc3OVoYh+f1FQ=",
+      "hash": "sha256-iQycqYdzFmajWZavELgHN4\/Ix+q0fYnSdNyR0U6LoT4=",
       "url": "_framework\/AdventOfCSharp.Puzzles.dll"
     },
     {
@@ -393,5 +393,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "sBbu563A"
+  "version": "5\/N6Fh3Z"
 };

@@ -36,35 +36,37 @@
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/Blazor.Extensions.Canvas/blazor.extensions.canvas.js"></script>
     <script>
-        function gameLoop(timeStamp) {
-            window.requestAnimationFrame(gameLoop);
-            theInstance.invokeMethodAsync('GameLoop', timeStamp);
-        }
 
         let animationFrame = null;
 
-        window.startAnimLoop = (instance) => { 
-            if (animationFrame) return;
+        function gameLoop(timeStamp) {
+            if (animationFrame) {
+                window.requestAnimationFrame(gameLoop);
+            }
 
+            theInstance.invokeMethodAsync('GameLoop', timeStamp);
+        }
+
+        window.startAnimLoop = (instance) => {
             window.theInstance = instance;
             animationFrame = window.requestAnimationFrame(gameLoop);
         };
 
         window.stopAnimLoop = () => {
-            if (!animationFrame) return;
-            window.cancelAnimationFrame(animationFrame);
+            animationFrame = null;
         }
 
         window.getWindowDetails = (canvas) => {
             const canvasRef = canvas.canvasReference;
             const styles = getComputedStyle(canvasRef.parentNode);
-            console.log(styles);
+
             var returnData = {
                 parentWidth: parseInt(styles.getPropertyValue("width"), 10),
                 parentHeight: parseInt(styles.getPropertyValue("height"), 10),
                 innerWidth: window.innerWidth,
                 devicePixelRatio: window.devicePixelRatio
             }
+
             return returnData;
         }
 
