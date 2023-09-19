@@ -113,21 +113,20 @@ public partial class Puzzle : IBasicPuzzle
 
 
             var testDown = position.Add(new Point2D(0, 1));
-            var testLeft = position.Add(new Point2D(-1, 1));
-            var testRight = position.Add(new Point2D(1, 1));
-
             if (!cells.ContainsKey(testDown))
             {
                 position = testDown;
                 continue;
             }
 
+            var testLeft = position.Add(new Point2D(-1, 1));
             if (!cells.ContainsKey(testLeft))
             {
                 position = testLeft;
                 continue;
             }
 
+            var testRight = position.Add(new Point2D(1, 1));
             if (!cells.ContainsKey(testRight))
             {
                 position = testRight;
