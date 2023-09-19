@@ -105,7 +105,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-ikR01SZDooqngvuacrA4Fwg\/G6hafx6O1qXPYGjBH60=",
+      "hash": "sha256-SttIl+wdGYUQbYncbKYbIB2kLRTjMsnl5mTKUoMYbiU=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -113,7 +113,7 @@
       "url": "_framework\/AdventOfCSharp.BlazorClient.dll"
     },
     {
-      "hash": "sha256-K62HPVRA7b5E5tNAqEdf8RSpUTaFnWGCy6XBiqGw8cM=",
+      "hash": "sha256-5OUfNnIXGZUcADX3fu9VrNuHbQGLStDkkt7ohs0PXUI=",
       "url": "_framework\/AdventOfCSharp.Puzzles.dll"
     },
     {
@@ -393,5 +393,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "ijaPcwze"
+  "version": "grUkKgvy"
 };
