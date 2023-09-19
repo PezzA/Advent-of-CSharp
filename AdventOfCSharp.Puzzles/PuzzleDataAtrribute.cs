@@ -11,5 +11,6 @@
         public bool TakesAges { get; set; }
         public bool HasUnityVisualisation { get; set; }
         public bool HasHTML5Visualisation { get; set; }
+        public string ShowTheLove { get; set; }
     }
 }

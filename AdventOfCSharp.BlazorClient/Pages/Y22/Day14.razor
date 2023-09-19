@@ -9,15 +9,18 @@
 @using static AdventOfCSharp.Puzzles.Year22.Day14.Puzzle;
 @inject IJSRuntime JsRuntime;
 
+
 <PuzzleTitle MetaData="_metaData" />
 
+
 <MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary" OnClick="StartPartOne">Part One</MudButton>
-<MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary">Part Two</MudButton>
+<MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary" OnClick="StartPartTwo">Part Two</MudButton>
 
 <MudSlider @bind-Value="_checksPerFrame" Min="1" Max="80" Color="MudBlazor.Color.Info">Checks Per Update: @_checksPerFrame</MudSlider>
 <MudSlider @bind-Value="_updateTimer" Min="1" Max="60" Color="MudBlazor.Color.Warning">Updates Per Second: @_updateTimer</MudSlider>
 
 
+@_drops
 <div style="width:100%;" class="mt-2">
     <BECanvas @ref="_canvas"></BECanvas>
 </div>
@@ -131,7 +134,7 @@
             _br = _puzzle.GetBottomRight(_cells);
 
             _gridWidth = (_br.X - _tl.X) + 4;
-            _gridHeight = _br.Y + 3;
+            _gridHeight = _br.Y + 7;
 
             // _cellWidth = windowProperties.ParentWidth / _gridWidth;
             _cellWidth = 10;
@@ -159,16 +162,34 @@
 
     private Dictionary<Point2D, CellContents> _cells = new Dictionary<Point2D, CellContents>();
 
+
     public async Task StartPartOne()
     {
         await JsRuntime.InvokeAsync<object>("startAnimLoop", DotNetObjectReference.Create(this));
         if (_canvas == null || _context == null) return;
         _cells = _puzzle.CreateLayout(_puzzle.LoadData(_puzzle.PuzzleInput()));
+        _drops = 0;
+        _partTwo = false;
         await _context.BeginBatchAsync();
         await RenderMap();
         await _context.SetFillStyleAsync("beige");
         await _context.EndBatchAsync();
     }
+
+    private bool _partTwo = false;
+    public async Task StartPartTwo()
+    {
+        await JsRuntime.InvokeAsync<object>("startAnimLoop", DotNetObjectReference.Create(this));
+        if (_canvas == null || _context == null) return;
+        _cells = _puzzle.CreateLayout(_puzzle.LoadData(_puzzle.PuzzleInput()));
+        _drops = 0;
+        _partTwo = true;
+        await _context.BeginBatchAsync();
+        await RenderMap();
+        await _context.SetFillStyleAsync("beige");
+        await _context.EndBatchAsync();
+    }
+
 
     private async ValueTask RenderMap()
     {
@@ -191,6 +212,7 @@
 
     private float _lastTimeStamp;
     private float _interval = 0;
+    private float _drops = 0;
     [JSInvokable]
     public async ValueTask GameLoop(float timeStamp)
     {
@@ -209,14 +231,20 @@
 
             for (int i = 0; i < _checksPerFrame; i++)
             {
-                var restingPlace = _puzzle.DropSand(_cells, new Point2D(500, 0));
+                var restingPlace = _puzzle.DropSand(_cells, new Point2D(500, 0),_br, _partTwo);
 
-                if (restingPlace == new Point2D(0, 0))
+                var finished = !_partTwo
+                    ? restingPlace == new Point2D(0, 0)
+                    : restingPlace == new Point2D(500, 0);
+
+                if (finished)
                 {
                     await JsRuntime.InvokeAsync<object>("stopAnimLoop");
                 }
                 else    
                 {
+                    _drops++;
+                    StateHasChanged();
                     _cells[restingPlace] = Puzzle.CellContents.Sand;
                     await _context.FillRectAsync(((restingPlace.X - _tl.X) + 2) * _cellWidth, (restingPlace.Y + 2) * _cellWidth, _cellWidth, _cellWidth);
                 }

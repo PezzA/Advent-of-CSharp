@@ -5,6 +5,15 @@
 
 <p>Use the puzzle picker below to see the current status of puzzle solutions in this repo and run the final code.  Don't forget to checkout the visualisations as well!</p>
 
+<h3>Icons Key</h3>
+<p>
+    <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Html" Color="MudBlazor.Color.Tertiary"></MudIconButton> This puzzle has a HTML visualisation.  If you see this icon, click on me to see the puzzle run!
+</p>
+
+<p>
+    <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Favorite" Color="MudBlazor.Color.Error"></MudIconButton> I must confess, some puzzles I love more than others, click on the heart if you see it to find out what makes this puzzle so special!
+</p>
+
 <MudExpansionPanels MultiExpansion="false" Class="mt-2">
     @foreach (var y in Years)
     {
