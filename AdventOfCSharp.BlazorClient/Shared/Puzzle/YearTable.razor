@@ -1,4 +1,5 @@
 ﻿@inject NavigationManager NavigationManager
+@inject IDialogService DialogService
 
 <MudSimpleTable Dense="true" Hover="true" Bordered="false" Style="overflow-x: auto;">
     <tbody>
@@ -7,6 +8,10 @@
             <tr>
                 <td><MudRating SelectedValue="@puzzle.Stars" MaxValue="2" ReadOnly="true" Color="MudBlazor.Color.Warning" /></td>
                 <td>@puzzle.Title</td>
+                <td>@if (!string.IsNullOrEmpty(puzzle.ShowTheLove)) {
+                        <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Favorite" Color="MudBlazor.Color.Error" OnClick="@((e) => OpenDialog(puzzle.ShowTheLove))"></MudIconButton>
+                }
+                </td>
                 <td>
                     <MudButton Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.PlayArrow" Color="MudBlazor.Color.Success" OnClick="@((e) => NavigateRun(puzzle))">Run</MudButton>
                 </td>
@@ -27,6 +32,12 @@
 
     [Parameter]
     public IEnumerable<PuzzleDataAttribute> PuzzleData { get; set; } = new List<Puzzles.PuzzleDataAttribute>();
+
+    private void OpenDialog(string text)
+    {
+        var options = new DialogOptions { CloseOnEscapeKey = true };
+        DialogService.Show<ShowTheLove>(text, options);
+    }
 
     private void NavigateRun(PuzzleDataAttribute data)
     {
