@@ -3,7 +3,9 @@ using AdventOfCSharp.Puzzles.Parsing;
 
 namespace AdventOfCSharp.Puzzles.Year22.Day14;
 
+
 [PuzzleData(Year = 2022, Day = 14, Title = "Regolith Reservoir", Stars =2, HasHTML5Visualisation = true, ShowTheLove ="This was the first puzzle where I got the solution from the visualisation, before solving via the CLI.")]
+
 public partial class Puzzle : IBasicPuzzle
 {
 
@@ -50,6 +52,7 @@ public partial class Puzzle : IBasicPuzzle
         var y = 0;
 
         foreach (var cell in cells.Where(c => c.Value == CellContents.Rock))
+
         {
             if (cell.Key.X > x) x = cell.Key.X;
             if (cell.Key.Y > y) y = cell.Key.Y;
@@ -98,13 +101,16 @@ public partial class Puzzle : IBasicPuzzle
         while (true)
         {
             if (!hasFloor && position.Y > br.Y)
+
             {
                 return new Point2D(0, 0);
             }
 
+
             if (hasFloor && position.Y == br.Y + 1) {
                 return position;
             }
+
 
             var testDown = position.Add(new Point2D(0, 1));
             var testLeft = position.Add(new Point2D(-1, 1));
@@ -154,7 +160,7 @@ public partial class Puzzle : IBasicPuzzle
     {
         return new string[] { Constants.NOT_YET_IMPLEMENTED };
     }
-    // not 26768 (too high), 26460 //too low
+
     public string[] PartTwo(string input)
     {
         return new string[] { Constants.NOT_YET_IMPLEMENTED };
