@@ -7,8 +7,8 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "AdventOfCSharp.BlazorClient.dll": "sha256-2apwr9Tf9WeQyCyeY2kiz5iWQUpgzN2EyBXEP7oJH7I=",
-      "AdventOfCSharp.Puzzles.dll": "sha256-5OUfNnIXGZUcADX3fu9VrNuHbQGLStDkkt7ohs0PXUI=",
+      "AdventOfCSharp.BlazorClient.dll": "sha256-lKNAiinUWToLv0Bl6xYj2tJRVVECjhCWwucZdehuWP8=",
+      "AdventOfCSharp.Puzzles.dll": "sha256-IA8GWZN4n2AbZtVqyD9Atsaai4hfIMs1C33OnvEIxu8=",
       "Blazor-ApexCharts.dll": "sha256-rMN5tyQ9xrvHiSq9hXaDEBwNJEeEfryywxzC0BBdlDk=",
       "Blazor.Extensions.Canvas.dll": "sha256-W20pWMXQg2yTv0w4VJhrjCJKNRYe3PiUU9S76XipNe8=",
       "Blazor.Extensions.Canvas.JS.dll": "sha256-TrW1uaSNUS+J8xVJErxIf1NQuNC7kn50KzMYYF\/4JtM=",
