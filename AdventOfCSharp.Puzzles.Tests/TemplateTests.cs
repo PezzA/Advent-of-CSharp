@@ -4,16 +4,19 @@ namespace AdventOfCSharp.Puzzles.Tests;
 
 public class Tests
 {
-    private readonly Puzzle puzzle;
+    private readonly Puzzle _puzzle = new();
 
-    public Tests()
-    {
-        puzzle = new Puzzle();
-    }
+    private static readonly string TestData = string.Empty;
 
     [Fact]
-    public void TestPartOne() => Assert.Equal(Constants.NOT_YET_IMPLEMENTED, puzzle.PartOne(puzzle.PuzzleInput())[0]);
+    public void TestPartOne_TestData() => Assert.Equal(Constants.NOT_YET_IMPLEMENTED, _puzzle.PartOne(TestData)[0]);
 
     [Fact]
-    public void TestPartTwo() => Assert.Equal(Constants.NOT_YET_IMPLEMENTED, puzzle.PartTwo(puzzle.PuzzleInput())[0]);
+    public void TestPartTwo_TestData() => Assert.Equal(Constants.NOT_YET_IMPLEMENTED, _puzzle.PartTwo(TestData)[0]);
+        
+    [Fact]
+    public void TestPartOne() => Assert.Equal(Constants.NOT_YET_IMPLEMENTED, _puzzle.PartOne(_puzzle.PuzzleInput())[0]);
+
+    [Fact]
+    public void TestPartTwo() => Assert.Equal(Constants.NOT_YET_IMPLEMENTED, _puzzle.PartTwo(_puzzle.PuzzleInput())[0]);
 }
