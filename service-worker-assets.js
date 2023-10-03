@@ -105,15 +105,15 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-VpOAhCjoRgspuwzizwMML5SmcrJiGkFSWzdaqg+lZ54=",
+      "hash": "sha256-0hAMyL8f+nsFqrDHd2VoMjFVywEIFtOf\/MppllFV82E=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-lKNAiinUWToLv0Bl6xYj2tJRVVECjhCWwucZdehuWP8=",
+      "hash": "sha256-irfvDvVlSISxOoleVmmbCpqiGRusa9omF9upDIYi7SU=",
       "url": "_framework\/AdventOfCSharp.BlazorClient.dll"
     },
     {
-      "hash": "sha256-IA8GWZN4n2AbZtVqyD9Atsaai4hfIMs1C33OnvEIxu8=",
+      "hash": "sha256-X0Ino2MDbxfBnT7WtML2apKuLTADRuq+VC+7IbuOHko=",
       "url": "_framework\/AdventOfCSharp.Puzzles.dll"
     },
     {
@@ -393,5 +393,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "AubyvdJX"
+  "version": "HmH2W6Zu"
 };
