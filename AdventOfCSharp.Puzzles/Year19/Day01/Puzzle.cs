@@ -2,7 +2,7 @@
 
 namespace AdventOfCSharp.Puzzles.Year19.Day01;
 
-[PuzzleData(Year = 2019, Day = 01, Title = "The Tyranny of the Rocket Equation", Stars = 0, ImplementedElsewhere = false)]
+[PuzzleData(Year = 2019, Day = 01, Title = "The Tyranny of the Rocket Equation", Stars = 2, ImplementedElsewhere = false)]
 public partial class Puzzle : IBasicPuzzle
 {
     public static List<int> LoadData(string input)
