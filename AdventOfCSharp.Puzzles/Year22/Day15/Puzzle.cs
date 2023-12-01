@@ -3,7 +3,7 @@ using AdventOfCSharp.Puzzles.Geometery;
 using AdventOfCSharp.Puzzles.Parsing;
 namespace AdventOfCSharp.Puzzles.Year22.Day15;
 
-[PuzzleData(Year = 22, Day = 15, Title = "Beacon Exclusion Zone", Stars = 0, ImplementedElsewhere = false)]
+[PuzzleData(Year = 2022, Day = 15, Title = "Beacon Exclusion Zone", Stars = 0, ImplementedElsewhere = false)]
         
 public partial class Puzzle : IBasicPuzzle
 {
@@ -35,12 +35,12 @@ public partial class Puzzle : IBasicPuzzle
 
     public string[] PartOne(string input)
     {
-        return new string[] { Constants.NOT_YET_IMPLEMENTED };
+        return new[] { Constants.NOT_YET_IMPLEMENTED };
     }
 
     public string[] PartTwo(string input)
     {
-        return new string[] { Constants.NOT_YET_IMPLEMENTED };
+        return new[] { Constants.NOT_YET_IMPLEMENTED };
     }
     
     [GeneratedRegex(@"Sensor at x=(?<locx>-?\d*), y=(?<locy>-?\d*): closest beacon is at x=(?<beax>-?\d*), y=(?<beay>-?\d*)")]
