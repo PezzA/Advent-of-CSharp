@@ -6,11 +6,11 @@ public partial class Puzzle : IBasicPuzzle
 
     public string[] PartOne(string input)
     {
-        return new string[] { Constants.NOT_YET_IMPLEMENTED };
+        return new[] { Constants.NOT_YET_IMPLEMENTED };
     }
 
     public string[] PartTwo(string input)
     {
-        return new string[] { Constants.NOT_YET_IMPLEMENTED };
+        return new[] { Constants.NOT_YET_IMPLEMENTED };
     }
 }
