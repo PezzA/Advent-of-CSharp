@@ -2,7 +2,7 @@
 
 namespace AdventOfCSharp.Puzzles.Year20.Day01;
 
-[PuzzleData(Year = 2020, Day = 01, Title = "Report Repair", Stars = 0, ImplementedElsewhere = false)]
+[PuzzleData(Year = 2020, Day = 1, Title = "Report Repair", Stars = 2, ImplementedElsewhere = false)]
 public partial class Puzzle : IBasicPuzzle
 {
     public static List<int> LoadData(string input)

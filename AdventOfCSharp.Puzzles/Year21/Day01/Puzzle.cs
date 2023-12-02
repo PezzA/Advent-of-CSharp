@@ -2,7 +2,7 @@
 
 namespace AdventOfCSharp.Puzzles.Year21.Day01;
 
-[PuzzleData(Year = 2021, Day = 1, Title = "Sonar Sweep", Stars = 0, ImplementedElsewhere = false)]
+[PuzzleData(Year = 2021, Day = 1, Title = "Sonar Sweep", Stars = 2, ImplementedElsewhere = false)]
 public partial class Puzzle : IBasicPuzzle
 {
     
