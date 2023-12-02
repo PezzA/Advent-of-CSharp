@@ -18,15 +18,13 @@
     @foreach (var y in Years)
     {
         var totalSolved = Puzzles.Where(p => p.Year == y).Sum(p => p.Stars);
-        var totalSolvedPercent = totalSolved / 50;
         var totalVizzed = Puzzles.Where(p => p.Year == y && (p.HasUnityVisualisation || p.HasHTML5Visualisation)).Count();
-        var totalVizzedPercent = totalVizzed / 25;
         <MudExpansionPanel DisableGutters="true">
             <TitleContent>
                 <div class="d-flex">
                     <MudText Class="mt-1">@y.ToString()</MudText>
-                    <MudText Class="d-flex ml-auto">Stars: @totalSolvedPercent.ToString()<MudIcon Icon="@Icons.Material.Filled.Star" Color="MudBlazor.Color.Warning" /></MudText>
-                    <MudText Class="d-flex ml-auto">Visualisations: @totalVizzedPercent.ToString()<MudIcon Icon="@Icons.Material.Filled.Star" Color="MudBlazor.Color.Secondary" /></MudText>
+                    <MudText Class="d-flex ml-auto">Stars: @totalSolved<MudIcon Icon="@Icons.Material.Filled.Star" Color="MudBlazor.Color.Warning" /></MudText>
+                    <MudText Class="d-flex ml-auto">Visualisations: @totalVizzed<MudIcon Icon="@Icons.Material.Filled.Star" Color="MudBlazor.Color.Secondary" /></MudText>
                 </div>
                 <MudProgressLinear Color="MudBlazor.Color.Warning"  Size="MudBlazor.Size.Large" Value="@(totalSolved * 2)" />
                 <MudProgressLinear Color="MudBlazor.Color.Success"  Size="MudBlazor.Size.Large" Value="@(totalVizzed * 4)" />
@@ -45,11 +43,9 @@
     protected override void OnInitialized()
     {
         Puzzles = PuzzleManager.GetAllBasicPuzzles()
-          .Where(p => p.Year != 0 && p.Day != 0)
-          .OrderBy(p => p.Year)
-          .ThenBy(p => p.Day);
+            .Where(p => p.Year != 0 && p.Day != 0);
 
-        Years = Puzzles.Select(p => p.Year).Distinct().Order();
+        Years = Puzzles.Select(p => p.Year).Distinct().OrderDescending();
     }
 }
 

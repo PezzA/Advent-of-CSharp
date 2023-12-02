@@ -2,7 +2,7 @@
 
 namespace AdventOfCSharp.Puzzles.Year23.Day02;
 
-[PuzzleData(Year = 2023, Day = 02, Title = "Cube Conundrum", Stars = 0, ImplementedElsewhere = false)]
+[PuzzleData(Year = 2023, Day = 02, Title = "Cube Conundrum", Stars = 2, ImplementedElsewhere = false)]
 public partial class Puzzle : IBasicPuzzle
 {
     public record Draw(int Blue, int Red, int Green)
