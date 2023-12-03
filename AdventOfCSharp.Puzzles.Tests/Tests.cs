@@ -1,5 +1,4 @@
 ﻿using AdventOfCSharp.Puzzles.Year0.Day0;
-using Puzzle = AdventOfCSharp.Puzzles.Year22.Day16.Puzzle;
 
 namespace AdventOfCSharp.Puzzles.Tests;
 
@@ -8,6 +7,11 @@ public class Tests
     private readonly Puzzle _puzzle = new();
 
     private static readonly string TestData = string.Empty;
+
+    [Fact]
+    public void Loads_Data()
+    {
+    }
 
     [Fact]
     public void TestPartOne_TestData() => Assert.Equal(Constants.NOT_YET_IMPLEMENTED, _puzzle.PartOne(TestData)[0]);
