@@ -105,7 +105,7 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-erdtbbIlPmEqJV1sbeEZ5qfiF0s9T1Jiqw+K8J47Zjo=",
+      "hash": "sha256-+9WknOZKux5lDXZKKl+AyNaEYDm8Wetrt1e25PVqu\/I=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -117,11 +117,11 @@
       "url": "_framework\/dotnet.native.wasm"
     },
     {
-      "hash": "sha256-hQ5qA\/2FHlmwxJNxhcmiDaN4Z+1CZ0oSKRLBmlOM\/YM=",
+      "hash": "sha256-xIhMg79sShpEZ0I0MHymMc7ehenuIhx84lm0RcrsP8E=",
       "url": "_framework\/AdventOfCSharp.BlazorClient.wasm"
     },
     {
-      "hash": "sha256-pj5sG2r5UyzPyzHCIf2GndyGoL7yqKyqmiLXT5JXvoA=",
+      "hash": "sha256-FugVqEKwYYausadNtc191IEpif2ebAVYGxt11QWOxHY=",
       "url": "_framework\/AdventOfCSharp.Puzzles.wasm"
     },
     {
@@ -417,5 +417,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "1JDDNZvj"
+  "version": "olLeh3tF"
 };
