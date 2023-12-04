@@ -2,7 +2,7 @@
 @implements IDisposable
 @inject NavigationManager NavigationManager
 
-<div id="unity-container" class="unity-desktop @(Visible ? "unity-on" : "unity-off")" >
+<div id="unity-container" class="unity-desktop" >
     <canvas id="unity-canvas"></canvas>
     <div id="unity-loading-bar">
         <div id="unity-logo"></div>
@@ -19,8 +19,6 @@
 </div>
 
 @code {
-    [Parameter]
-    public bool Visible { get; set; } = false;
 
     protected override Task OnAfterRenderAsync(bool firstRender)
     {
