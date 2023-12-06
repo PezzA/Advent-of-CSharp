@@ -1,6 +1,6 @@
-﻿using AdventOfCSharp.Puzzles.Year0.Day0;
+﻿using Puzzle = AdventOfCSharp.Puzzles.Year0.Day0.Puzzle;
 
-namespace AdventOfCSharp.Puzzles.Tests;
+namespace AdventOfCSharp.Puzzles.Tests.Year0.Day0;
 
 public class Tests
 {
