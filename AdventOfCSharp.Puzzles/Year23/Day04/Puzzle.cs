@@ -3,7 +3,7 @@ using AdventOfCSharp.Puzzles.Parsing;
 
 namespace AdventOfCSharp.Puzzles.Year23.Day04;
 
-[PuzzleData(Year = 2023, Day = 4, Title = "Scratchcards", Stars = 0, ImplementedElsewhere = false)]
+[PuzzleData(Year = 2023, Day = 4, Title = "Scratchcards", Stars = 2, ImplementedElsewhere = false)]
 public partial class Puzzle : IBasicPuzzle
 {
     public record Card(int Id, int[] WinningNumbers, int[] CardNumbers)
