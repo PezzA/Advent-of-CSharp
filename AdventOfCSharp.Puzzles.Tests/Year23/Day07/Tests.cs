@@ -1,4 +1,4 @@
-﻿using Puzzle = AdventOfCSharp.Puzzles.Year23.Day07.Puzzle;
+﻿using AdventOfCSharp.Puzzles.Year23.Day07;
 using static AdventOfCSharp.Puzzles.Year23.Day07.Puzzle;
 
 namespace AdventOfCSharp.Puzzles.Tests.Year23.Day07;
