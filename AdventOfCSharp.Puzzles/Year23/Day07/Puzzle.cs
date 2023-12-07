@@ -18,7 +18,7 @@ public partial class Puzzle : IBasicPuzzle
 
     public record Hand(string Cards, int Bid)
     {
-        public HandType GetHandType()
+        public HandType GetHandType(bool addJokers = false)
         {
             if (Cards.Length != 5)
             {
@@ -31,6 +31,28 @@ public partial class Puzzle : IBasicPuzzle
             {
                 charDict.TryAdd(handChar, 0);
                 charDict[handChar] += 1;
+            }
+
+            if (addJokers && charDict.Count != 1)
+            {
+                charDict.TryGetValue('J', out var numJokers);
+                charDict.Remove('J');
+
+                if (numJokers > 0)
+                {
+                    var max = 0;
+                    var mostChar = ' ';
+                    foreach (var (key, value) in charDict)
+                    {
+                        if (value > max)
+                        {
+                            max = value;
+                            mostChar = key;
+                        }
+                    }
+
+                    charDict[mostChar] += numJokers;
+                }
             }
 
             switch (charDict.Count)
@@ -201,6 +223,22 @@ public partial class Puzzle : IBasicPuzzle
 
     public string[] PartTwo(string input)
     {
-        return new[] { Constants.NOT_YET_IMPLEMENTED };
+
+
+        var hands = LoadData(input);
+
+        var sortedHands = hands
+            .OrderBy(x => x.GetHandType(true))
+            .ThenBy(x => x, new PartTwoHandSorter())
+            .ToList();
+
+        var total = 0;
+
+        foreach (var (value, i) in sortedHands.Select((value, i) => (value, i)))
+        {
+            total += (i + 1) * value.Bid;
+        }
+
+        return new[] { total.ToString() };
     }
 }
