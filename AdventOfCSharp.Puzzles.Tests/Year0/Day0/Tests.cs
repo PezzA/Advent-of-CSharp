@@ -1,4 +1,5 @@
-﻿using Puzzle = AdventOfCSharp.Puzzles.Year0.Day0.Puzzle;
+﻿using AdventOfCSharp.Puzzles.Year0.Day0;
+using static AdventOfCSharp.Puzzles.Year0.Day0.Puzzle;
 
 namespace AdventOfCSharp.Puzzles.Tests.Year0.Day0;
 
@@ -6,7 +7,10 @@ public class Tests
 {
     private readonly Puzzle _puzzle = new();
 
-    private static readonly string TestData = string.Empty;
+    private const string TestData
+        = """
+          <insert test data here>
+          """;
 
     [Fact]
     public void Loads_Data()
