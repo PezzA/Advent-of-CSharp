@@ -1,5 +1,5 @@
-﻿using System.Diagnostics;
-using Puzzle = AdventOfCSharp.Puzzles.Year23.Day07.Puzzle;
+﻿using Puzzle = AdventOfCSharp.Puzzles.Year23.Day07.Puzzle;
+using static AdventOfCSharp.Puzzles.Year23.Day07.Puzzle;
 
 namespace AdventOfCSharp.Puzzles.Tests.Year23.Day07;
 
@@ -19,7 +19,7 @@ public class Tests
     [Fact]
     public void Loads_Data()
     {
-        var hands = Puzzle.LoadData(TestData);
+        var hands = LoadData(TestData);
 
         Assert.Equivalent(new Puzzle.Hand("32T3K", 765), hands[0]);
         Assert.Equivalent(new Puzzle.Hand("QQQJA", 483), hands[^1]);
