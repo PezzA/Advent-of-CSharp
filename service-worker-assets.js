@@ -121,7 +121,7 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-nJjBvjMng+G0MDR2Hy18f4UwDkwnwx39jeMwa0JfFoM=",
+      "hash": "sha256-dvgWmeXPDaFfNI7AXjAdIGUc+cCPsgjPpFjCYsHKw54=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -129,15 +129,15 @@
       "url": "_framework\/dotnet.native.8.0.0.4qhnp48lq7.js"
     },
     {
-      "hash": "sha256-GuvnFN4XQafjcKUqymgU1VxcTKlmxU2wF1S\/OXbqv48=",
+      "hash": "sha256-fJCgePrbTI0m3wFevdMRqAd+ZN0h3MeI8kr1rh27xZM=",
       "url": "_framework\/dotnet.native.wasm"
     },
     {
-      "hash": "sha256-6DwUcuhT6k1+GREYG\/b7sgw4RlPqEpCBoF+L0DN7hys=",
+      "hash": "sha256-HUZoEKjOmkctObFuxgpsYtJF1MhS0c2eNZx0JD689k0=",
       "url": "_framework\/AdventOfCSharp.BlazorClient.wasm"
     },
     {
-      "hash": "sha256-rZ7yLtKECcPIsRbbeKKGrr\/FPoMrDd38Id1SmYEP4DQ=",
+      "hash": "sha256-whb9aa+xwyMZSiQTC7tEdQlxo7bS95VZUbjv9N9pKvc=",
       "url": "_framework\/AdventOfCSharp.Puzzles.wasm"
     },
     {
@@ -293,7 +293,7 @@
       "url": "_framework\/System.Linq.Queryable.wasm"
     },
     {
-      "hash": "sha256-sfvZk9QLLMoIB+BJnO9dJGKCYlXPW+qeqAfi9sEuEZA=",
+      "hash": "sha256-4A2uzu3n7nWQrz1VakmJyJvy35FJgBdCRKYhVasOA0U=",
       "url": "_framework\/System.Linq.wasm"
     },
     {
@@ -313,7 +313,7 @@
       "url": "_framework\/System.ObjectModel.wasm"
     },
     {
-      "hash": "sha256-3A3wbnRcpo9CblHGMm9iL6enKYl2GmBGaighSXV1nkM=",
+      "hash": "sha256-dZj6IUUfqizTAAGdjXQfLY6cTD37CLGXylC2SOs3BMw=",
       "url": "_framework\/System.Private.CoreLib.wasm"
     },
     {
@@ -361,11 +361,11 @@
       "url": "_framework\/System.Runtime.Serialization.Primitives.wasm"
     },
     {
-      "hash": "sha256-uq9+mOUdPuv+pYRftgQdbGQa9w8TYyP\/zx4P08\/YEFs=",
+      "hash": "sha256-3f8pZNNsKHBIpRGIfrmCNUP9m9Jl7+KFiIPkp33Wmiw=",
       "url": "_framework\/System.Runtime.wasm"
     },
     {
-      "hash": "sha256-7Q+p0eGT43dZxPcehiRnRG5YemkuTi234DK\/eneC7S4=",
+      "hash": "sha256-n7cTUmr\/NHOVknhNa\/NexpibH\/Fz6ZrxX0bYzSq6Fp4=",
       "url": "_framework\/System.Security.Cryptography.wasm"
     },
     {
@@ -433,5 +433,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "Ko1xXc2M"
+  "version": "Y7aucuVU"
 };
