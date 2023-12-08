@@ -2,7 +2,7 @@
 
 namespace AdventOfCSharp.Puzzles.Year23.Day07;
 
-[PuzzleData(Year = 2023, Day = 7, Title = "Camel Cards", Stars = 1, ImplementedElsewhere = false)]
+[PuzzleData(Year = 2023, Day = 7, Title = "Camel Cards", Stars = 2, ImplementedElsewhere = false)]
 public partial class Puzzle : IBasicPuzzle
 {
     public enum HandType
