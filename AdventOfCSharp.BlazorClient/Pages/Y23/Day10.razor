@@ -1,0 +1,303 @@
+﻿@page "/viz/2023/10"
+@using Blazor.Extensions.Canvas.Canvas2D;
+@using Blazor.Extensions;
+@using AdventOfCSharp.Puzzles.Geometery
+@using System.Diagnostics
+@using AdventOfCSharp.Puzzles.Year23.Day10;
+@inject IJSRuntime JsRuntime;
+<PuzzleTitle MetaData="Model.MetaData"/>
+<img @ref="_bar" hidden id="_bar" @onload="AssetsLoaded" src="assets/images/pipes/spritemap.png"/>
+
+<MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary" OnClick="StartPartOne">Part One</MudButton>
+<MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary">Part Two</MudButton>
+
+<div style="width:100%;" class="mt-2">
+    <BECanvas @ref="_canvas"></BECanvas>
+</div>
+
+<MudSlider @bind-Value="_checksPerFrame" Min="1" Max="80" Color="MudBlazor.Color.Info">Checks Per Update: @_checksPerFrame</MudSlider>
+<MudSlider @bind-Value="_updateTimer" Min="1" Max="60" Color="MudBlazor.Color.Warning">Updates Per Second: @_updateTimer</MudSlider>
+
+
+<MudExpansionPanels Class="mt-2" Dense="true" DisableBorders="true">
+    <MudExpansionPanel Text="Notes">
+        <p>
+            <ul>
+                <li>First visualisation of 2023!</li>
+            </ul>
+            <ul>
+                <li>First use of a spritesheet!</li>
+            </ul>
+        </p>
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Properties" IsInitiallyExpanded="true">
+        @if (_canvasProperties != null)
+        {
+            <MudSimpleTable Hover="true" Dense="true" FixedHeader="false">
+                <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Device Pixel Ratio</td>
+                    <td>@_canvasProperties.Window.DevicePixelRatio</td>
+                </tr>
+                <tr>
+                    <td>Window Inner Width</td>
+                    <td>@_canvasProperties.Window.InnerWidth</td>
+                </tr>
+                <tr>
+                    <td>Wanted Width</td>
+                    <td>@_canvasProperties.Width</td>
+                </tr>
+                <tr>
+                    <td>Wanted Height</td>
+                    <td>@_canvasProperties.Height</td>
+                </tr>
+                <tr>
+                    <td>Scaled Width</td>
+                    <td>@_canvasProperties.ScaledWidth</td>
+                </tr>
+                <tr>
+                    <td>Scaled Height</td>
+                    <td>@_canvasProperties.ScaledHeight</td>
+                </tr>
+                <tr>
+                    <td>Cell Width</td> <td>@_cellWidth</td>
+                </tr>
+                <tr>
+                    <td>Model GridWidth</td> <td>@_model.GridWidth</td>
+                </tr>
+                <tr>
+                    <td>Model GridHeight</td> <td>@_model.GridHeight</td>
+                </tr>
+                </tbody>
+            </MudSimpleTable>
+        }
+    </MudExpansionPanel>
+</MudExpansionPanels>
+
+
+@code {
+    ElementReference _bar;
+
+    // Canvas
+    private Canvas2DContext? _context;
+    private BECanvasComponent? _canvas;
+
+    private int _checksPerFrame = 10;
+    private float _updateTimer = 60;
+
+    private int _cellWidth = 0;
+
+    private readonly Y23D10.Model _model = new();
+
+    // View Logic
+    private float _lastTimeStamp;
+
+    private CanvasProperties? _canvasProperties;
+
+    public record WindowProperties(int InnerWidth, float DevicePixelRatio, int ParentWidth, int ParentHeight)
+    {
+    }
+
+    public record CanvasProperties(int Width, int Height, WindowProperties Window)
+    {
+        public int ScaledWidth => (int)Math.Ceiling(Width * Window.DevicePixelRatio);
+        public int ScaledHeight => (int)Math.Ceiling(Height * Window.DevicePixelRatio);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            if (_canvas == null) return;
+
+            var windowProperties = await JsRuntime.InvokeAsync<WindowProperties>("getWindowDetails", _canvas);
+
+            _cellWidth = 7;
+            var drawWidth = _cellWidth * _model.GridWidth + 1;
+            var drawHeight = _cellWidth * _model.GridHeight + 1;
+
+            _canvasProperties = new CanvasProperties(drawWidth, drawHeight, windowProperties);
+
+            var result = await JsRuntime.InvokeAsync<string>("setupCanvas",
+                _canvas,
+                _canvasProperties.Width,
+                _canvasProperties.Height,
+                _canvasProperties.ScaledWidth,
+                _canvasProperties.ScaledHeight);
+
+            _context = await _canvas.CreateCanvas2DAsync();
+            await _context.ScaleAsync(_canvasProperties.Window.DevicePixelRatio, _canvasProperties.Window.DevicePixelRatio);
+        }
+    }
+
+    private async ValueTask RenderMap(Y23D10.Model model, int cellWidth, Canvas2DContext context)
+    {
+        await context.BeginBatchAsync();
+
+        await context.SetFillStyleAsync("black");
+        await context.FillRectAsync(
+            0,
+            0,
+            model.GridWidth * cellWidth + 1,
+            model.GridHeight * cellWidth + 1);
+
+        var grid = model.Grid;
+        await context.SetFillStyleAsync("green");
+
+        var start = model.Start;
+        for (var x = 0; x < model.GridWidth; x++)
+        {
+            for (var y = 0; y < model.GridWidth; y++)
+            {
+                var currPos = new Point2D(x, y);
+                if (!Puzzle.IsConnected(currPos, grid)) continue;
+
+                switch (grid[y][x])
+                {
+                    case 'S':
+                        await DrawCell(currPos, "red", cellWidth, context);
+                        continue;
+                    case '|':
+                        await context.DrawImageAsync(_bar, 7, 0, cellWidth, cellWidth, currPos.X * cellWidth, currPos.Y * cellWidth, cellWidth, cellWidth);
+                        continue;
+                    case '-':
+                        await context.DrawImageAsync(_bar, 0, 0, cellWidth, cellWidth, currPos.X * cellWidth, currPos.Y * cellWidth, cellWidth, cellWidth);
+                        continue;
+                    case 'L':
+                        await context.DrawImageAsync(_bar, 35, 0, cellWidth, cellWidth, currPos.X * cellWidth, currPos.Y * cellWidth, cellWidth, cellWidth);
+                        continue;
+                    case 'F':
+                        await context.DrawImageAsync(_bar, 21, 0, cellWidth, cellWidth, currPos.X * cellWidth, currPos.Y * cellWidth, cellWidth, cellWidth);
+                        continue;
+                    case '7':
+                        await context.DrawImageAsync(_bar, 14, 0, cellWidth, cellWidth, currPos.X * cellWidth, currPos.Y * cellWidth, cellWidth, cellWidth);
+                        continue;
+                    case 'J':
+                        await context.DrawImageAsync(_bar, 28, 0, cellWidth, cellWidth, currPos.X * cellWidth, currPos.Y * cellWidth, cellWidth, cellWidth);
+                        continue;
+                }
+            }
+        }
+
+        await context.EndBatchAsync();
+    }
+
+    private static async ValueTask DrawCell(Point2D pos, string? color, int cellWidth, Canvas2DContext context, bool border = false)
+    {
+        if (!string.IsNullOrEmpty(color))
+        {
+            await context.SetFillStyleAsync(color);
+        }
+
+        if (border)
+        {
+            await context.FillRectAsync(pos.X * cellWidth + 1, pos.Y * cellWidth + 1, cellWidth - 1, cellWidth - 1);
+            return;
+        }
+
+        await context.FillRectAsync(pos.X * cellWidth, pos.Y * cellWidth, cellWidth, cellWidth);
+    }
+
+    private bool _runningPartOne;
+    private float _partOneIncrement;
+
+    private void Update(float delta, float timeStamp)
+    {
+        if (_canvas == null || _context == null) return;
+
+        if (!_runningPartOne) return;
+
+        _partOneIncrement += delta;
+
+        if (_partOneIncrement > (1000 / _updateTimer))
+        {
+            if (_model.Update())
+            {
+                Console.WriteLine($"Finished at {timeStamp}");
+                _runningPartOne = false;
+            }
+
+            _partOneIncrement = 0;
+        }
+    }
+
+
+    async ValueTask Render(float delta, string drawState, Canvas2DContext context, BECanvasComponent canvas)
+    {
+        await context.BeginBatchAsync();
+        await context.SetFillStyleAsync("#00FFFF");
+
+        var drawArray = _model.Queue.ToArray();
+
+        foreach (var point in drawArray)
+        {
+            switch (_model.Grid[point.Y][point.X])
+            {
+                case '|':
+                    await context.DrawImageAsync(_bar, 7, 7, _cellWidth, _cellWidth, point.X * _cellWidth, point.Y * _cellWidth, _cellWidth, _cellWidth);
+                    continue;
+                case '-':
+                    await context.DrawImageAsync(_bar, 0, 7, _cellWidth, _cellWidth, point.X * _cellWidth, point.Y * _cellWidth, _cellWidth, _cellWidth);
+                    continue;
+                case 'L':
+                    await context.DrawImageAsync(_bar, 35, 7, _cellWidth, _cellWidth, point.X * _cellWidth, point.Y * _cellWidth, _cellWidth, _cellWidth);
+                    continue;
+                case 'F':
+                    await context.DrawImageAsync(_bar, 21, 7, _cellWidth, _cellWidth, point.X * _cellWidth, point.Y * _cellWidth, _cellWidth, _cellWidth);
+                    continue;
+                case '7':
+                    await context.DrawImageAsync(_bar, 14, 7, _cellWidth, _cellWidth, point.X * _cellWidth, point.Y * _cellWidth, _cellWidth, _cellWidth);
+                    continue;
+                case 'J':
+                    await context.DrawImageAsync(_bar, 28, 7, _cellWidth, _cellWidth, point.X * _cellWidth, point.Y * _cellWidth, _cellWidth, _cellWidth);
+                    continue;
+            }
+
+            await DrawCell(point, null, _cellWidth, context);
+        }
+
+        await context.EndBatchAsync();
+    }
+
+    [JSInvokable]
+    public ValueTask GameLoop(float timeStamp)
+    {
+        if (_context == null || _canvas == null) return ValueTask.CompletedTask;
+
+        var delta = timeStamp - _lastTimeStamp;
+        _lastTimeStamp = timeStamp;
+
+        Update(delta, timeStamp);
+
+        return Render(delta, "", _context, _canvas);
+    }
+
+    private async Task StartPartOne(MouseEventArgs obj)
+    {
+        await JsRuntime.InvokeAsync
+            <object>("startAnimLoop", DotNetObjectReference.Create(this));
+        _model.Init();
+        if (_canvas == null || _context == null) return;
+        _runningPartOne = true;
+    }
+
+    private async Task AssetsLoaded()
+    {
+        if (_context == null) return;
+
+        var sw = Stopwatch.StartNew();
+
+        await RenderMap(_model, _cellWidth, _context);
+
+        sw.Stop();
+
+        Console.WriteLine(sw.ToString());
+    }
+
+}

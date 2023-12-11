@@ -49,7 +49,7 @@
             { Ordinal.North, new Point2D(0, -1) },
             { Ordinal.East, new Point2D(1, 0) },
             { Ordinal.South, new Point2D(0, 1) },
-            { Ordinal.West, new Point2D(-0, 0) },
+            { Ordinal.West, new Point2D(-1, 0) },
         };
     }
 }
