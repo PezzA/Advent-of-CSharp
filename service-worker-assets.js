@@ -77,6 +77,34 @@
       "url": "assets\/css\/main.css"
     },
     {
+      "hash": "sha256-0qxYekb7wr2WuSmZQ+TKyXSIs6djgmweYQ1NoKSBTR4=",
+      "url": "assets\/images\/pipes\/-.png"
+    },
+    {
+      "hash": "sha256-\/u2URCWbw3TNkqwW7DaZmG0hIFxzOmHnOyu+U8QOgkU=",
+      "url": "assets\/images\/pipes\/7.png"
+    },
+    {
+      "hash": "sha256-JBkzHixACfkk\/ODCd5tuKTXht2g28fFo6y3btgvhXxY=",
+      "url": "assets\/images\/pipes\/bar.png"
+    },
+    {
+      "hash": "sha256-aSdrsiwCddni\/L9MH6jDKHD+kUPTUe5MjH\/c\/WrfowY=",
+      "url": "assets\/images\/pipes\/F.png"
+    },
+    {
+      "hash": "sha256-tYxvllZ5FOees45MVYMlN++qqN67MYpST6Ma72lr1kM=",
+      "url": "assets\/images\/pipes\/J.png"
+    },
+    {
+      "hash": "sha256-RULr75fZ6biReCEUmahHywUdFjx\/TF9JMjLhQ2vzZeI=",
+      "url": "assets\/images\/pipes\/L.png"
+    },
+    {
+      "hash": "sha256-78GFL+Qttgbwn2GiQgPCrDnPEl0rJ1YHNfA1G8R\/EgU=",
+      "url": "assets\/images\/pipes\/spritemap.png"
+    },
+    {
       "hash": "sha256-4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg=",
       "url": "favicon.png"
     },
@@ -121,7 +149,7 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-prZKwsD4Fmf6YUY1nouz5LLchUo7EZVbBVjSEpnTPf0=",
+      "hash": "sha256-WpXu4hvGMoxmaS5Hr8L3z06yT8tENQv2Mws8dNLqto4=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -129,15 +157,15 @@
       "url": "_framework\/dotnet.native.8.0.0.4qhnp48lq7.js"
     },
     {
-      "hash": "sha256-fJCgePrbTI0m3wFevdMRqAd+ZN0h3MeI8kr1rh27xZM=",
+      "hash": "sha256-L2VxueoIdh07iLv4MiylRYRc32YdhCyFhQWxOOWPT8c=",
       "url": "_framework\/dotnet.native.wasm"
     },
     {
-      "hash": "sha256-l\/\/UfofH4dCDpPs7LwWONJwMVgVComH07DbuYQ0ltxU=",
+      "hash": "sha256-3+xHODdK2KbjczhA7jeZCvzhnjfO4j\/hHvVDkwcVsz4=",
       "url": "_framework\/AdventOfCSharp.BlazorClient.wasm"
     },
     {
-      "hash": "sha256-81hNHbSofeq8IIzUz3L0KC1mm0kJHemVrgwSYms6HIE=",
+      "hash": "sha256-Y5h3DYvY7JpmAs5jel+IlE1a8kb1wJ0aqhnwglBlqJQ=",
       "url": "_framework\/AdventOfCSharp.Puzzles.wasm"
     },
     {
@@ -153,7 +181,7 @@
       "url": "_framework\/Blazor.Extensions.Canvas.wasm"
     },
     {
-      "hash": "sha256-gcLAqXg2Xx+tNIewQ6kRD\/AxafCy79w0Q0971oUpAuk=",
+      "hash": "sha256-62\/N078xA4u\/GW0c8FYj7czJl0szFqdBDkz\/hgNaYpM=",
       "url": "_framework\/Microsoft.AspNetCore.Components.wasm"
     },
     {
@@ -313,7 +341,7 @@
       "url": "_framework\/System.ObjectModel.wasm"
     },
     {
-      "hash": "sha256-dZj6IUUfqizTAAGdjXQfLY6cTD37CLGXylC2SOs3BMw=",
+      "hash": "sha256-rWGy22xSy4O8eil9nRIBM2Fgt9VHcwHGdaFfnshF000=",
       "url": "_framework\/System.Private.CoreLib.wasm"
     },
     {
@@ -433,5 +461,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "3dfuOOnr"
+  "version": "YN33Rsda"
 };
