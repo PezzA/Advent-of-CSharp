@@ -48,8 +48,8 @@ public partial class Puzzle : IBasicPuzzle
     {
         if (grid[point.Y][point.X] == '|')
         {
-            if (GetCell(point.TermNorth, grid) is '-' or 'J' or 'L' or null ||
-                GetCell(point.TermSouth, grid) is '-' or '7' or 'F' or null)
+            if (GetCell(point.TermNorth(), grid) is '-' or 'J' or 'L' or null ||
+                GetCell(point.TermSouth(), grid) is '-' or '7' or 'F' or null)
             {
                 return false;
             }
@@ -57,8 +57,8 @@ public partial class Puzzle : IBasicPuzzle
 
         if (grid[point.Y][point.X] == '-')
         {
-            if (GetCell(point.TermEast, grid) is '|' or 'F' or 'L' or null ||
-                GetCell(point.TermWest, grid) is '|' or '7' or 'J' or null)
+            if (GetCell(point.TermEast(), grid) is '|' or 'F' or 'L' or null ||
+                GetCell(point.TermWest(), grid) is '|' or '7' or 'J' or null)
             {
                 return false;
             }
