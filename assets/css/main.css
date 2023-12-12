@@ -1,14 +1,8 @@
 ﻿
 /* Center content */
 body {
-    display: flex;
     background-color: #0f0f23;
-    font-family: Source Code Pro
-}
-
-.vert {
-    vertical-align: middle;
-    display: inline-block;
+    font-family: Source Code Pro, serif;
 }
 
 p {
@@ -16,7 +10,6 @@ p {
 }
 /* Loading animation */
 .loader {
-    border-top-color: #009900;
     -webkit-animation: spin 1s linear infinite;
     animation: spin 1s linear infinite;
     border: 4px solid #f3f3f3;
@@ -69,7 +62,6 @@ p {
     }
 
 .loading-dialog {
-    display: flex;
     align-items: center;
     justify-content: center;
     position: fixed;
