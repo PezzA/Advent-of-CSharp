@@ -20,6 +20,11 @@
                     {
                         <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Html" Color="MudBlazor.Color.Tertiary" OnClick="@((e) => NavigateViz(puzzle))">Run HTML Visualisation</MudIconButton>
                     }
+                    @if (puzzle.HasUnityVisualisation)
+                    {
+                        <img width="32px" src="_content/unity/unity-logo-dark.png"/>
+                        <MudButton Color="MudBlazor.Color.Tertiary" OnClick="@((e) => NavigateViz(puzzle))">Run Unity Visualisation</MudButton>
+                    }
                 </td>
             </tr>
         }
@@ -41,11 +46,13 @@
 
     private void NavigateRun(PuzzleDataAttribute data)
     {
-        NavigationManager.NavigateTo($"{Settings.WEB_PATH_PREFIX}puzzle/{data.Year}/{data.Day}", false);
+        var day = data.Day.ToString("D2");
+        NavigationManager.NavigateTo($"{Settings.WEB_PATH_PREFIX}puzzle/{data.Year}/{day}", false);
 
     }
     private void NavigateViz(PuzzleDataAttribute data)
     {
-        NavigationManager.NavigateTo($"{Settings.WEB_PATH_PREFIX}viz/{data.Year}/{data.Day}", false);
+        var day = data.Day.ToString("D2");
+        NavigationManager.NavigateTo($"{Settings.WEB_PATH_PREFIX}viz/{data.Year}/{day}", false);
     }
 }

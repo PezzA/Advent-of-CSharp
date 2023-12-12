@@ -11,12 +11,12 @@ namespace AdventOfCSharp.Puzzles.Geometery
         /// <summary>
         /// TermNorth gets the 'Terminal Screen' north.  Which is descending y as 0 is the top row
         /// </summary>
-        public Point2D TermNorth() => new(X, Y - 1);
+        public Point2D TermNorth() => this with { Y = Y - 1 };
 
-        public Point2D TermSouth() => new(X, Y + 1);
+        public Point2D TermSouth() => this with { Y = Y + 1 };
         
-        public Point2D TermEast() => new(X + 1, Y);
+        public Point2D TermEast() => this with { X = X + 1 };
         
-        public Point2D TermWest() => new(X - 1, Y);
+        public Point2D TermWest() => this with { X = X - 1 };
     }
 }

@@ -1,23 +1,17 @@
 ﻿@page "/viz/2023/10"
 @using Blazor.Extensions.Canvas.Canvas2D;
-@using Blazor.Extensions;
 @using AdventOfCSharp.Puzzles.Geometery
-@using System.Diagnostics
+@using AdventOfCSharp.BlazorClient.Shared.Canvas
 @using AdventOfCSharp.Puzzles.Year23.Day10;
-@inject IJSRuntime JsRuntime;
+
 <PuzzleTitle MetaData="Model.MetaData"/>
+
 <img @ref="_bar" hidden id="_bar" @onload="AssetsLoaded" src="assets/images/pipes/spritemap.png"/>
 
 <MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary" OnClick="StartPartOne">Part One</MudButton>
 <MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary">Part Two</MudButton>
 
-<div style="width:100%;" class="mt-2">
-    <BECanvas @ref="_canvas"></BECanvas>
-</div>
-
-<MudSlider @bind-Value="_checksPerFrame" Min="1" Max="80" Color="MudBlazor.Color.Info">Checks Per Update: @_checksPerFrame</MudSlider>
-<MudSlider @bind-Value="_updateTimer" Min="1" Max="60" Color="MudBlazor.Color.Warning">Updates Per Second: @_updateTimer</MudSlider>
-
+<AdventCanvas @ref="_adventCanvas" Update="@Update" Render="@Render"></AdventCanvas>
 
 <MudExpansionPanels Class="mt-2" Dense="true" DisableBorders="true">
     <MudExpansionPanel Text="Notes">
@@ -30,109 +24,25 @@
             </ul>
         </p>
     </MudExpansionPanel>
-    <MudExpansionPanel Text="Properties" IsInitiallyExpanded="true">
-        @if (_canvasProperties != null)
-        {
-            <MudSimpleTable Hover="true" Dense="true" FixedHeader="false">
-                <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Value</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Device Pixel Ratio</td>
-                    <td>@_canvasProperties.Window.DevicePixelRatio</td>
-                </tr>
-                <tr>
-                    <td>Window Inner Width</td>
-                    <td>@_canvasProperties.Window.InnerWidth</td>
-                </tr>
-                <tr>
-                    <td>Wanted Width</td>
-                    <td>@_canvasProperties.Width</td>
-                </tr>
-                <tr>
-                    <td>Wanted Height</td>
-                    <td>@_canvasProperties.Height</td>
-                </tr>
-                <tr>
-                    <td>Scaled Width</td>
-                    <td>@_canvasProperties.ScaledWidth</td>
-                </tr>
-                <tr>
-                    <td>Scaled Height</td>
-                    <td>@_canvasProperties.ScaledHeight</td>
-                </tr>
-                <tr>
-                    <td>Cell Width</td> <td>@_cellWidth</td>
-                </tr>
-                <tr>
-                    <td>Model GridWidth</td> <td>@_model.GridWidth</td>
-                </tr>
-                <tr>
-                    <td>Model GridHeight</td> <td>@_model.GridHeight</td>
-                </tr>
-                </tbody>
-            </MudSimpleTable>
-        }
-    </MudExpansionPanel>
 </MudExpansionPanels>
 
-
 @code {
-    ElementReference _bar;
-
-    // Canvas
-    private Canvas2DContext? _context;
-    private BECanvasComponent? _canvas;
-
-    private int _checksPerFrame = 10;
-    private float _updateTimer = 60;
-
-    private int _cellWidth = 0;
-
+    private ElementReference _bar;
+    private int _cellWidth;
     private readonly Y23D10.Model _model = new();
-
-    // View Logic
-    private float _lastTimeStamp;
-
-    private CanvasProperties? _canvasProperties;
-
-    public record WindowProperties(int InnerWidth, float DevicePixelRatio, int ParentWidth, int ParentHeight)
-    {
-    }
-
-    public record CanvasProperties(int Width, int Height, WindowProperties Window)
-    {
-        public int ScaledWidth => (int)Math.Ceiling(Width * Window.DevicePixelRatio);
-        public int ScaledHeight => (int)Math.Ceiling(Height * Window.DevicePixelRatio);
-    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            if (_canvas == null) return;
-
-            var windowProperties = await JsRuntime.InvokeAsync<WindowProperties>("getWindowDetails", _canvas);
+            if (_adventCanvas == null) return;
 
             _cellWidth = 7;
+
             var drawWidth = _cellWidth * _model.GridWidth + 1;
             var drawHeight = _cellWidth * _model.GridHeight + 1;
 
-            _canvasProperties = new CanvasProperties(drawWidth, drawHeight, windowProperties);
-
-            var result = await JsRuntime.InvokeAsync<string>("setupCanvas",
-                _canvas,
-                _canvasProperties.Width,
-                _canvasProperties.Height,
-                _canvasProperties.ScaledWidth,
-                _canvasProperties.ScaledHeight);
-
-            _context = await _canvas.CreateCanvas2DAsync();
-            await _context.ScaleAsync(_canvasProperties.Window.DevicePixelRatio, _canvasProperties.Window.DevicePixelRatio);
+            await _adventCanvas.InitCanvas(drawWidth, drawHeight);
         }
     }
 
@@ -204,31 +114,20 @@
         await context.FillRectAsync(pos.X * cellWidth, pos.Y * cellWidth, cellWidth, cellWidth);
     }
 
-    private bool _runningPartOne;
-    private float _partOneIncrement;
+    private AdventCanvas? _adventCanvas;
 
-    private void Update(float delta, float timeStamp)
+    private async Task Update(float delta, float timeStamp, int checksPerFrame)
     {
-        if (_canvas == null || _context == null) return;
-
-        if (!_runningPartOne) return;
-
-        _partOneIncrement += delta;
-
-        if (_partOneIncrement > (1000 / _updateTimer))
+        if (_adventCanvas == null) return;
+            
+        if (_model.Update())
         {
-            if (_model.Update())
-            {
-                Console.WriteLine($"Finished at {timeStamp}");
-                _runningPartOne = false;
-            }
-
-            _partOneIncrement = 0;
+            Console.WriteLine($"Finished at {timeStamp}");
+            await _adventCanvas.StartAnimLoop();
         }
     }
 
-
-    async ValueTask Render(float delta, string drawState, Canvas2DContext context, BECanvasComponent canvas)
+    async Task Render(Canvas2DContext context)
     {
         await context.BeginBatchAsync();
         await context.SetFillStyleAsync("#00FFFF");
@@ -265,39 +164,17 @@
         await context.EndBatchAsync();
     }
 
-    [JSInvokable]
-    public ValueTask GameLoop(float timeStamp)
-    {
-        if (_context == null || _canvas == null) return ValueTask.CompletedTask;
-
-        var delta = timeStamp - _lastTimeStamp;
-        _lastTimeStamp = timeStamp;
-
-        Update(delta, timeStamp);
-
-        return Render(delta, "", _context, _canvas);
-    }
-
     private async Task StartPartOne(MouseEventArgs obj)
     {
-        await JsRuntime.InvokeAsync
-            <object>("startAnimLoop", DotNetObjectReference.Create(this));
+        if (_adventCanvas == null) return;
+
         _model.Init();
-        if (_canvas == null || _context == null) return;
-        _runningPartOne = true;
+        await _adventCanvas.StartAnimLoop();
     }
 
     private async Task AssetsLoaded()
     {
-        if (_context == null) return;
-
-        var sw = Stopwatch.StartNew();
-
-        await RenderMap(_model, _cellWidth, _context);
-
-        sw.Stop();
-
-        Console.WriteLine(sw.ToString());
+        if (_adventCanvas?.Context == null) return;
+        await RenderMap(_model, _cellWidth, _adventCanvas.Context);
     }
-
 }

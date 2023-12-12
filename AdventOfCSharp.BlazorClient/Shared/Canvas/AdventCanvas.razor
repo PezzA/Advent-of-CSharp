@@ -1,0 +1,113 @@
+@using Blazor.Extensions.Canvas.Canvas2D
+@using Blazor.Extensions
+@using System.Threading.Tasks.Dataflow
+@inject IJSRuntime JsRuntime;
+
+<MudSlider @bind-Value="_checksPerFrame" Min="1" Max="80" Color="MudBlazor.Color.Info">Checks Per Update: @_checksPerFrame</MudSlider>
+<MudSlider @bind-Value="_updateTimer" Min="1" Max="60" Color="MudBlazor.Color.Warning">Updates Per Second: @_updateTimer</MudSlider>
+
+<div style="width:100%;" class="mt-2">
+    <BECanvas @ref="_canvas"></BECanvas>
+</div>
+
+<MudExpansionPanel Text="Properties" IsInitiallyExpanded="true">
+    @if (_canvasProperties != null)
+    {
+        <MudSimpleTable Hover="true" Dense="true" FixedHeader="false">
+            <thead>
+            <tr>
+                <th>Property</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Device Pixel Ratio</td>
+                <td>@_canvasProperties.Window.DevicePixelRatio</td>
+            </tr>
+            <tr>
+                <td>Window Inner Width</td>
+                <td>@_canvasProperties.Window.InnerWidth</td>
+            </tr>
+            <tr>
+                <td>Wanted Width</td>
+                <td>@_canvasProperties.Width</td>
+            </tr>
+            <tr>
+                <td>Wanted Height</td>
+                <td>@_canvasProperties.Height</td>
+            </tr>
+            <tr>
+                <td>Scaled Width</td>
+                <td>@_canvasProperties.ScaledWidth</td>
+            </tr>
+            <tr>
+                <td>Scaled Height</td>
+                <td>@_canvasProperties.ScaledHeight</td>
+            </tr>
+            </tbody>
+        </MudSimpleTable>
+    }
+</MudExpansionPanel>
+
+@code {
+    [Parameter] public required Func<float, float, int, Task> Update { get; set; }
+
+    [Parameter] public required Func<Canvas2DContext, Task> Render { get; set; }
+
+    public Canvas2DContext? Context;
+
+    private int _checksPerFrame = 10;
+    private float _updateTimer = 60;
+    private float _tickIncrement = 0;
+    private CanvasProperties? _canvasProperties;
+    private BECanvasComponent? _canvas;
+    private float _lastTimeStamp;
+
+    public async Task InitCanvas(int drawWidth, int drawHeight)
+    {
+        var windowProperties = await JsRuntime.InvokeAsync<WindowProperties>("getWindowDetails", _canvas);
+
+        _canvasProperties = new CanvasProperties(drawWidth, drawHeight, windowProperties);
+
+        await JsRuntime.InvokeAsync<string>("setupCanvas",
+            _canvas,
+            _canvasProperties.Width,
+            _canvasProperties.Height,
+            _canvasProperties.ScaledWidth,
+            _canvasProperties.ScaledHeight);
+
+        Context = await _canvas.CreateCanvas2DAsync();
+        await Context.ScaleAsync(_canvasProperties.Window.DevicePixelRatio, _canvasProperties.Window.DevicePixelRatio);
+    }
+
+    public async Task StartAnimLoop()
+    {
+        await JsRuntime.InvokeAsync
+            <object>("startAnimLoop", DotNetObjectReference.Create(this));
+    }
+
+    public async Task StopAnimLoop()
+    {
+        await JsRuntime.InvokeAsync
+            <object>("stopAnimLoop", DotNetObjectReference.Create(this));
+    }
+
+    [JSInvokable]
+    public async Task GameLoop(float timeStamp)
+    {
+        if (Context == null) return;
+
+        var delta = timeStamp - _lastTimeStamp;
+        _lastTimeStamp = timeStamp;
+        _tickIncrement += delta;
+
+        if (_tickIncrement > (1000 / _updateTimer))
+        {
+            await Update.Invoke(delta, timeStamp, _checksPerFrame);
+        }
+
+        await Render.Invoke(Context);
+    }
+
+}
