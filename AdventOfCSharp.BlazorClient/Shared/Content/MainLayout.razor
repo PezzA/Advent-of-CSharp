@@ -6,7 +6,7 @@
 <MudSnackbarProvider />
 
 <MudLayout >
-    <MudAppBar Elevation="1" Fixed="true">
+    <MudAppBar Fixed="false"> 
         <MudLink Href="@HomeUrl" Color="MudBlazor.Color.Secondary"><MudIcon Size="MudBlazor.Size.Large" Icon="@Icons.Material.Filled.Home" Style="color:white" /></MudLink>
         <MudText Typo="Typo.h5" Class="ml-3" Color="MudBlazor.Color.Secondary">Advent of Blazor</MudText>
         <MudSpacer />
@@ -15,8 +15,8 @@
         <MudLink Href="https://github.com/PezzA/Advent-of-CSharp" Color="MudBlazor.Color.Secondary" Class="ml-2">github</MudLink>
     </MudAppBar>
 
-    <MudMainContent>
-        <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Fixed="false">
+    <MudMainContent Class="pt-1">
+        <MudContainer Fixed="false">
             @Body
         </MudContainer>
     </MudMainContent>
