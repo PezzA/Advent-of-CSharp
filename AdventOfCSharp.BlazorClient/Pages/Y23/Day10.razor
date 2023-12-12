@@ -1,4 +1,4 @@
-﻿@page "/viz/2023/10"
+@page "/viz/2023/10"
 @using Blazor.Extensions.Canvas.Canvas2D;
 @using AdventOfCSharp.Puzzles.Geometery
 @using AdventOfCSharp.BlazorClient.Shared.Canvas
@@ -30,6 +30,7 @@
     private ElementReference _bar;
     private int _cellWidth;
     private readonly Y23D10.Model _model = new();
+    private AdventCanvas? _adventCanvas;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -113,8 +114,6 @@
 
         await context.FillRectAsync(pos.X * cellWidth, pos.Y * cellWidth, cellWidth, cellWidth);
     }
-
-    private AdventCanvas? _adventCanvas;
 
     private async Task Update(float delta, float timeStamp, int checksPerFrame)
     {
