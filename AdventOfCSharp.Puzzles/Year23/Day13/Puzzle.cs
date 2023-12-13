@@ -1,5 +1,4 @@
-﻿using System.Data;
-using AdventOfCSharp.Puzzles.Parsing;
+﻿using AdventOfCSharp.Puzzles.Parsing;
 
 namespace AdventOfCSharp.Puzzles.Year23.Day13;
 
@@ -69,7 +68,7 @@ public partial class Puzzle : IBasicPuzzle
             {
                 if (DoesHorizontallyReflect(row - 1, input))
                 {
-                    return new ReflectAnalysis(ReflectionType.Horizontal, row - 1);
+                    return new ReflectAnalysis(ReflectionType.Horizontal, row);
                 }
             }
         }
@@ -96,7 +95,7 @@ public partial class Puzzle : IBasicPuzzle
 
         while (true)
         {
-            if (index + reflectIndex + 1 >= pattern.Length ||
+            if (index + reflectIndex + 1 >= pattern[0].Length ||
                 index - reflectIndex < 0)
             {
                 break;
@@ -119,9 +118,9 @@ public partial class Puzzle : IBasicPuzzle
         {
             if (ColumnsEqual(col, col - 1, input))
             {
-                if (DoesVerticallyReflect(col, input))
+                if (DoesVerticallyReflect(col-1 , input))
                 {
-                    return new ReflectAnalysis(ReflectionType.Horizontal, col - 1);
+                    return new ReflectAnalysis(ReflectionType.Vertical, col);
                 }
             }
         }
