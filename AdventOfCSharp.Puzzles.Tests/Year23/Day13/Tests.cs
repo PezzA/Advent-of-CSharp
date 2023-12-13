@@ -55,5 +55,5 @@ public class Tests
     public void TestPartOne() => Assert.Equal("3604", _puzzle.PartOne(_puzzle.PuzzleInput())[0]);
 
     [Fact]
-    public void TestPartTwo() => Assert.Equal(Constants.NOT_YET_IMPLEMENTED, _puzzle.PartTwo(_puzzle.PuzzleInput())[0]);
+    public void TestPartTwo() => Assert.Equal("35915", _puzzle.PartTwo(_puzzle.PuzzleInput())[0]);
 }
