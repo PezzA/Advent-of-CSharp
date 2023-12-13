@@ -52,7 +52,7 @@ public class Tests
     public void TestPartTwo_TestData() => Assert.Equal("400", _puzzle.PartTwo(TestData)[0]);
         
     [Fact]
-    public void TestPartOne() => Assert.Equal("3604", _puzzle.PartOne(_puzzle.PuzzleInput())[0]);
+    public void TestPartOne() => Assert.Equal("36041", _puzzle.PartOne(_puzzle.PuzzleInput())[0]);
 
     [Fact]
     public void TestPartTwo() => Assert.Equal("35915", _puzzle.PartTwo(_puzzle.PuzzleInput())[0]);
