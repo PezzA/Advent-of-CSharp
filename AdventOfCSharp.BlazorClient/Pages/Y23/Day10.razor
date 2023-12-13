@@ -11,7 +11,7 @@
 <MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary" OnClick="StartPartOne">Part One</MudButton>
 <MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary">Part Two</MudButton>
 
-<AdventCanvas @ref="_adventCanvas" Update="@Update" Render="@Render"></AdventCanvas>
+<AdventCanvas @ref="_adventCanvas" Update="@Update" Render="@Render" Model="@_model"></AdventCanvas>
 
 <MudExpansionPanels Class="mt-2" Dense="true" DisableBorders="true">
     <MudExpansionPanel Text="Notes">
@@ -28,9 +28,8 @@
 
 @code {
     private ElementReference _bar;
-    private int _cellWidth;
     private readonly Y23D10.Model _model = new();
-    private AdventCanvas? _adventCanvas;
+    private AdventCanvas<Y23D10.Model>? _adventCanvas;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -38,16 +37,15 @@
         {
             if (_adventCanvas == null) return;
 
-            _cellWidth = 7;
 
-            var drawWidth = _cellWidth * _model.GridWidth + 1;
-            var drawHeight = _cellWidth * _model.GridHeight + 1;
+            var drawWidth = _model.CellWidth * _model.GridWidth + 1;
+            var drawHeight = _model.CellWidth * _model.GridHeight + 1;
 
             await _adventCanvas.InitCanvas(drawWidth, drawHeight);
         }
     }
 
-    private async ValueTask RenderMap(Y23D10.Model model, int cellWidth, Canvas2DContext context)
+    private async Task RenderMap(Y23D10.Model model, Canvas2DContext context)
     {
         await context.BeginBatchAsync();
 
@@ -55,8 +53,8 @@
         await context.FillRectAsync(
             0,
             0,
-            model.GridWidth * cellWidth + 1,
-            model.GridHeight * cellWidth + 1);
+            model.GridWidth * model.CellWidth + 1,
+            model.GridHeight * model.CellWidth + 1);
 
         var grid = model.Grid;
         await context.SetFillStyleAsync("green");
@@ -72,25 +70,25 @@
                 switch (grid[y][x])
                 {
                     case 'S':
-                        await DrawCell(currPos, "red", cellWidth, context);
+                        await DrawCell(currPos, "red", model.CellWidth, context);
                         continue;
                     case '|':
-                        await context.DrawImageAsync(_bar, 7, 0, cellWidth, cellWidth, currPos.X * cellWidth, currPos.Y * cellWidth, cellWidth, cellWidth);
+                        await context.DrawImageAsync(_bar, 7, 0, model.CellWidth, model.CellWidth, currPos.X * model.CellWidth, currPos.Y * model.CellWidth, model.CellWidth, model.CellWidth);
                         continue;
                     case '-':
-                        await context.DrawImageAsync(_bar, 0, 0, cellWidth, cellWidth, currPos.X * cellWidth, currPos.Y * cellWidth, cellWidth, cellWidth);
+                        await context.DrawImageAsync(_bar, 0, 0, model.CellWidth, model.CellWidth, currPos.X * model.CellWidth, currPos.Y * model.CellWidth, model.CellWidth, model.CellWidth);
                         continue;
                     case 'L':
-                        await context.DrawImageAsync(_bar, 35, 0, cellWidth, cellWidth, currPos.X * cellWidth, currPos.Y * cellWidth, cellWidth, cellWidth);
+                        await context.DrawImageAsync(_bar, 35, 0, model.CellWidth, model.CellWidth, currPos.X * model.CellWidth, currPos.Y * model.CellWidth, model.CellWidth, model.CellWidth);
                         continue;
                     case 'F':
-                        await context.DrawImageAsync(_bar, 21, 0, cellWidth, cellWidth, currPos.X * cellWidth, currPos.Y * cellWidth, cellWidth, cellWidth);
+                        await context.DrawImageAsync(_bar, 21, 0, model.CellWidth, model.CellWidth, currPos.X * model.CellWidth, currPos.Y * model.CellWidth, model.CellWidth, model.CellWidth);
                         continue;
                     case '7':
-                        await context.DrawImageAsync(_bar, 14, 0, cellWidth, cellWidth, currPos.X * cellWidth, currPos.Y * cellWidth, cellWidth, cellWidth);
+                        await context.DrawImageAsync(_bar, 14, 0, model.CellWidth, model.CellWidth, currPos.X * model.CellWidth, currPos.Y * model.CellWidth, model.CellWidth, model.CellWidth);
                         continue;
                     case 'J':
-                        await context.DrawImageAsync(_bar, 28, 0, cellWidth, cellWidth, currPos.X * cellWidth, currPos.Y * cellWidth, cellWidth, cellWidth);
+                        await context.DrawImageAsync(_bar, 28, 0, model.CellWidth, model.CellWidth, currPos.X * model.CellWidth, currPos.Y * model.CellWidth, model.CellWidth, model.CellWidth);
                         continue;
                 }
             }
@@ -126,7 +124,7 @@
         }
     }
 
-    async Task Render(Canvas2DContext context)
+    async Task Render(Y23D10.Model model, Canvas2DContext context)
     {
         await context.BeginBatchAsync();
         await context.SetFillStyleAsync("#00FFFF");
@@ -135,29 +133,29 @@
 
         foreach (var point in drawArray)
         {
-            switch (_model.Grid[point.Y][point.X])
+            switch (model.Grid[point.Y][point.X])
             {
                 case '|':
-                    await context.DrawImageAsync(_bar, 7, 7, _cellWidth, _cellWidth, point.X * _cellWidth, point.Y * _cellWidth, _cellWidth, _cellWidth);
+                    await context.DrawImageAsync(_bar, 7, 7, model.CellWidth, model.CellWidth, point.X * model.CellWidth, point.Y * model.CellWidth, model.CellWidth, model.CellWidth);
                     continue;
                 case '-':
-                    await context.DrawImageAsync(_bar, 0, 7, _cellWidth, _cellWidth, point.X * _cellWidth, point.Y * _cellWidth, _cellWidth, _cellWidth);
+                    await context.DrawImageAsync(_bar, 0, 7, model.CellWidth, model.CellWidth, point.X * model.CellWidth, point.Y * model.CellWidth, model.CellWidth, model.CellWidth);
                     continue;
                 case 'L':
-                    await context.DrawImageAsync(_bar, 35, 7, _cellWidth, _cellWidth, point.X * _cellWidth, point.Y * _cellWidth, _cellWidth, _cellWidth);
+                    await context.DrawImageAsync(_bar, 35, 7, model.CellWidth, model.CellWidth, point.X * model.CellWidth, point.Y * model.CellWidth, model.CellWidth, model.CellWidth);
                     continue;
                 case 'F':
-                    await context.DrawImageAsync(_bar, 21, 7, _cellWidth, _cellWidth, point.X * _cellWidth, point.Y * _cellWidth, _cellWidth, _cellWidth);
+                    await context.DrawImageAsync(_bar, 21, 7, model.CellWidth, model.CellWidth, point.X * model.CellWidth, point.Y * model.CellWidth, model.CellWidth, model.CellWidth);
                     continue;
                 case '7':
-                    await context.DrawImageAsync(_bar, 14, 7, _cellWidth, _cellWidth, point.X * _cellWidth, point.Y * _cellWidth, _cellWidth, _cellWidth);
+                    await context.DrawImageAsync(_bar, 14, 7, model.CellWidth, model.CellWidth, point.X * model.CellWidth, point.Y * model.CellWidth, model.CellWidth, model.CellWidth);
                     continue;
                 case 'J':
-                    await context.DrawImageAsync(_bar, 28, 7, _cellWidth, _cellWidth, point.X * _cellWidth, point.Y * _cellWidth, _cellWidth, _cellWidth);
+                    await context.DrawImageAsync(_bar, 28, 7, model.CellWidth, model.CellWidth, point.X * model.CellWidth, point.Y * model.CellWidth, model.CellWidth, model.CellWidth);
                     continue;
             }
 
-            await DrawCell(point, null, _cellWidth, context);
+            await DrawCell(point, null, model.CellWidth, context);
         }
 
         await context.EndBatchAsync();
@@ -173,7 +171,8 @@
 
     private async Task AssetsLoaded()
     {
-        if (_adventCanvas?.Context == null) return;
-        await RenderMap(_model, _cellWidth, _adventCanvas.Context);
+        if (_adventCanvas == null) return;
+
+        await _adventCanvas.AdHocRender(RenderMap);
     }
 }
