@@ -2,7 +2,7 @@
 
 namespace AdventOfCSharp.Puzzles.Year23.Day13;
 
-[PuzzleData(Year = 2023, Day = 13, Title = "Point of Incidence", Stars = 0, ImplementedElsewhere = false)]
+[PuzzleData(Year = 2023, Day = 13, Title = "Point of Incidence", Stars = 2, ImplementedElsewhere = false)]
 public partial class Puzzle : IBasicPuzzle
 {
     public enum ReflectionType
@@ -43,30 +43,38 @@ public partial class Puzzle : IBasicPuzzle
 
         while (true)
         {
-            if (index + reflectIndex + 1 >= pattern.Length ||
-                index - reflectIndex < 0)
-            {
-                break;
-            }
-
             if (!pattern[index - reflectIndex].SequenceEqual(pattern[index + reflectIndex + 1]))
             {
                 return false;
             }
 
             reflectIndex += 1;
+
+            if (index + reflectIndex + 1 == pattern.Length ||
+                index - reflectIndex < 0)
+            {
+                break;
+            }
         }
 
         return true;
     }
 
-    public ReflectAnalysis? ScanHorizontal(bool[][] input)
+    public ReflectAnalysis? ScanHorizontal(bool[][] input, ReflectAnalysis? original = null)
     {
         for (var row = 1; row < input.Length; row++)
         {
             if (input[row].SequenceEqual(input[row - 1]))
             {
-                if (DoesHorizontallyReflect(row - 1, input))
+                var reflects = DoesHorizontallyReflect(row - 1, input);
+                
+                if (reflects && original == null)
+                {
+                    return new ReflectAnalysis(ReflectionType.Horizontal, row);
+                }
+
+                if (reflects && original != null &&
+                    new ReflectAnalysis(ReflectionType.Horizontal, row) != original)
                 {
                     return new ReflectAnalysis(ReflectionType.Horizontal, row);
                 }
@@ -95,30 +103,38 @@ public partial class Puzzle : IBasicPuzzle
 
         while (true)
         {
-            if (index + reflectIndex + 1 >= pattern[0].Length ||
-                index - reflectIndex < 0)
-            {
-                break;
-            }
-
             if (!ColumnsEqual(index - reflectIndex, index + reflectIndex + 1, pattern))
             {
                 return false;
             }
 
             reflectIndex += 1;
+
+            if (index + reflectIndex + 1 == pattern[0].Length ||
+                index - reflectIndex < 0)
+            {
+                break;
+            }
         }
 
         return true;
     }
 
-    public ReflectAnalysis? ScanVertical(bool[][] input)
+    public ReflectAnalysis? ScanVertical(bool[][] input, ReflectAnalysis? original = null)
     {
         for (var col = 1; col < input[0].Length; col++)
         {
             if (ColumnsEqual(col, col - 1, input))
             {
-                if (DoesVerticallyReflect(col-1 , input))
+                var reflects = DoesVerticallyReflect(col - 1, input);
+                
+                if (reflects && original == null)
+                {
+                    return new ReflectAnalysis(ReflectionType.Vertical, col);
+                }
+
+                if (reflects && original != null &&
+                    new ReflectAnalysis(ReflectionType.Vertical, col) != original)
                 {
                     return new ReflectAnalysis(ReflectionType.Vertical, col);
                 }
@@ -128,11 +144,52 @@ public partial class Puzzle : IBasicPuzzle
         return null;
     }
 
-    public ReflectAnalysis? Analyse(bool[][] input)
+    public ReflectAnalysis? Analyse(bool[][] input, ReflectAnalysis? original = null)
     {
-        var horizontalMatch = ScanHorizontal(input);
+        var horizontalMatch = ScanHorizontal(input, original);
 
-        return horizontalMatch ?? ScanVertical(input);
+        return horizontalMatch ?? ScanVertical(input, original);
+    }
+
+
+    private bool[][] DeepCopy(bool[][] input)
+    {
+        var copy = new bool[input.Length][];
+
+        for (var index = 0; index < input.Length; index++)
+        {
+            copy[index] = new bool[input[index].Length];
+
+            for (var item = 0; item < input[index].Length; item++)
+            {
+                copy[index][item] = input[index][item];
+            }
+        }
+
+        return copy;
+    }
+
+    public ReflectAnalysis? FindAlternate(bool[][] input)
+    {
+        var original = Analyse(input);
+
+        for (var y = 0; y < input.Length; y++)
+        {
+            for (var x = 0; x < input[y].Length; x++)
+            {
+                var updateChar = DeepCopy(input);
+                updateChar[y][x] = !updateChar[y][x];
+
+                var newRefect = Analyse(updateChar, original);
+
+                if (newRefect != null && newRefect != original)
+                {
+                    return newRefect;
+                }
+            }
+        }
+
+        throw new Exception("Should not get here");
     }
 
     public string[] PartOne(string input)
@@ -161,6 +218,25 @@ public partial class Puzzle : IBasicPuzzle
 
     public string[] PartTwo(string input)
     {
-        return new[] { Constants.NOT_YET_IMPLEMENTED };
+        var patterns = LoadData(input);
+
+        var horizontalTotal = 0;
+        var verticalTotal = 0;
+
+        foreach (var pattern in patterns)
+        {
+            var result = FindAlternate(pattern);
+
+            if (result.Type == ReflectionType.Horizontal)
+            {
+                horizontalTotal += result.Index;
+            }
+            else
+            {
+                verticalTotal += result.Index;
+            }
+        }
+
+        return new[] { (verticalTotal + (100 * horizontalTotal)).ToString() };
     }
 }
