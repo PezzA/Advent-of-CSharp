@@ -77,30 +77,6 @@
       "url": "assets\/css\/main.css"
     },
     {
-      "hash": "sha256-0qxYekb7wr2WuSmZQ+TKyXSIs6djgmweYQ1NoKSBTR4=",
-      "url": "assets\/images\/pipes\/-.png"
-    },
-    {
-      "hash": "sha256-\/u2URCWbw3TNkqwW7DaZmG0hIFxzOmHnOyu+U8QOgkU=",
-      "url": "assets\/images\/pipes\/7.png"
-    },
-    {
-      "hash": "sha256-JBkzHixACfkk\/ODCd5tuKTXht2g28fFo6y3btgvhXxY=",
-      "url": "assets\/images\/pipes\/bar.png"
-    },
-    {
-      "hash": "sha256-aSdrsiwCddni\/L9MH6jDKHD+kUPTUe5MjH\/c\/WrfowY=",
-      "url": "assets\/images\/pipes\/F.png"
-    },
-    {
-      "hash": "sha256-tYxvllZ5FOees45MVYMlN++qqN67MYpST6Ma72lr1kM=",
-      "url": "assets\/images\/pipes\/J.png"
-    },
-    {
-      "hash": "sha256-RULr75fZ6biReCEUmahHywUdFjx\/TF9JMjLhQ2vzZeI=",
-      "url": "assets\/images\/pipes\/L.png"
-    },
-    {
       "hash": "sha256-78GFL+Qttgbwn2GiQgPCrDnPEl0rJ1YHNfA1G8R\/EgU=",
       "url": "assets\/images\/pipes\/spritemap.png"
     },
@@ -149,7 +125,7 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-ADuVMsGOMwauDU3J9EpKbETnGdtGslIN6qvfGB59Yk4=",
+      "hash": "sha256-\/h\/NeNwbuzAflHEq0hqdOajdzT\/dZPfocRNGsbIWXRo=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -161,11 +137,11 @@
       "url": "_framework\/dotnet.native.wasm"
     },
     {
-      "hash": "sha256-spr9hHjCakvfth8GQ1m6LB6WdRAMwY12yL7jw760HLA=",
+      "hash": "sha256-LQ5VgmzQl\/rdcjHU+t+qTZGGG8J25dzFPoDTM\/ZmDV8=",
       "url": "_framework\/AdventOfCSharp.BlazorClient.wasm"
     },
     {
-      "hash": "sha256-RwRohFrA8t8RM\/fXzcJ1o2BIgOnE6XPDD2KtQ2wcx68=",
+      "hash": "sha256-IMjgRcic4cRUndSkXeUA3YwgEtBu7HkMOFYxQcxZ3Sc=",
       "url": "_framework\/AdventOfCSharp.Puzzles.wasm"
     },
     {
@@ -321,7 +297,7 @@
       "url": "_framework\/System.Linq.Queryable.wasm"
     },
     {
-      "hash": "sha256-d5tAvsn2zzrme0Hy06jiNOw\/EK6ZTyD+Hat1heB6nm0=",
+      "hash": "sha256-6WQ+xXfkcwcHUaBOvp8LBKihwQmPesULNp5Ew4dIfqU=",
       "url": "_framework\/System.Linq.wasm"
     },
     {
@@ -461,5 +437,5 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "dorJto0y"
+  "version": "v+PvC\/v4"
 };
