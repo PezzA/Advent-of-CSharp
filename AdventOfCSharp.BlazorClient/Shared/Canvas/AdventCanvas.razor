@@ -2,7 +2,7 @@
 @using Blazor.Extensions
 @using System.Threading.Tasks.Dataflow
 @inject IJSRuntime JsRuntime;
-
+@typeparam TModel 
 <MudSlider @bind-Value="_checksPerFrame" Min="1" Max="80" Color="MudBlazor.Color.Info">Checks Per Update: @_checksPerFrame</MudSlider>
 <MudSlider @bind-Value="_updateTimer" Min="1" Max="60" Color="MudBlazor.Color.Warning">Updates Per Second: @_updateTimer</MudSlider>
 
@@ -53,9 +53,11 @@
 @code {
     [Parameter] public required Func<float, float, int, Task> Update { get; set; }
 
-    [Parameter] public required Func<Canvas2DContext, Task> Render { get; set; }
+    [Parameter] public required Func<TModel, Canvas2DContext, Task> Render { get; set; }
 
-    public Canvas2DContext? Context;
+    [Parameter] public required TModel Model { get; set; }
+    
+    private Canvas2DContext? _context;
 
     private int _checksPerFrame = 10;
     private float _updateTimer = 60;
@@ -77,8 +79,8 @@
             _canvasProperties.ScaledWidth,
             _canvasProperties.ScaledHeight);
 
-        Context = await _canvas.CreateCanvas2DAsync();
-        await Context.ScaleAsync(_canvasProperties.Window.DevicePixelRatio, _canvasProperties.Window.DevicePixelRatio);
+        _context = await _canvas.CreateCanvas2DAsync();
+        await _context.ScaleAsync(_canvasProperties.Window.DevicePixelRatio, _canvasProperties.Window.DevicePixelRatio);
     }
 
     public async Task StartAnimLoop()
@@ -96,7 +98,7 @@
     [JSInvokable]
     public async Task GameLoop(float timeStamp)
     {
-        if (Context == null) return;
+        if (_context == null) return;
 
         var delta = timeStamp - _lastTimeStamp;
         _lastTimeStamp = timeStamp;
@@ -107,7 +109,14 @@
             await Update.Invoke(delta, timeStamp, _checksPerFrame);
         }
 
-        await Render.Invoke(Context);
+        await Render.Invoke(Model, _context);
+    }
+
+    public async Task AdHocRender(Func<TModel, Canvas2DContext, Task> renderFunc)
+    {
+        if (_context == null) return;
+
+        await renderFunc.Invoke(Model, _context);
     }
 
 }

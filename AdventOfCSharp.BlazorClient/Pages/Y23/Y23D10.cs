@@ -18,6 +18,8 @@ public class Y23D10
 
         public Queue<Point2D> Queue => _puzzle.Queue;
         public Dictionary<Point2D, int> Points => _puzzle.Points;
+
+        public int CellWidth => 7;
         
         public Model()
         {
