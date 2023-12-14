@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "AdventOfCSharp.BlazorClient",
   "resources": {
-    "hash": "sha256-g4uhKuMmDmLrKKMCdEkhkhgBHXbF5R7jZxC2LDaUo7M=",
+    "hash": "sha256-MrHTJWP3PhGaCQF15VLKiHrBZA9esRR/WOOAsQ9wJic=",
     "jsModuleNative": {
       "dotnet.native.8.0.0.4qhnp48lq7.js": "sha256-IyI3iTepsVrGLUHOU/Zona4S3dJ8dBAF9FhTlrAFxe8="
     },
@@ -17,8 +17,8 @@
       "icudt_no_CJK.dat": "sha256-L7sV7NEYP37/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs="
     },
     "assembly": {
-      "AdventOfCSharp.BlazorClient.wasm": "sha256-LQ5VgmzQl/rdcjHU+t+qTZGGG8J25dzFPoDTM/ZmDV8=",
-      "AdventOfCSharp.Puzzles.wasm": "sha256-IMjgRcic4cRUndSkXeUA3YwgEtBu7HkMOFYxQcxZ3Sc=",
+      "AdventOfCSharp.BlazorClient.wasm": "sha256-N0mqCBX6f5wlNBx1dASrctUztPFRFiI3h9+0PuBFeIg=",
+      "AdventOfCSharp.Puzzles.wasm": "sha256-jaRAJQVw7LWiFvM207nW1r2lqu2z/gee9/h3mb7FKJ0=",
       "Blazor-ApexCharts.wasm": "sha256-+MUvGeOjCV9qcOOv6gOVep77AcUyQEKE8xDM3ApLXy8=",
       "Blazor.Extensions.Canvas.JS.wasm": "sha256-ctyeKHsvFswpiKQJpTUUWdSrDGr4UNirukOrWYnwW78=",
       "Blazor.Extensions.Canvas.wasm": "sha256-2AOrAB5tgoiK9wMMmwiE/pKPAtTjzgFudxSl6g4dt9s=",
@@ -57,7 +57,7 @@
       "System.Drawing.wasm": "sha256-IIbmuKcXJh0SXkB6DZNX8tOVx3KBqeLDxLIhQMX1wfw=",
       "System.Linq.Expressions.wasm": "sha256-tneFIEtHKFLUlS++wFJO6tQT7+Tw+AmtFlOkAhcM95A=",
       "System.Linq.Queryable.wasm": "sha256-Alt7hXhU+bd9QZ+fDs/V81Uzj2WMIueRppQoj+arhno=",
-      "System.Linq.wasm": "sha256-6WQ+xXfkcwcHUaBOvp8LBKihwQmPesULNp5Ew4dIfqU=",
+      "System.Linq.wasm": "sha256-okCU90LXp4Rz2Ylj6Y6Y22DnyPWQxDiUA3f1faImNZ0=",
       "System.Memory.wasm": "sha256-x95UYjTjel+RANFmH3UW6q4iIfKEgrjXOZ8fzLtpZxQ=",
       "System.Net.Http.wasm": "sha256-/WTpNmGXbrsrtmttdyvhiu/7L3QQKjwAeJ8lXA37OmQ=",
       "System.Net.Primitives.wasm": "sha256-yVTWaROK719NfQdf63uAz2SkM+e6H6E1voy56YaEY6U=",
