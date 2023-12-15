@@ -1,7 +1,7 @@
 ﻿
 namespace AdventOfCSharp.Puzzles.Year23.Day15;
 
-[PuzzleData(Year = 2023, Day = 15, Title = "Lens Library", Stars = 0, ImplementedElsewhere = false)]
+[PuzzleData(Year = 2023, Day = 15, Title = "Lens Library", Stars = 2, ImplementedElsewhere = false)]
 public partial class Puzzle : IBasicPuzzle
 {
     public record Lens(string Label, int Length, bool Remove);
