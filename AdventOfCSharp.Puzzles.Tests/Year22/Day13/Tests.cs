@@ -1,4 +1,5 @@
-﻿using AdventOfCSharp.Puzzles.Year22.Day13;
+﻿using System.Diagnostics.CodeAnalysis;
+using AdventOfCSharp.Puzzles.Year22.Day13;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using Xunit.Abstractions;
@@ -51,6 +52,8 @@ public class Tests
         var leftData = JsonConvert.DeserializeObject<JArray>(left);
         var rightData = JsonConvert.DeserializeObject<JArray>(right);
 
+        Assert.NotNull(leftData);
+        Assert.NotNull(rightData);
         Assert.Equal(expected, Puzzle.IsPairInOrder(leftData, rightData));
     }
 
@@ -62,6 +65,7 @@ public class Tests
     public void GetIndex_Succeeds(string data, int expected)
     {
         var parsedData = JsonConvert.DeserializeObject<JArray>(data);
+        Assert.NotNull(parsedData);
         Assert.Equal(expected, GetIndex(parsedData));
     }
 
@@ -75,14 +79,19 @@ public class Tests
     [Fact]
     public void Parses()
     {
-        JArray result = JsonConvert.DeserializeObject<JArray>("[[[0],[[10,9,5,1],[],[5,1,10,3,0]],[0,[8,4,2,6],[7,8,1,5,0],[0,6,4]]],[[[4,5,2,10,1],[3,5],[9,4]]],[],[[9,1,1,[10,7,4,8,10],2],7,[6,0,[8,10,10],2,6],[[10,2,3],[9,6,6],8]],[[],[3,6,[9,2]],[[10],[10,4,4],[],6,[2,8,2]],[[],[]]]]");
+        var result = JsonConvert.DeserializeObject<JArray>("[[[0],[[10,9,5,1],[],[5,1,10,3,0]],[0,[8,4,2,6],[7,8,1,5,0],[0,6,4]]],[[[4,5,2,10,1],[3,5],[9,4]]],[],[[9,1,1,[10,7,4,8,10],2],7,[6,0,[8,10,10],2,6],[[10,2,3],[9,6,6],8]],[[],[3,6,[9,2]],[[10],[10,4,4],[],6,[2,8,2]],[[],[]]]]");
         Output(result, 0);
     }
 
-    private void Output(JArray array, int depth)
+    private void Output(JArray? array, int depth)
     {
         var prefix = string.Join("", Enumerable.Repeat(" ", depth * 2));
         testOutputHelper.WriteLine(prefix + "-");
+        
+        if(array is null)
+        {
+            throw new Exception("input array null");
+        }
 
         foreach (var item in array)
         {
@@ -97,13 +106,18 @@ public class Tests
     }
 
     [Fact]
+    [SuppressMessage("Assertions", "xUnit2013:Do not use equality check to check for collection size.")]
     public void LoadsData()
     {
         var pairs = LoadData(TestData);
 
+        if(pairs[0].Left == null){
+            Assert.Fail("null value");
+        }
+       
         Assert.Equal(8, pairs.Count);
-        Assert.Equal(5, pairs[0].Left.Count);
-        Assert.Equal(0, pairs[5].Left.Count);
+        Assert.Equal(5, pairs[0].Left?.Count);
+        Assert.Equal(0, pairs[5].Left?.Count);
     }
 
     [Fact]

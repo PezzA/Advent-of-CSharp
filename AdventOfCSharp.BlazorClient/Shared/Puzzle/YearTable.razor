@@ -16,7 +16,7 @@
                     <MudButton Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.PlayArrow" Color="MudBlazor.Color.Success" OnClick="@((e) => NavigateRun(puzzle))">Run</MudButton>
                 </td>
                 <td>
-                    @if (puzzle.HasHTML5Visualisation)
+                    @if (puzzle.HasHtml5Visualisation)
                     {
                         <MudIconButton Variant="Variant.Filled" Icon="@Icons.Material.Filled.Html" Color="MudBlazor.Color.Tertiary" OnClick="@((e) => NavigateViz(puzzle))">Run HTML Visualisation</MudIconButton>
                     }
@@ -36,7 +36,7 @@
     public int Year { get; set; } = 0;
 
     [Parameter]
-    public IEnumerable<PuzzleDataAttribute> PuzzleData { get; set; } = new List<Puzzles.PuzzleDataAttribute>();
+    public IEnumerable<PuzzleDataAttribute> PuzzleData { get; set; } = new List<PuzzleDataAttribute>();
 
     private void OpenDialog(string text)
     {

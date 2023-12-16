@@ -6,7 +6,7 @@ namespace AdventOfCSharp.Puzzles.Year23.Day10;
 
 [PuzzleData(Year = 2023, Day = 10, Title = "Pipe Maze", Stars = 1,
     ImplementedElsewhere = false, 
-    HasHTML5Visualisation = true, 
+    HasHtml5Visualisation = true, 
     ShowTheLove = "My first visualisation of 2023!  Also, my first use of a sprite sheet.")]
 public partial class Puzzle : IBasicPuzzle
 {

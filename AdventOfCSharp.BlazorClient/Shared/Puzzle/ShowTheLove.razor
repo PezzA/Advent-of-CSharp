@@ -4,7 +4,7 @@
     </DialogActions>
 </MudDialog>
 @code {
-    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+    [CascadingParameter] MudDialogInstance? MudDialog { get; set; }
 
-    void Submit() => MudDialog.Close(DialogResult.Ok(true));
+    void Submit() => MudDialog?.Close(DialogResult.Ok(true));
 }

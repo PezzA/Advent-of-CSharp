@@ -1,6 +1,4 @@
 ﻿@page "/viz/2022/14"
-@using System.Drawing;
-@using AdventOfCSharp.BlazorClient.Shared.Content
 @using AdventOfCSharp.BlazorClient.Shared.Puzzle
 @using AdventOfCSharp.Puzzles.Geometery;
 @using Blazor.Extensions.Canvas.Canvas2D;
@@ -11,8 +9,8 @@
 
 <PuzzleTitle MetaData="_metaData" />
 
-<MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary" OnClick="StartPartOne">Part One</MudButton>
-<MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary" OnClick="StartPartTwo">Part Two</MudButton>
+<MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary" OnClick="@StartPartOne">Part One</MudButton>
+<MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Secondary" OnClick="@StartPartTwo">Part Two</MudButton>
 
 
 <MudSlider @bind-Value="_checksPerFrame" Min="1" Max="80" Color="MudBlazor.Color.Info">Checks Per Update: @_checksPerFrame</MudSlider>
@@ -91,29 +89,27 @@
 
     // Canvas
     private Canvas2DContext? _context;
-    protected BECanvasComponent? _canvas;
+    private BECanvasComponent? _canvas;
     private CanvasProperties? _canvasProperties;
 
-    public record WindowProperties(int InnerWidth, float DevicePixelRatio, int ParentWidth, int ParentHeight)
-    {
-    }
+    public record WindowProperties(int InnerWidth, float DevicePixelRatio, int ParentWidth, int ParentHeight);
 
     public record CanvasProperties(int Width, int Height, WindowProperties Window)
     {
-        public int ScaledWidth => (int)Math.Ceiling((float)Width * Window.DevicePixelRatio);
-        public int ScaledHeight => (int)Math.Ceiling((float)Height * Window.DevicePixelRatio);
+        public int ScaledWidth => (int)Math.Ceiling(Width * Window.DevicePixelRatio);
+        public int ScaledHeight => (int)Math.Ceiling(Height * Window.DevicePixelRatio);
     }
 
     private int _checksPerFrame = 10;
     private float _updateTimer = 60;
 
-    private int _cellWidth = 0;
-    private int _gridWidth = 0;
-    private int _gridHeight = 0;
-    private Point2D _tl;
-    private Point2D _br;
-    private Puzzle _puzzle = new Puzzle();
-    private PuzzleDataAttribute _metaData = PuzzleManager.GetPuzzleMetaData(2022, 14) ?? throw new NotImplementedException();
+    private int _cellWidth;
+    private int _gridWidth;
+    private int _gridHeight;
+    private Point2D? _tl;
+    private Point2D? _br;
+    private readonly Puzzle _puzzle = new ();
+    private readonly PuzzleDataAttribute _metaData = PuzzleManager.GetPuzzleMetaData(2022, 14) ?? throw new NotImplementedException();
 
     public const string TestData = @"498,4 -> 498,6 -> 496,6
 503,4 -> 502,4 -> 502,9 -> 494,9";
@@ -132,9 +128,12 @@
             _tl = _puzzle.GetTopLeft(_cells);
             _br = _puzzle.GetBottomRight(_cells);
 
-            _gridWidth = (_br.X - _tl.X) + 4;
+            if (_br != null)
+            {
+                if (_tl != null) _gridWidth = (_br.X - _tl.X) + 4;
 
-            _gridHeight = _br.Y + 7;
+                _gridHeight = _br.Y + 7;
+            }
 
 
             // _cellWidth = windowProperties.ParentWidth / _gridWidth;
@@ -144,7 +143,7 @@
 
             _canvasProperties = new CanvasProperties(drawWidth, drawHeight, windowProperties);
 
-            var result = await JsRuntime.InvokeAsync<string>("setupCanvas",
+            _ = await JsRuntime.InvokeAsync<string>("setupCanvas",
                 _canvas,
                 _canvasProperties.Width,
                 _canvasProperties.Height,
@@ -163,7 +162,7 @@
 
     private Dictionary<Point2D, CellContents> _cells = new Dictionary<Point2D, CellContents>();
 
-    public async Task StartPartOne()
+    private async Task StartPartOne()
     {
         await JsRuntime.InvokeAsync<object>("startAnimLoop", DotNetObjectReference.Create(this));
         if (_canvas == null || _context == null) return;
@@ -179,8 +178,9 @@
     }
 
 
-    private bool _partTwo = false;
-    public async Task StartPartTwo()
+    private bool _partTwo;
+
+    private async Task StartPartTwo()
     {
         await JsRuntime.InvokeAsync<object>("startAnimLoop", DotNetObjectReference.Create(this));
         if (_canvas == null || _context == null) return;
@@ -205,17 +205,17 @@
 
         foreach (var cell in _cells)
         {
-            await _context.FillRectAsync(((cell.Key.X - _tl.X) + 2) * _cellWidth, (cell.Key.Y + 2) * _cellWidth, _cellWidth, _cellWidth);
+            if (_tl != null) await _context.FillRectAsync((cell.Key.X - _tl.X + 2) * _cellWidth, (cell.Key.Y + 2) * _cellWidth, _cellWidth, _cellWidth);
         }
 
         await _context.SetFillStyleAsync("blue");
-        await _context.FillRectAsync(((500 - _tl.X) + 2) * _cellWidth, 2 * _cellWidth, _cellWidth, _cellWidth);
+        if (_tl != null) await _context.FillRectAsync((500 - _tl.X + 2) * _cellWidth, 2 * _cellWidth, _cellWidth, _cellWidth);
     }
 
     private float _lastTimeStamp;
-    private float _interval = 0;
+    private float _interval;
 
-    private float _drops = 0;
+    private float _drops;
 
     [JSInvokable]
     public async ValueTask GameLoop(float timeStamp)
@@ -253,8 +253,8 @@
                     _drops++;
                     StateHasChanged();
 
-                    _cells[restingPlace] = Puzzle.CellContents.Sand;
-                    await _context.FillRectAsync(((restingPlace.X - _tl.X) + 2) * _cellWidth, (restingPlace.Y + 2) * _cellWidth, _cellWidth, _cellWidth);
+                    _cells[restingPlace] = CellContents.Sand;
+                    if (_tl != null) await _context.FillRectAsync((restingPlace.X - _tl.X + 2) * _cellWidth, (restingPlace.Y + 2) * _cellWidth, _cellWidth, _cellWidth);
                 }
             }
         }
