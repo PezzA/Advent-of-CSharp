@@ -121,13 +121,13 @@ public partial class Puzzle : IBasicPuzzle
 
     public static bool IsDecoder(JArray? array)
     {
-        var arrayString = array.ToString().Replace(Environment.NewLine, "").Replace(" ","");
+        var arrayString = array?.ToString().Replace(Environment.NewLine, "").Replace(" ","");
 
         return arrayString == "[[2]]" || arrayString == "[[6]]";
     }
     private int CompareKeys(JArray? x, JArray? y)
     {
-        return IsPairInOrder(x, y) == OrderResult.InOrder ? -1: 1;
+        return y != null && x != null && IsPairInOrder(x, y) == OrderResult.InOrder ? -1: 1;
     }
 
 
@@ -144,7 +144,9 @@ public partial class Puzzle : IBasicPuzzle
                 throw new Exception("null data");
             }
 
-            if (IsPairInOrder(pairs[i].Left, pairs[i].Right) == OrderResult.InOrder)
+            var jArray = pairs[i].Left;
+            var right = pairs[i].Right;
+            if (right != null && jArray != null && IsPairInOrder(jArray, right) == OrderResult.InOrder)
             {
                 total += i + 1;
             }

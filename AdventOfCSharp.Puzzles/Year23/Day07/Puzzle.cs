@@ -178,7 +178,7 @@ public partial class Puzzle : IBasicPuzzle
             {
                 if (y != null && x.Cards[i] == y.Cards[i]) continue;
 
-                return GetCardValue(x.Cards[i]) > GetCardValue(y.Cards[i])
+                return y != null && GetCardValue(x.Cards[i]) > GetCardValue(y.Cards[i])
                     ? 1
                     : -1;
             }
