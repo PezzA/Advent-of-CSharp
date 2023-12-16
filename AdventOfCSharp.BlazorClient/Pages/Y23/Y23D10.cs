@@ -1,3 +1,4 @@
+using AdventOfCSharp.Puzzles;
 using AdventOfCSharp.Puzzles.Geometery;
 using AdventOfCSharp.Puzzles.Year23.Day10;
 
@@ -16,6 +17,8 @@ public class Y23D10
         
         private readonly Puzzle _puzzle = new();
 
+        public static PuzzleDataAttribute? MetaData => PuzzleManager.GetPuzzleMetaData(2023, 10);
+ 
         public Queue<Point2D> Queue => _puzzle.Queue;
         public Dictionary<Point2D, int> Points => _puzzle.Points;
 

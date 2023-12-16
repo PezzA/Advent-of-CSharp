@@ -29,20 +29,27 @@ var key = Environment.GetEnvironmentVariable("ADVENT_OF_CODE_KEY");
 if (encrypt)
 {
     Console.WriteLine($"raw: ##{puzzle.PuzzleInput()}##");
-    
-    var encryptedData = Crypto.EncryptString(key, puzzle.PuzzleInput());
-    Console.WriteLine($"encrypted: ##{encryptedData}##");
+
+    if (key != null)
+    {
+        var encryptedData = Crypto.EncryptString(key, puzzle.PuzzleInput());
+        Console.WriteLine($"encrypted: ##{encryptedData}##");
    
-    var decryptedData = Crypto.DecryptString(key, encryptedData);
-    Console.WriteLine($"decrypted: ##{decryptedData}##");
-    
+        var decryptedData = Crypto.DecryptString(key, encryptedData);
+        Console.WriteLine($"decrypted: ##{decryptedData}##");
+    }
+
     return;
 }
 
 if (decrypt)
 {
-    var decryptedData = Crypto.DecryptString(key, puzzle.PuzzleInput());
-    Console.WriteLine($"[{decryptedData}]");
+    if (key != null)
+    {
+        var decryptedData = Crypto.DecryptString(key, puzzle.PuzzleInput());
+        Console.WriteLine($"[{decryptedData}]");
+    }
+
     return;
 }
 

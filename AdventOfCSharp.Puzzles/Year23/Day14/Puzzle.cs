@@ -2,7 +2,7 @@
 
 namespace AdventOfCSharp.Puzzles.Year23.Day14;
 
-[PuzzleData(Year = 2024, Day = 14, Title = "Parabolic Reflector Dish", Stars = 0)]
+[PuzzleData(Year = 2023, Day = 14, Title = "Parabolic Reflector Dish", Stars = 1)]
 public partial class Puzzle : IBasicPuzzle
 {
     public record Segment(int Start, int End);

@@ -4,7 +4,7 @@ using AdventOfCSharp.Puzzles.Parsing;
 namespace AdventOfCSharp.Puzzles.Year22.Day14;
 
 
-[PuzzleData(Year = 2022, Day = 14, Title = "Regolith Reservoir", Stars =2, HasHTML5Visualisation = true, ShowTheLove ="This was the first puzzle where I got the solution from the visualisation, before solving via the CLI.")]
+[PuzzleData(Year = 2022, Day = 14, Title = "Regolith Reservoir", Stars =2, HasHtml5Visualisation = true, ShowTheLove ="This was the first puzzle where I got the solution from the visualisation, before solving via the CLI.")]
 
 public partial class Puzzle : IBasicPuzzle
 {
@@ -30,7 +30,7 @@ public partial class Puzzle : IBasicPuzzle
         return paths;
     }
 
-    public Point2D GetTopLeft(Dictionary<Point2D, CellContents> cells)
+    public Point2D? GetTopLeft(Dictionary<Point2D, CellContents> cells)
     {
 
         var x = int.MaxValue;
@@ -46,7 +46,7 @@ public partial class Puzzle : IBasicPuzzle
 
     }
 
-    public Point2D GetBottomRight(Dictionary<Point2D, CellContents> cells)
+    public Point2D? GetBottomRight(Dictionary<Point2D, CellContents> cells)
     {
         var x = 0;
         var y = 0;
@@ -94,20 +94,20 @@ public partial class Puzzle : IBasicPuzzle
         return caves;
     }
 
-    public Point2D DropSand(Dictionary<Point2D, CellContents> cells, Point2D start, Point2D br, bool hasFloor = false)
+    public Point2D DropSand(Dictionary<Point2D, CellContents> cells, Point2D start, Point2D? br, bool hasFloor = false)
     {
         var position = start;
 
         while (true)
         {
-            if (!hasFloor && position.Y > br.Y)
+            if (br != null && !hasFloor && position.Y > br.Y)
 
             {
                 return new Point2D(0, 0);
             }
 
 
-            if (hasFloor && position.Y == br.Y + 1) {
+            if (br != null && hasFloor && position.Y == br.Y + 1) {
                 return position;
             }
 

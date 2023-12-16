@@ -203,13 +203,13 @@ public partial class Puzzle : IBasicPuzzle
         {
             var result = Analyse(pattern);
 
-            if (result.Type == ReflectionType.Horizontal)
+            if (result is { Type: ReflectionType.Horizontal })
             {
                 horizontalTotal += result.Index;
             }
             else
             {
-                verticalTotal += result.Index;
+                if (result != null) verticalTotal += result.Index;
             }
         }
 
@@ -227,13 +227,13 @@ public partial class Puzzle : IBasicPuzzle
         {
             var result = FindAlternate(pattern);
 
-            if (result.Type == ReflectionType.Horizontal)
+            if (result is { Type: ReflectionType.Horizontal })
             {
                 horizontalTotal += result.Index;
             }
             else
             {
-                verticalTotal += result.Index;
+                if (result != null) verticalTotal += result.Index;
             }
         }
 

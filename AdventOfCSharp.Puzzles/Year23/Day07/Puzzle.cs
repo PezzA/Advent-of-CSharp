@@ -115,23 +115,24 @@ public partial class Puzzle : IBasicPuzzle
             if (x == null && y != null) return -1;
             if (x != null && y == null) return 1;
 
-            if (string.IsNullOrEmpty(x.Cards) && string.IsNullOrEmpty(y.Cards)) return 0;
+            if (string.IsNullOrEmpty(x?.Cards) && string.IsNullOrEmpty(y?.Cards)) return 0;
 
-            if (x.Cards.Length != 5 || y.Cards.Length != 5)
+            if (x != null && y != null && (x.Cards.Length != 5 || y.Cards.Length != 5))
             {
                 throw new ArgumentException("comparing a hand size that is not of length 5");
             }
 
-            if (x.Cards == y.Cards) return 0;
+            if (x?.Cards == y?.Cards) return 0;
 
-            for (int i = 0; i < x.Cards.Length; i++)
-            {
-                if (x.Cards[i] == y.Cards[i]) continue;
+            if (x != null)
+                for (var i = 0; i < x.Cards.Length; i++)
+                {
+                    if (y != null && x.Cards[i] == y.Cards[i]) continue;
 
-                return GetCardValue(x.Cards[i]) > GetCardValue(y.Cards[i])
-                    ? 1
-                    : -1;
-            }
+                    return y != null && GetCardValue(x.Cards[i]) > GetCardValue(y.Cards[i])
+                        ? 1
+                        : -1;
+                }
 
             return 0;
         }
@@ -163,18 +164,19 @@ public partial class Puzzle : IBasicPuzzle
             if (x == null && y != null) return -1;
             if (x != null && y == null) return 1;
 
-            if (string.IsNullOrEmpty(x.Cards) && string.IsNullOrEmpty(y.Cards)) return 0;
+            if (string.IsNullOrEmpty(x?.Cards) && string.IsNullOrEmpty(y?.Cards)) return 0;
 
-            if (x.Cards.Length != 5 || y.Cards.Length != 5)
+            if (x != null && y != null && (x.Cards.Length != 5 || y.Cards.Length != 5))
             {
                 throw new ArgumentException("comparing a hand size that is not of length 5");
             }
 
-            if (x.Cards == y.Cards) return 0;
+            if (x?.Cards == y?.Cards) return 0;
 
-            for (int i = 0; i < x.Cards.Length; i++)
+            if (x == null) return 0;
+            for (var i = 0; i < x.Cards.Length; i++)
             {
-                if (x.Cards[i] == y.Cards[i]) continue;
+                if (y != null && x.Cards[i] == y.Cards[i]) continue;
 
                 return GetCardValue(x.Cards[i]) > GetCardValue(y.Cards[i])
                     ? 1

@@ -2,7 +2,7 @@
 
 namespace AdventOfCSharp.Puzzles.Year22.Day12;
 
-[PuzzleData(Year = 2022, Day = 12, Title = "Hill Climbing Algorithm", Stars = 2, HasHTML5Visualisation = true, ShowTheLove ="My first HTML5 visualisation using blazor!")]
+[PuzzleData(Year = 2022, Day = 12, Title = "Hill Climbing Algorithm", Stars = 2, HasHtml5Visualisation = true, ShowTheLove ="My first HTML5 visualisation using blazor!")]
 public partial class Puzzle : IBasicPuzzle
 {
     public static Point2D GetStart(Dictionary<Point2D, char> points)

@@ -17,8 +17,8 @@
 <MudExpansionPanels MultiExpansion="false" Class="mt-2">
     @foreach (var y in Years)
     {
-        var totalSolved = Puzzles.Where(p => p.Year == y).Sum(p => p.Stars);
-        var totalVizzed = Puzzles.Where(p => p.Year == y && (p.HasUnityVisualisation || p.HasHTML5Visualisation)).Count();
+        var totalSolved = _puzzles.Where(p => p.Year == y).Sum(p => p.Stars);
+        var totalVizzed = _puzzles.Count(p => p.Year == y && (p.HasUnityVisualisation || p.HasHtml5Visualisation));
         <MudExpansionPanel DisableGutters="true">
             <TitleContent>
                 <div class="d-flex">
@@ -30,22 +30,22 @@
                 <MudProgressLinear Color="MudBlazor.Color.Success"  Size="MudBlazor.Size.Large" Value="@(totalVizzed * 4)" />
             </TitleContent>
             <ChildContent>
-                <YearTable Year="y" PuzzleData="@Puzzles.Where(p => p.Year == y)" />
+                <YearTable Year="y" PuzzleData="@_puzzles.Where(p => p.Year == y)" />
             </ChildContent>
         </MudExpansionPanel>
     }
 </MudExpansionPanels>
 
 @code {
-    private IEnumerable<Puzzles.PuzzleDataAttribute> Puzzles = new List<Puzzles.PuzzleDataAttribute>();
+    private IEnumerable<PuzzleDataAttribute> _puzzles = new List<PuzzleDataAttribute>();
     private IEnumerable<int> Years { get; set; } = new List<int>();
 
     protected override void OnInitialized()
     {
-        Puzzles = PuzzleManager.GetAllBasicPuzzles()
-            .Where(p => p.Year != 0 && p.Day != 0);
+        _puzzles = PuzzleManager.GetAllBasicPuzzles()
+            .Where(p => p.Year != 0 && p.Day != 0 && p.Stars > 0);
 
-        Years = Puzzles.Select(p => p.Year).Distinct().OrderDescending();
+        Years = _puzzles.Select(p => p.Year).Distinct().OrderDescending();
     }
 }
 

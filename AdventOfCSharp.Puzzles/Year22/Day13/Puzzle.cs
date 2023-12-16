@@ -39,14 +39,14 @@ public partial class Puzzle : IBasicPuzzle
         return pairs;
     }
 
-    public static List<JArray> FlattenPairs(List<Pair> pairs)
+    public static List<JArray?> FlattenPairs(List<Pair> pairs)
     {
-        var flattenedList = new List<JArray>();
+        var flattenedList = new List<JArray?>();
 
         foreach (var pair in pairs)
         {
-            flattenedList.Add(pair.Left);
-            flattenedList.Add(pair.Right);
+            if (pair.Left != null) flattenedList.Add(pair.Left);
+            if (pair.Right != null) flattenedList.Add(pair.Right);
         }
 
         return flattenedList;
@@ -119,13 +119,13 @@ public partial class Puzzle : IBasicPuzzle
     }
 
 
-    public static bool IsDecoder(JArray array)
+    public static bool IsDecoder(JArray? array)
     {
         var arrayString = array.ToString().Replace(Environment.NewLine, "").Replace(" ","");
 
         return arrayString == "[[2]]" || arrayString == "[[6]]";
     }
-    private int CompareKeys(JArray x, JArray y)
+    private int CompareKeys(JArray? x, JArray? y)
     {
         return IsPairInOrder(x, y) == OrderResult.InOrder ? -1: 1;
     }
@@ -139,6 +139,11 @@ public partial class Puzzle : IBasicPuzzle
 
         for (int i = 0; i < pairs.Count; i++)
         {
+            if (pairs[i] == null || pairs[i].Left == null)
+            {
+                throw new Exception("null data");
+            }
+
             if (IsPairInOrder(pairs[i].Left, pairs[i].Right) == OrderResult.InOrder)
             {
                 total += i + 1;
@@ -159,7 +164,7 @@ public partial class Puzzle : IBasicPuzzle
 
         var first = 0;
         var second = 0;
-        for (int i = 0; i < list.Count(); i++)
+        for (var i = 0; i < list.Count(); i++)
         {
             if (IsDecoder(list[i]))
             {

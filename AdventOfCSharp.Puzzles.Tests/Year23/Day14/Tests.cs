@@ -35,7 +35,7 @@ public class Tests
 
         segments = _puzzle.GetVerticalSegments(0, data);
         
-        Assert.Equal(1, segments.Length);
+        Assert.Single(segments);
 
     }
 
