@@ -1,6 +1,6 @@
 ﻿namespace AdventOfCSharp.Puzzles.Year23.Day17;
 
-[PuzzleData(Year = 0, Day = 0, Title = "", Stars = 0, ImplementedElsewhere = false)]
+[PuzzleData(Year = 2023, Day = 17, Title = "Clumsy Crucible", Stars = 0, ImplementedElsewhere = false)]
 public partial class Puzzle : IBasicPuzzle
 {
 

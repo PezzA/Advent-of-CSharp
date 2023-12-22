@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Drawing;
 
 namespace AdventOfCSharp.Puzzles.Geometery
 {
@@ -6,7 +7,11 @@ namespace AdventOfCSharp.Puzzles.Geometery
     public record Point2D(int X, int Y)
     {
         public Point2D Add(Point2D point) => new(X + point.X, Y + point.Y);
+        
         public int Length => Math.Abs(X) + Math.Abs(Y);
+
+        public int ManhattanDistance(Point2D target)
+           => Math.Abs(X - target.X) + Math.Abs(Y - target.Y);
 
         /// <summary>
         /// TermNorth gets the 'Terminal Screen' north.  Which is descending y as 0 is the top row
