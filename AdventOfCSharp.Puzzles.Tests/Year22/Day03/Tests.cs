@@ -4,7 +4,7 @@ namespace AdventOfCSharp.Puzzles.Tests.Year22.Day03;
 
 public class Tests
 {
-    private readonly Puzzle puzzle;
+    private readonly IBasicPuzzle puzzle;
 
     public Tests()
     {
@@ -15,7 +15,7 @@ public class Tests
     [InlineData("abcdef", "abc", "def")]
     public void Test_SplitCompartment(string input, string firstActual, string secondActual)
     {
-        var (first, second) = puzzle.SplitCompartments(input);
+        var (first, second) = Puzzle.SplitCompartments(input);
 
         Assert.Equal(firstActual, first);
         Assert.Equal(secondActual, second);
@@ -26,7 +26,7 @@ public class Tests
     [InlineData("abc", "dec", 'c')]
     public void Test_GetSharedItem(string first, string second, char match)
     {
-        var testMatch = puzzle.GetSharedItem(first, second);
+        var testMatch = Puzzle.GetSharedItem(first, second);
 
         Assert.Equal(match, testMatch);
     }
@@ -38,7 +38,7 @@ public class Tests
     [InlineData('Z', 52)]
     public void Test_GetItemValue(char input, int expected)
     {
-        var result = puzzle.GetItemValue(input);
+        var result = Puzzle.GetItemValue(input);
 
         Assert.Equal(expected, result);
 

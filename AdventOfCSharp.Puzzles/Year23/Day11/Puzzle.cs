@@ -94,7 +94,7 @@ public partial class Puzzle : IBasicPuzzle
         return new[] { starMap.Sum(p => p.Value).ToString() };
     }
 
-    public long SolvePartTwo(string input, int ageFactor)
+    public static long SolvePartTwo(string input, int ageFactor)
     {
         var stars = LoadData(input, ageFactor);
         var starMap = new Dictionary<Pair, int>();

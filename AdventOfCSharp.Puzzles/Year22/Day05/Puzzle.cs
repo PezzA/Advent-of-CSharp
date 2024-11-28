@@ -10,7 +10,7 @@ public partial class Puzzle : IBasicPuzzle
         public int Target { get; set; }
     }
 
-    public (Dictionary<int, Stack<char>>, List<Instruction>) LoadData(string input)
+    public static (Dictionary<int, Stack<char>>, List<Instruction>) LoadData(string input)
     {
         var lines = input.Split(Environment.NewLine);
         var stackList = new Dictionary<int, Stack<char>>();
@@ -66,7 +66,7 @@ public partial class Puzzle : IBasicPuzzle
         return (stackList, instructions);
     }
 
-    public Dictionary<int, Stack<char>> ProcessInstruction(Dictionary<int, Stack<char>> stackList, Instruction instruction)
+    public static Dictionary<int, Stack<char>> ProcessInstruction(Dictionary<int, Stack<char>> stackList, Instruction instruction)
     {
         for (var i = 0; i < instruction.Amount; i++)
         {
@@ -77,7 +77,7 @@ public partial class Puzzle : IBasicPuzzle
         return stackList;
     }
 
-    public Dictionary<int, Stack<char>> ProcessInstructionPreservingOrder(Dictionary<int, Stack<char>> stackList, Instruction instruction)
+    public static Dictionary<int, Stack<char>> ProcessInstructionPreservingOrder(Dictionary<int, Stack<char>> stackList, Instruction instruction)
     {
         var items = new Stack<char>();
 

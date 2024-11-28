@@ -3,13 +3,13 @@
 [PuzzleData(Year = 2022, Day = 3, Title = "Rucksack Reorganization", Stars = 2, ImplementedElsewhere = false)]
 public partial class Puzzle : IBasicPuzzle
 {
-    public (string, string) SplitCompartments(string input)
+    public static (string, string) SplitCompartments(string input)
     {
         var half = input.Length / 2;
         return (input[..half], input[half..]);
     }
 
-    public char GetSharedItem(string first, string second)
+    public static char GetSharedItem(string first, string second)
     {
         foreach (var char1 in first)
         {
@@ -25,7 +25,7 @@ public partial class Puzzle : IBasicPuzzle
         return ' ';
     }
 
-    public char GetSharedItem(string first, string second, string third)
+    public static char GetSharedItem(string first, string second, string third)
     {
         foreach (var char1 in first)
         {
@@ -44,7 +44,7 @@ public partial class Puzzle : IBasicPuzzle
         return ' ';
     }
 
-    public int GetItemValue(char input)
+    public static int GetItemValue(char input)
     {
         if (char.IsAsciiLetterLower(input))
         {

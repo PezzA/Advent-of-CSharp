@@ -109,6 +109,7 @@
     private Point2D? _tl;
     private Point2D? _br;
     private readonly Puzzle _puzzle = new ();
+    private readonly IBasicPuzzle _basicPuzzle = new Puzzle();
     private readonly PuzzleDataAttribute _metaData = PuzzleManager.GetPuzzleMetaData(2022, 14) ?? throw new NotImplementedException();
 
     public const string TestData = @"498,4 -> 498,6 -> 496,6
@@ -123,7 +124,7 @@
 
             var windowProperties = await JsRuntime.InvokeAsync<WindowProperties>("getWindowDetails", _canvas);
 
-            _cells = _puzzle.CreateLayout(_puzzle.LoadData(_puzzle.PuzzleInput()));
+            _cells = _puzzle.CreateLayout(Puzzle.LoadData(_basicPuzzle.PuzzleInput()));
 
             _tl = _puzzle.GetTopLeft(_cells);
             _br = _puzzle.GetBottomRight(_cells);
@@ -166,7 +167,7 @@
     {
         await JsRuntime.InvokeAsync<object>("startAnimLoop", DotNetObjectReference.Create(this));
         if (_canvas == null || _context == null) return;
-        _cells = _puzzle.CreateLayout(_puzzle.LoadData(_puzzle.PuzzleInput()));
+        _cells = _puzzle.CreateLayout(Puzzle.LoadData(_basicPuzzle.PuzzleInput()));
 
         _drops = 0;
         _partTwo = false;
@@ -184,7 +185,7 @@
     {
         await JsRuntime.InvokeAsync<object>("startAnimLoop", DotNetObjectReference.Create(this));
         if (_canvas == null || _context == null) return;
-        _cells = _puzzle.CreateLayout(_puzzle.LoadData(_puzzle.PuzzleInput()));
+        _cells = _puzzle.CreateLayout(Puzzle.LoadData(_basicPuzzle.PuzzleInput()));
         _drops = 0;
         _partTwo = true;
         await _context.BeginBatchAsync();

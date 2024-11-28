@@ -4,7 +4,7 @@ namespace AdventOfCSharp.Puzzles.Tests.Year22.Day07;
 
 public class Tests
 {
-    private readonly Puzzle puzzle;
+    private readonly IBasicPuzzle puzzle;
 
     public Tests()
     {

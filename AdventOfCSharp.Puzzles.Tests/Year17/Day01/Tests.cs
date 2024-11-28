@@ -4,11 +4,11 @@ namespace AdventOfCSharp.Puzzles.Tests.Year17.Day01;
 
 public class Tests
 {
-    private readonly Puzzle _puzzle;
+    private readonly IBasicPuzzle _puzzle;
 
     public Tests()
     {
-        _puzzle = new();
+        _puzzle = new Puzzle();
     }
     
     [Theory]

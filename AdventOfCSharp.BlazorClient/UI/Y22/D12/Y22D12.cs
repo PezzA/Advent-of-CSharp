@@ -16,6 +16,7 @@ namespace AdventOfCSharp.BlazorClient.UI.Y22.D12
         private Queue<Point2D> PrevQueue { get; set; } = new Queue<Point2D>();
 
         private readonly Puzzle _puzzle;
+        private readonly IBasicPuzzle _basicPuzzle = new Puzzle();
 
         public static PuzzleDataAttribute MetaData => PuzzleManager.GetPuzzleMetaData(2022, 12) ?? throw new InvalidOperationException("Wot no metadata for 2022/12");
 
@@ -24,8 +25,8 @@ namespace AdventOfCSharp.BlazorClient.UI.Y22.D12
         public Model()
         {
             _puzzle = new Puzzle();
-            _lines = _puzzle.PuzzleInput().ParseStringArray() ?? Array.Empty<string>();
-            Map = Puzzle.LoadData(_puzzle.PuzzleInput());
+            _lines = _basicPuzzle.PuzzleInput().ParseStringArray() ?? Array.Empty<string>();
+            Map = Puzzle.LoadData(_basicPuzzle.PuzzleInput());
             Map.OrderBy(x => x.Value);
         }
 

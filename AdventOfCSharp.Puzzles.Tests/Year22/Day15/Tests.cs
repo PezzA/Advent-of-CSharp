@@ -5,8 +5,12 @@ namespace AdventOfCSharp.Puzzles.Tests.Year22.Day15;
 
 public class Tests
 {
-    private readonly Puzzle _puzzle = new();
+    private readonly IBasicPuzzle _puzzle;
 
+    public Tests()
+    {
+        _puzzle = new Puzzle();
+    }
     private static readonly string TestData = string.Empty;
 
     [Fact]

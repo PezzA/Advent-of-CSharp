@@ -4,7 +4,12 @@ namespace AdventOfCSharp.Puzzles.Tests.Year23.Day13;
 
 public class Tests
 {
-    private readonly Puzzle _puzzle = new();
+    private readonly IBasicPuzzle _puzzle;
+
+    public Tests()
+    {
+        _puzzle = new Puzzle();
+    }
 
     private const string TestData
         = """
@@ -41,8 +46,8 @@ public class Tests
     {
         var patterns = Puzzle.LoadData(TestData);
         
-        Assert.Equal(new Puzzle.ReflectAnalysis(Puzzle.ReflectionType.Vertical, 5), _puzzle.Analyse(patterns[0]));
-        Assert.Equal(new Puzzle.ReflectAnalysis(Puzzle.ReflectionType.Horizontal, 4), _puzzle.Analyse(patterns[^1]));
+        Assert.Equal(new Puzzle.ReflectAnalysis(Puzzle.ReflectionType.Vertical, 5), Puzzle.Analyse(patterns[0]));
+        Assert.Equal(new Puzzle.ReflectAnalysis(Puzzle.ReflectionType.Horizontal, 4), Puzzle.Analyse(patterns[^1]));
     }
 
     [Fact]

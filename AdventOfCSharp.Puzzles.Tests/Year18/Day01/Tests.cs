@@ -2,9 +2,9 @@
 
 namespace AdventOfCSharp.Puzzles.Tests.Year18.Day01;
 
-public class Tests
+public class Tests()
 {
-    private readonly Puzzle _puzzle = new();
+    private readonly IBasicPuzzle _puzzle = new Puzzle();
 
     [Fact]
     public void TestPartOne() => Assert.Equal("493", _puzzle.PartOne(_puzzle.PuzzleInput())[0]);

@@ -4,7 +4,12 @@ namespace AdventOfCSharp.Puzzles.Tests.Year23.Day14;
 
 public class Tests
 {
-    private readonly Puzzle _puzzle = new();
+    private readonly IBasicPuzzle _puzzle;
+
+    public Tests()
+    {
+        _puzzle = new Puzzle();
+    }
 
     private const string TestData
         = """
@@ -23,17 +28,17 @@ public class Tests
     [Fact]
     public void Loads_Data()
     {
-        var data = _puzzle.LoadData(TestData);
+        var data = Puzzle.LoadData(TestData);
 
-        var segments = _puzzle.GetSegments(data[5]);
+        var segments = Puzzle.GetSegments(data[5]);
         
         Assert.Equal(3, segments.Length);
 
-        segments = _puzzle.GetSegments(data[8]);
+        segments = Puzzle.GetSegments(data[8]);
         
         Assert.Equal(2, segments.Length);
 
-        segments = _puzzle.GetVerticalSegments(0, data);
+        segments = Puzzle.GetVerticalSegments(0, data);
         
         Assert.Single(segments);
 
@@ -42,9 +47,9 @@ public class Tests
     [Fact]
     public void Tilts_North()
     {
-        var data = _puzzle.LoadData(TestData);
+        var data = Puzzle.LoadData(TestData);
 
-        var tiltedData = _puzzle.SlideVertical(data);
+        var tiltedData = Puzzle.SlideVertical(data);
         
         Assert.Equal(data.Length, tiltedData.Length); 
     }

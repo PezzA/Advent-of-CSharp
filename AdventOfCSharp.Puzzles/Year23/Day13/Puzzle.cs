@@ -37,7 +37,7 @@ public partial class Puzzle : IBasicPuzzle
         return patterns.ToArray();
     }
 
-    public bool DoesHorizontallyReflect(int index, bool[][] pattern)
+    public static bool DoesHorizontallyReflect(int index, bool[][] pattern)
     {
         var reflectIndex = 0;
 
@@ -60,7 +60,7 @@ public partial class Puzzle : IBasicPuzzle
         return true;
     }
 
-    public ReflectAnalysis? ScanHorizontal(bool[][] input, ReflectAnalysis? original = null)
+    public static ReflectAnalysis? ScanHorizontal(bool[][] input, ReflectAnalysis? original = null)
     {
         for (var row = 1; row < input.Length; row++)
         {
@@ -84,7 +84,7 @@ public partial class Puzzle : IBasicPuzzle
         return null;
     }
 
-    public bool ColumnsEqual(int firstIndex, int secondIndex, bool[][] pattern)
+    public static bool ColumnsEqual(int firstIndex, int secondIndex, bool[][] pattern)
     {
         for (var row = 0; row < pattern.Length; row++)
         {
@@ -97,7 +97,7 @@ public partial class Puzzle : IBasicPuzzle
         return true;
     }
 
-    public bool DoesVerticallyReflect(int index, bool[][] pattern)
+    public static bool DoesVerticallyReflect(int index, bool[][] pattern)
     {
         var reflectIndex = 0;
 
@@ -120,7 +120,7 @@ public partial class Puzzle : IBasicPuzzle
         return true;
     }
 
-    public ReflectAnalysis? ScanVertical(bool[][] input, ReflectAnalysis? original = null)
+    public static ReflectAnalysis? ScanVertical(bool[][] input, ReflectAnalysis? original = null)
     {
         for (var col = 1; col < input[0].Length; col++)
         {
@@ -144,7 +144,7 @@ public partial class Puzzle : IBasicPuzzle
         return null;
     }
 
-    public ReflectAnalysis? Analyse(bool[][] input, ReflectAnalysis? original = null)
+    public static ReflectAnalysis? Analyse(bool[][] input, ReflectAnalysis? original = null)
     {
         var horizontalMatch = ScanHorizontal(input, original);
 
