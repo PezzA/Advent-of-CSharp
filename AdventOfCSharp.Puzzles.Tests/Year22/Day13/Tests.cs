@@ -11,9 +11,10 @@ public class Tests
 {
     private readonly IBasicPuzzle puzzle;
 
-    public Tests()
+    public Tests(ITestOutputHelper testOutputHelper)
     {
         puzzle = new Puzzle();
+        this.testOutputHelper = testOutputHelper;
     }
 
     private readonly ITestOutputHelper testOutputHelper;
@@ -76,11 +77,7 @@ public class Tests
     }
 
 
-    public Tests(ITestOutputHelper testOutputHelper)
-    {
-        puzzle = new Puzzle();
-        this.testOutputHelper = testOutputHelper;
-    }
+
 
     [Fact]
     public void Parses()
