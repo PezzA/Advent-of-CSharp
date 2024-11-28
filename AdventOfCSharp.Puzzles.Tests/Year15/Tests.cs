@@ -4,16 +4,16 @@ namespace AdventOfCSharp.Puzzles.Tests.Year15.Day01;
 
 public class Tests
 {
-    private readonly Puzzle puzzle;
+    private readonly IBasicPuzzle _puzzle;
 
     public Tests()
     {
-        puzzle = new Puzzle();
+        _puzzle = new Puzzle();
     }
 
     [Fact]
-    public void TestPartOne() => Assert.Equal("138", puzzle.PartOne(puzzle.PuzzleInput())[0]);
+    public void TestPartOne() => Assert.Equal("138", _puzzle.PartOne(_puzzle.PuzzleInput())[0]);
 
     [Fact]
-    public void TestPartTwo() => Assert.Equal("1771", puzzle.PartTwo(puzzle.PuzzleInput())[0]);
+    public void TestPartTwo() => Assert.Equal("1771", _puzzle.PartTwo(_puzzle.PuzzleInput())[0]);
 }

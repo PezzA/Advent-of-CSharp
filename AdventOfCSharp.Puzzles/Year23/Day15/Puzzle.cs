@@ -6,12 +6,12 @@ public partial class Puzzle : IBasicPuzzle
 {
     public record Lens(string Label, int Length, bool Remove);
 
-    public string[] LoadData(string input)
+    public static string[] LoadData(string input)
     {
         return input.Split(',');
     }
 
-    public int GetHash(string input)
+    public static int GetHash(string input)
     {
         var hash = 0;
 
@@ -37,7 +37,7 @@ public partial class Puzzle : IBasicPuzzle
         return new Lens(input.Substring(0, input.Length - 1), 0, true);
     }
 
-    public Dictionary<int, LinkedList<Lens>> SetupLens(string[] input)
+    public static Dictionary<int, LinkedList<Lens>> SetupLens(string[] input)
     {
         var hashMap = new Dictionary<int, LinkedList<Lens>>();
 

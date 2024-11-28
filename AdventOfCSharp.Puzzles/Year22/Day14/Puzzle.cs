@@ -16,7 +16,7 @@ public partial class Puzzle : IBasicPuzzle
         Sand
     }
 
-    public List<List<Point2D>> LoadData(string input)
+    public static List<List<Point2D>> LoadData(string input)
     {
         var lines = input.ParseStringArray() ?? throw new ArgumentNullException(nameof(input));
 
@@ -24,7 +24,9 @@ public partial class Puzzle : IBasicPuzzle
 
         foreach (var line in lines)
         {
-            paths.Add(line.Split(" -> ").Select(ParseSegment).ToList());
+            paths.Add(line.Split(" -> ")
+                .Select(ParseSegment)
+                .ToList());
         }
 
         return paths;
@@ -148,7 +150,7 @@ public partial class Puzzle : IBasicPuzzle
                 : -1;
     }
 
-    private Point2D ParseSegment(string rawSegment)
+    private static Point2D ParseSegment(string rawSegment)
     {
         var bits = rawSegment.Split(',');
 

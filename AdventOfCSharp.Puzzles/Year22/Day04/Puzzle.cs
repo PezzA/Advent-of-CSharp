@@ -3,7 +3,7 @@
 [PuzzleData(Year = 2022, Day = 4, Title = "Camp Cleanup", Stars = 2, ImplementedElsewhere = false)]
 public partial class Puzzle : IBasicPuzzle
 {
-    public List<RangePair> LoadData(string input)
+    public static List<RangePair> LoadData(string input)
     {
         var lines = input.Split(Environment.NewLine);
         var pairs = new List<RangePair>();

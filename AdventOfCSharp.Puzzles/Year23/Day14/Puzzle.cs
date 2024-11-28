@@ -14,7 +14,7 @@ public partial class Puzzle : IBasicPuzzle
         Cube
     }
 
-    public Contents[][] LoadData(string input)
+    public static Contents[][] LoadData(string input)
     {
         var lines = input.ParseStringArray() ?? throw new Exception("Could not parse array");
 
@@ -34,7 +34,7 @@ public partial class Puzzle : IBasicPuzzle
         return contents.ToArray();
     }
 
-    public Segment[] GetSegments(Contents[] input)
+    public static Segment[] GetSegments(Contents[] input)
     {
         var segments = new List<Segment>();
 
@@ -53,7 +53,7 @@ public partial class Puzzle : IBasicPuzzle
         return segments.Where(s => s.Start <= s.End).ToArray();
     }
 
-    public Segment[] GetVerticalSegments(int index, Contents[][] grid)
+    public static Segment[] GetVerticalSegments(int index, Contents[][] grid)
     {
         var contentLine = new Contents[grid.Length];
 
@@ -65,7 +65,7 @@ public partial class Puzzle : IBasicPuzzle
         return GetSegments(contentLine);
     }
 
-    public Contents[][] SlideVertical(Contents[][] grid, bool north = true)
+    public static Contents[][] SlideVertical(Contents[][] grid, bool north = true)
     {
         for (var x = 0; x < grid.Length; x++)
         {

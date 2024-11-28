@@ -7,7 +7,14 @@ namespace AdventOfCSharp.Puzzles.Tests.Year23.Day10;
 
 public class Tests
 {
-    private readonly Puzzle _puzzle = new();
+    private readonly IBasicPuzzle _basicPuzzle;
+    private readonly Puzzle _puzzle;
+
+    public Tests()
+    {
+        _puzzle = new Puzzle();
+        _basicPuzzle = new Puzzle();
+    }
 
     private const string TestData
         = """
@@ -67,8 +74,8 @@ public class Tests
     public void TestPartTwo_TestData() => Assert.Equal(Constants.NOT_YET_IMPLEMENTED, _puzzle.PartTwo(TestData)[0]);
 
     [Fact]
-    public void TestPartOne() => Assert.Equal("6786", _puzzle.PartOne(_puzzle.PuzzleInput())[0]);
+    public void TestPartOne() => Assert.Equal("6786", _puzzle.PartOne(_basicPuzzle.PuzzleInput())[0]);
 
     [Fact]
-    public void TestPartTwo() => Assert.Equal(Constants.NOT_YET_IMPLEMENTED, _puzzle.PartTwo(_puzzle.PuzzleInput())[0]);
+    public void TestPartTwo() => Assert.Equal(Constants.NOT_YET_IMPLEMENTED, _puzzle.PartTwo(_basicPuzzle.PuzzleInput())[0]);
 }

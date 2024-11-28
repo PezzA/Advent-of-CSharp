@@ -4,7 +4,12 @@ namespace AdventOfCSharp.Puzzles.Tests.Year23.Day22;
 
 public class Tests
 {
-    private readonly Puzzle _puzzle = new();
+    private readonly IBasicPuzzle _puzzle;
+
+    public Tests()
+    {
+        _puzzle = new Puzzle();
+    }
 
     private const string TestData
         = """

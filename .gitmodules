@@ -1,0 +1,3 @@
+[submodule "AdventOfCSharp.Puzzles/Advent-of-Inputs"]
+	path = AdventOfCSharp.Puzzles/Advent-of-Inputs
+	url = git@github.com:PezzA/Advent-of-Inputs.git

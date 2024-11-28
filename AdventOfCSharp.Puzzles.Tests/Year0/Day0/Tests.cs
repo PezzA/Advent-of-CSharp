@@ -6,16 +6,22 @@ namespace AdventOfCSharp.Puzzles.Tests.Year0.Day0;
 
 public class Tests
 {
-    private readonly Puzzle _puzzle = new();
+    private readonly IBasicPuzzle _puzzle;
 
     private const string TestData
         = """
           <insert test data here>
           """;
 
+    public Tests() 
+    {
+        _puzzle = new Puzzle();
+    }
+
     [Fact]
     public void Loads_Data()
     {
+        
     }
 
     [Fact]

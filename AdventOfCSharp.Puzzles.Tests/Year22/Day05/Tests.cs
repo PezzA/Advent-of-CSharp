@@ -4,7 +4,7 @@ namespace AdventOfCSharp.Puzzles.Tests.Year22.Day05;
 
 public class Tests
 {
-    readonly Puzzle puzzle;
+    readonly IBasicPuzzle puzzle;
 
     public Tests()
     {
@@ -14,7 +14,7 @@ public class Tests
     [Fact]
     public void Test_LoadData()
     {
-        var (stacks, instructions) = puzzle.LoadData(puzzle.PuzzleInput());
+        var (stacks, instructions) = Puzzle.LoadData(puzzle.PuzzleInput());
 
         Assert.NotNull(stacks);
         Assert.Equal(9, stacks.Keys.Count);
@@ -35,9 +35,9 @@ public class Tests
     [Fact]
     public void Test_Instruction()
     {
-        var (stacks, instructions) = puzzle.LoadData(puzzle.PuzzleInput());
+        var (stacks, instructions) = Puzzle.LoadData(puzzle.PuzzleInput());
 
-        stacks = puzzle.ProcessInstruction(stacks, instructions[0]);
+        stacks = Puzzle.ProcessInstruction(stacks, instructions[0]);
 
         Assert.Equal(7, stacks[2].Count);
         Assert.Equal('F', stacks[2].Peek());

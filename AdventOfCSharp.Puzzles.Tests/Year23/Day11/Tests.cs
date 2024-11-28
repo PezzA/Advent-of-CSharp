@@ -4,7 +4,12 @@ namespace AdventOfCSharp.Puzzles.Tests.Year23.Day11;
 
 public class Tests
 {
-    private readonly Puzzle _puzzle = new();
+    private readonly IBasicPuzzle _puzzle;
+
+    public Tests()
+    {
+        _puzzle = new Puzzle();
+    }
 
     private const string TestData
         = """
@@ -36,7 +41,7 @@ public class Tests
     [InlineData(100, 8410)]
     public void Solves_Part_Two(int ageFactor, long expected)
     {
-        Assert.Equal(expected, _puzzle.SolvePartTwo(TestData, ageFactor));
+        Assert.Equal(expected, Puzzle.SolvePartTwo(TestData, ageFactor));
     }
 
 

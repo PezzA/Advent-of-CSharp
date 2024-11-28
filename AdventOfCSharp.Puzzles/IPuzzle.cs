@@ -4,6 +4,6 @@
     {
         string[] PartOne(string input);
         string[] PartTwo(string input);
-        string PuzzleInput();
+        string PuzzleInput() => string.Empty;
     }
 }

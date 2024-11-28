@@ -7,7 +7,7 @@ namespace AdventOfCSharp.Puzzles.Tests.Year22.Day11;
 
 public class Tests
 {
-    private readonly Puzzle puzzle;
+    private readonly IBasicPuzzle puzzle;
     private readonly ITestOutputHelper _output;
     private const string TestData = $$"""
         Monkey 0:

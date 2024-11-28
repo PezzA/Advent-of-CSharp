@@ -9,7 +9,14 @@ namespace AdventOfCSharp.Puzzles.Tests.Year22.Day13;
 
 public class Tests
 {
-    private readonly Puzzle puzzle;
+    private readonly IBasicPuzzle puzzle;
+
+    public Tests(ITestOutputHelper testOutputHelper)
+    {
+        puzzle = new Puzzle();
+        this.testOutputHelper = testOutputHelper;
+    }
+
     private readonly ITestOutputHelper testOutputHelper;
     const string TestData = """
         [1,1,3,1,1]
@@ -70,11 +77,7 @@ public class Tests
     }
 
 
-    public Tests(ITestOutputHelper testOutputHelper)
-    {
-        puzzle = new Puzzle();
-        this.testOutputHelper = testOutputHelper;
-    }
+
 
     [Fact]
     public void Parses()

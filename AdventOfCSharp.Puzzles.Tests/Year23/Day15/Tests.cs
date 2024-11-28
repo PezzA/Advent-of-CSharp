@@ -4,7 +4,12 @@ namespace AdventOfCSharp.Puzzles.Tests.Year23.Day15;
 
 public class Tests
 {
-    private readonly Puzzle _puzzle = new();
+    private readonly IBasicPuzzle _puzzle;
+
+    public Tests()
+    {
+        _puzzle = new Puzzle();
+    }
 
     private const string TestData
         = """
@@ -14,18 +19,18 @@ public class Tests
     [Fact]
     public void Loads_Data()
     {
-        var items = _puzzle.LoadData(TestData);
+        var items = Puzzle.LoadData(TestData);
         
-        Assert.Equal(52, _puzzle.GetHash("HASH"));
-        Assert.Equal(30,_puzzle.GetHash(items[0]));
+        Assert.Equal(52, Puzzle.GetHash("HASH"));
+        Assert.Equal(30, Puzzle.GetHash(items[0]));
     }
 
     [Fact]
     public void Gets_HashMap()
     {
-        var items = _puzzle.LoadData(TestData);
+        var items = Puzzle.LoadData(TestData);
 
-        var hashMap = _puzzle.SetupLens(items);
+        var hashMap = Puzzle.SetupLens(items);
     } 
 
     [Fact]

@@ -5,7 +5,7 @@ namespace AdventOfCSharp.Puzzles.Tests.Year22.Day04;
 
 public class Tests
 {
-    readonly Puzzle puzzle;
+    readonly IBasicPuzzle puzzle;
 
     public Tests()
     {
@@ -15,7 +15,7 @@ public class Tests
     [Fact]
     public void Test_LoadData()
     {
-        var data = puzzle.LoadData(puzzle.PuzzleInput());
+        var data = Puzzle.LoadData(puzzle.PuzzleInput());
 
         Assert.Equal(new Range(54, 59), data[0].First);
         Assert.Equal(new Range(17, 62), data[0].Second);

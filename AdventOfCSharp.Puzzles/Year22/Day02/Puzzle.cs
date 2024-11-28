@@ -39,7 +39,7 @@ public partial class Puzzle : IBasicPuzzle
         }
     }
 
-    public List<Instruction> LoadData(string input)
+    public static List<Instruction> LoadData(string input)
     {
         var lines = input.Split(Environment.NewLine);
         var instructions = new List<Instruction>();

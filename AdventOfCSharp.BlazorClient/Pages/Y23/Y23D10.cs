@@ -16,6 +16,7 @@ public class Y23D10
         public Point2D Start => Puzzle.GetStart(_grid);
         
         private readonly Puzzle _puzzle = new();
+        private readonly IBasicPuzzle _basicPuzzle = new Puzzle();
 
         public static PuzzleDataAttribute? MetaData => PuzzleManager.GetPuzzleMetaData(2023, 10);
  
@@ -26,7 +27,7 @@ public class Y23D10
         
         public Model()
         {
-            _grid = Puzzle.LoadData(_puzzle.PuzzleInput());
+            _grid = Puzzle.LoadData(_basicPuzzle.PuzzleInput());
         }
 
         public void Init()
