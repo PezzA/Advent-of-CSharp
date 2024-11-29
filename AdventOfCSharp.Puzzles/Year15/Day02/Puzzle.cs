@@ -2,7 +2,7 @@
 
 namespace AdventOfCSharp.Puzzles.Year15.Day02;
 
-[PuzzleData(Year = 2015, Day = 2, Title = "I Was Told There Would Be No Math", Stars = 0, ImplementedElsewhere = false)]
+[PuzzleData(Year = 2015, Day = 2, Title = "I Was Told There Would Be No Math", Stars = 2, ImplementedElsewhere = false)]
 public partial class Puzzle : IBasicPuzzle
 {
     public record Box(int Length, int Width, int Height)
