@@ -2,7 +2,7 @@
 
 namespace AdventOfCSharp.Puzzles.Year24.Day03;
 
-[PuzzleData(Year = 2024, Day = 3, Title = "Mull It Over", Stars = 0, ImplementedElsewhere = false)]
+[PuzzleData(Year = 2024, Day = 3, Title = "Mull It Over", Stars = 2, ImplementedElsewhere = false)]
 public partial class Puzzle : IBasicPuzzle
 {
 
