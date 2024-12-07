@@ -8,6 +8,10 @@ namespace AdventOfCSharp.Puzzles.Geometery
     {
         public Point2D Add(Point2D point) => new(X + point.X, Y + point.Y);
         
+        public static Point2D operator *(Point2D a, int b) => new Point2D(a.X * b, a.Y * b);
+
+        public static Point2D operator +(Point2D a, Point2D b) => new Point2D(a.X + b.X, a.Y + b.Y);
+
         public int Length => Math.Abs(X) + Math.Abs(Y);
 
         public int ManhattanDistance(Point2D target)
